@@ -16874,20 +16874,37 @@
                     pattern="^(\+84|84|0)(3([2-9])|5(2|5|6|8|9)|7(0|[6-9])|8([1-9])|9([0-4]|[6-9]))([0-9]{7})$"></div>
               </div>
               <div id="w-jm6b9w8q" class="com-checkbox-group p-absolute">
-                <div class="checkbox-group-css full-width full-height"><label class="checkbox-group-item"><input
-                      id="jm6b9w8q-ukvdvjmt" class="checkbox-group-input" type="checkbox" name="Size L  : 45 - 50Kg"
-                      required="required" data-required="1"><span class="checkbox-group-label">Size L : 45 -
-                      50Kg</span></label><label class="checkbox-group-item"><input id="jm6b9w8q-uaraa9tn"
-                      class="checkbox-group-input" type="checkbox" name="Size XL: 51 - 62Kg"><span
-                      class="checkbox-group-label">Size XL: 51 - 62Kg</span></label><label
-                    class="checkbox-group-item"><input id="jm6b9w8q-wee1cv2u" class="checkbox-group-input"
-                      type="checkbox" name="Size 2XL: 63 - 70Kg"><span class="checkbox-group-label">Size 2XL: 63 -
-                      70Kg</span></label><label class="checkbox-group-item"><input id="jm6b9w8q-viqdl4k0"
-                      class="checkbox-group-input" type="checkbox" name="Size 3XL: 71 - 82Kg"><span
-                      class="checkbox-group-label">Size 3XL: 71 - 82Kg</span></label><label
-                    class="checkbox-group-item"><input id="jm6b9w8q-h8im7ro2" class="checkbox-group-input"
-                      type="checkbox" name="Size 4XL: 83 - 95Kg"><span class="checkbox-group-label">Size 4XL: 83 -
-                      95Kg</span></label></div>
+                <div class="checkbox-group-css full-width full-height">
+                  <label class="checkbox-group-item">
+                    <input id="jm6b9w8q-ukvdvjmt" class="checkbox-group-input" type="checkbox"
+                      name="Size L : 45 - 50Kg">
+                    <span class="checkbox-group-label">Size L : 45 - 50Kg</span>
+                  </label>
+
+                  <label class="checkbox-group-item">
+                    <input id="jm6b9w8q-uaraa9tn" class="checkbox-group-input" type="checkbox"
+                      name="Size XL: 51 - 62Kg">
+                    <span class="checkbox-group-label">Size XL: 51 - 62Kg</span>
+                  </label>
+
+                  <label class="checkbox-group-item">
+                    <input id="jm6b9w8q-wee1cv2u" class="checkbox-group-input" type="checkbox"
+                      name="Size 2XL: 63 - 70Kg">
+                    <span class="checkbox-group-label">Size 2XL: 63 - 70Kg</span>
+                  </label>
+
+                  <label class="checkbox-group-item">
+                    <input id="jm6b9w8q-viqdl4k0" class="checkbox-group-input" type="checkbox"
+                      name="Size 3XL: 71 - 82Kg">
+                    <span class="checkbox-group-label">Size 3XL: 71 - 82Kg</span>
+                  </label>
+
+                  <label class="checkbox-group-item">
+                    <input id="jm6b9w8q-h8im7ro2" class="checkbox-group-input" type="checkbox"
+                      name="Size 4XL: 83 - 95Kg">
+                    <span class="checkbox-group-label">Size 4XL: 83 - 95Kg</span>
+                  </label>
+                </div>
               </div>
             </form>
           </div>
@@ -24273,36 +24290,38 @@
 
       if (orderForm) {
         orderForm.addEventListener('submit', function (e) {
-          e.preventDefault(); // Chặn load lại trang
+          e.preventDefault(); // Chặn load lại trang ngay từ đầu
 
-          const submitBtnText = orderForm.querySelector('.button-text');
-          const originalText = submitBtnText ? submitBtnText.innerText : "HOÀN TẤT ĐƠN HÀNG";
-
-          // Hiệu ứng chờ
-          if (submitBtnText) submitBtnText.innerText = "⌛ ĐANG GỬI...";
-
-          // 1. Thu thập dữ liệu cơ bản
-          const formData = new FormData(orderForm);
-          const rawData = Object.fromEntries(formData.entries());
-
-          // 2. Gom nhóm các Size đã chọn (Vì checkbox có nhiều cái cùng lúc)
+          // 1. Kiểm tra xem có ô size nào được chọn không
           const selectedSizes = [];
-          // Tìm tất cả checkbox đang được check trong form
-          orderForm.querySelectorAll('input[type="checkbox"]:checked').forEach(cb => {
+          orderForm.querySelectorAll('.checkbox-group-input:checked').forEach(cb => {
             selectedSizes.push(cb.name);
           });
 
-          // 3. Đóng gói dữ liệu chuẩn gửi cho Backend
+          if (selectedSizes.length === 0) {
+            alert("Vui lòng chọn ít nhất một Size phù hợp!");
+            return false; // Dừng lại nếu chưa chọn size
+          }
+
+          // 2. Chuẩn bị giao diện nút bấm
+          const submitBtnText = orderForm.querySelector('.button-text');
+          const originalText = submitBtnText ? submitBtnText.innerText : "HOÀN TẤT ĐƠN HÀNG";
+          if (submitBtnText) submitBtnText.innerText = "⌛ ĐANG GỬI...";
+
+          // 3. Thu thập dữ liệu từ Form
+          const formData = new FormData(orderForm);
+          const rawData = Object.fromEntries(formData.entries());
+
           const finalData = {
             full_name: rawData.full_name,
             phone_number: rawData.phone_number,
             address: rawData.address,
             textarea_input_1: rawData.textarea_input_1 || "",
             radio_input_1: rawData.radio_input_1, // Lấy giá trị Combo
-            sizes: selectedSizes.join(', ')     // Ví dụ: "Size L, Size XL"
+            sizes: selectedSizes.join(', ')      // Gom các size thành chuỗi: "Size L, Size XL"
           };
 
-          // 4. Gửi dữ liệu (Dùng đường dẫn tương đối '/' nếu để chung folder trên Render)
+          // 4. Gửi dữ liệu sang Server Render
           fetch('/submit-order', {
             method: 'POST',
             headers: {
@@ -24319,10 +24338,11 @@
               }
             })
             .catch(error => {
-              console.error('Lỗi:', error);
+              console.error('Lỗi kết nối:', error);
               alert("❌ Không kết nối được với Server.");
             })
             .finally(() => {
+              // Trả lại chữ gốc cho nút bấm
               if (submitBtnText) submitBtnText.innerText = originalText;
             });
         });
