@@ -2,23 +2,32 @@ const express = require('express');
 const cors = require('cors');
 const { GoogleSpreadsheet } = require('google-spreadsheet');
 const { JWT } = require('google-auth-library');
-const creds = require('./service-account.json'); // Sử dụng file JSON đã test thành công
+const creds = require('./service-account.json'); 
 
 const app = express();
 
-// Cấu hình Middleware
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Lấy SHEET_ID từ Env cho bảo mật (hoặc dán trực tiếp ID vào đây nếu lười cấu hình Render)
 const SHEET_ID = '1_2OIa0tBXlp-WQ7hBp9SXxgxGVnbED14YFmy-21eSzw';
 
 app.post('/submit-order', async (req, res) => {
+    // --- LOG KIỂM TRA DỮ LIỆU ĐẾN ---
+    console.log("-----------------------------------");
+    console.log("📩 NHẬN ĐƯỢC REQUEST MỚI!");
+    console.log("Body nhận từ HTML:", JSON.stringify(req.body, null, 2));
+    // -------------------------------
+
     try {
         const { full_name, phone_number, address, textarea_input_1, radio_input_1, sizes } = req.body;
 
-        // Cấu hình xác thực bằng JWT từ file JSON
+        // Kiểm tra xem có dữ liệu không, nếu rỗng thì dừng lại luôn
+        if (!full_name && !phone_number) {
+            console.log("⚠️ Cảnh báo: Nhận dữ liệu rỗng từ Form.");
+            return res.status(400).json({ error: 'Dữ liệu trống' });
+        }
+
         const serviceAccountAuth = new JWT({
             email: creds.client_email,
             key: creds.private_key,
@@ -28,10 +37,9 @@ app.post('/submit-order', async (req, res) => {
         const doc = new GoogleSpreadsheet(SHEET_ID, serviceAccountAuth);
 
         await doc.loadInfo(); 
-        const sheet = doc.sheetsByIndex[0]; // Lấy sheet đầu tiên
+        const sheet = doc.sheetsByIndex[0];
 
-        // Thêm dòng mới vào Sheet
-        // Lưu ý: Tên các cột dưới đây phải khớp 100% với hàng 1 trong file Excel của bạn
+        // Ghi vào sheet
         await sheet.addRow({
             'Thời gian': new Date().toLocaleString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh' }),
             'Họ tên': full_name || '',
@@ -42,19 +50,18 @@ app.post('/submit-order', async (req, res) => {
             'Size': sizes || ''
         });
 
-        console.log(`[${new Date().toLocaleTimeString()}] Đơn hàng mới từ: ${full_name}`);
+        console.log(`✅ Đã ghi đơn hàng của [${full_name}] vào Sheet thành công.`);
+        console.log("-----------------------------------");
         res.status(200).json({ message: 'Đặt hàng thành công!' });
 
     } catch (error) {
-        console.error('Lỗi Server:', error.message);
-        res.status(500).json({ error: 'Có lỗi xảy ra, vui lòng thử lại.' });
+        console.error('❌ LỖI XỬ LÝ TRÊN SERVER:', error.message);
+        res.status(500).json({ error: 'Lỗi server khi ghi vào Sheet' });
     }
 });
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log(`-----------------------------------`);
     console.log(`🚀 Server đang chạy tại port ${PORT}`);
-    console.log(`✅ Đã nhận diện file service-account.json`);
-    console.log(`-----------------------------------`);
+    console.log(`📂 Đã nạp file xác thực: ${creds.client_email}`);
 });
