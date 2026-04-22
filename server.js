@@ -3,40 +3,41 @@ const path = require('path');
 const cors = require('cors');
 const { GoogleSpreadsheet } = require('google-spreadsheet');
 const { JWT } = require('google-auth-library');
-const creds = require('./service-account.json');
 
 const app = express();
 
-// Cấu hình Middleware
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// --- PHẦN 1: PHỤC VỤ FILE GIAO DIỆN ---
-// Khi ai đó truy cập vào link Render, server sẽ gửi file index.html ngay
+// --- PHỤC VỤ GIAO DIỆN ---
+app.use(express.static(__dirname));
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-// Phục vụ các file css, img nếu bạn để cùng thư mục
-app.use(express.static(__dirname));
-
-// --- PHẦN 2: XỬ LÝ ĐƠN HÀNG ---
+// --- XỬ LÝ ĐƠN HÀNG ---
 const SHEET_ID = '1_2OIa0tBXlp-WQ7hBp9SXxgxGVnbED14YFmy-21eSzw';
 
 app.post('/submit-order', async (req, res) => {
     console.log("-----------------------------------");
-    console.log("📩 NHẬN ĐƠN HÀNG MỚI:", JSON.stringify(req.body, null, 2));
+    console.log("📩 NHẬN ĐƠN HÀNG MỚI:", req.body.full_name);
 
     try {
         const { full_name, phone_number, address, textarea_input_1, radio_input_1, sizes } = req.body;
 
-       
-        // Cấu hình xác thực bằng JWT từ file JSON
+        // Lấy thông tin từ Biến môi trường (Environment Variables)
+        const clientEmail = process.env.G_EMAIL;
+        const privateKey = process.env.G_KEY;
+
+        if (!clientEmail || !privateKey) {
+            throw new Error("Chưa cấu hình G_EMAIL hoặc G_KEY trên Render Settings");
+        }
+
         const serviceAccountAuth = new JWT({
-            email: creds.client_email,
-            // Sửa dòng này: Đảm bảo các ký tự \n được hiểu đúng là xuống dòng
-            key: creds.private_key.split(String.raw`\n`).join('\n'), 
+            email: clientEmail,
+            // Xử lý cả trường hợp key có dấu xuống dòng thật hoặc ký tự \n
+            key: privateKey.replace(/\\n/g, '\n'),
             scopes: ['https://www.googleapis.com/auth/spreadsheets'],
         });
 
@@ -54,16 +55,16 @@ app.post('/submit-order', async (req, res) => {
             'Size': sizes || ''
         });
 
-        console.log(`✅ Ghi thành công đơn hàng của: ${full_name}`);
+        console.log(`✅ Ghi thành công đơn hàng: ${full_name}`);
         res.status(200).json({ message: 'Success' });
+
     } catch (error) {
         console.error('❌ Lỗi tại Server:', error.message);
-        res.status(500).json({ error: 'Internal Server Error' });
+        res.status(500).json({ error: error.message });
     }
 });
 
 const PORT = process.env.PORT || 10000;
 app.listen(PORT, () => {
-    console.log(`🚀 Hệ thống Online tại Port ${PORT}`);
-    console.log(`🔗 Link của bạn: https://coolab-basics.onrender.com`);
+    console.log(`🚀 Server đang chạy an toàn với Biến môi trường tại Port ${PORT}`);
 });
