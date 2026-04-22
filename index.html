@@ -24270,55 +24270,60 @@
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       const orderForm = document.getElementById('v22h7pto');
-      // Tìm div chứa nút giả nếu có
-      const fakeBtn = document.querySelector('.button-css');
 
       if (orderForm) {
-        // Ép sự kiện click cho nút giả
-        if (fakeBtn) {
-          fakeBtn.addEventListener('click', () => orderForm.requestSubmit());
-        }
-
         orderForm.addEventListener('submit', function (e) {
-          e.preventDefault();
+          e.preventDefault(); // Chặn load lại trang
+
           const submitBtnText = orderForm.querySelector('.button-text');
+          const originalText = submitBtnText ? submitBtnText.innerText : "HOÀN TẤT ĐƠN HÀNG";
+
+          // Hiệu ứng chờ
           if (submitBtnText) submitBtnText.innerText = "⌛ ĐANG GỬI...";
 
+          // 1. Thu thập dữ liệu cơ bản
           const formData = new FormData(orderForm);
           const rawData = Object.fromEntries(formData.entries());
 
-          // Gom nhóm Size
+          // 2. Gom nhóm các Size đã chọn (Vì checkbox có nhiều cái cùng lúc)
           const selectedSizes = [];
-          orderForm.querySelectorAll('.checkbox-group-input:checked').forEach(cb => {
+          // Tìm tất cả checkbox đang được check trong form
+          orderForm.querySelectorAll('input[type="checkbox"]:checked').forEach(cb => {
             selectedSizes.push(cb.name);
           });
 
+          // 3. Đóng gói dữ liệu chuẩn gửi cho Backend
           const finalData = {
             full_name: rawData.full_name,
             phone_number: rawData.phone_number,
             address: rawData.address,
-            textarea_input_1: rawData.textarea_input_1,
-            radio_input_1: rawData.radio_input_1,
-            sizes: selectedSizes.join(', ')
+            textarea_input_1: rawData.textarea_input_1 || "",
+            radio_input_1: rawData.radio_input_1, // Lấy giá trị Combo
+            sizes: selectedSizes.join(', ')     // Ví dụ: "Size L, Size XL"
           };
 
-          // GỬI ĐƯỜNG DẪN NGẮN (Vì cùng server)
+          // 4. Gửi dữ liệu (Dùng đường dẫn tương đối '/' nếu để chung folder trên Render)
           fetch('/submit-order', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: {
+              'Content-Type': 'application/json',
+            },
             body: JSON.stringify(finalData)
           })
-            .then(res => {
-              if (res.ok) {
-                alert("Đặt hàng thành công!");
+            .then(response => {
+              if (response.ok) {
+                alert("✅ Đặt hàng thành công! Chúng tôi sẽ gọi lại cho bạn ngay.");
                 orderForm.reset();
               } else {
-                alert("Lỗi server, hãy thử lại!");
+                alert("❌ Có lỗi từ máy chủ. Vui lòng thử lại sau.");
               }
             })
-            .catch(() => alert("Lỗi kết nối!"))
+            .catch(error => {
+              console.error('Lỗi:', error);
+              alert("❌ Không kết nối được với Server.");
+            })
             .finally(() => {
-              if (submitBtnText) submitBtnText.innerText = "HOÀN TẤT ĐƠN HÀNG";
+              if (submitBtnText) submitBtnText.innerText = originalText;
             });
         });
       }
