@@ -31,9 +31,12 @@ app.post('/submit-order', async (req, res) => {
     try {
         const { full_name, phone_number, address, textarea_input_1, radio_input_1, sizes } = req.body;
 
+       
+        // Cấu hình xác thực bằng JWT từ file JSON
         const serviceAccountAuth = new JWT({
             email: creds.client_email,
-            key: creds.private_key,
+            // Sửa dòng này: Đảm bảo các ký tự \n được hiểu đúng là xuống dòng
+            key: creds.private_key.split(String.raw`\n`).join('\n'), 
             scopes: ['https://www.googleapis.com/auth/spreadsheets'],
         });
 
