@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Lấy SHEET_ID từ Env cho bảo mật (hoặc dán trực tiếp ID vào đây nếu lười cấu hình Render)
-const SHEET_ID = process.env.SHEET_ID || '1_2OIa0tBXlp-WQ7hBp9SXxgxGVnbED14YFmy-21eSzw';
+const SHEET_ID = '1_2OIa0tBXlp-WQ7hBp9SXxgxGVnbED14YFmy-21eSzw';
 
 app.post('/submit-order', async (req, res) => {
     try {
