@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <!-- saved from url=(0027)https://www.menbasic.store/ -->
-<html lang="vi">
+<html lang="vi" x:id="e5d20a12-5555-43e9-b4ab-650a751f00f9" region="" nighteye="active"
+  style="background-image: none !important; --viewport-height: 948px;">
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <style>
     .pdfViewer,
     embed[type="application/pdf"] {
@@ -16127,46 +16128,27 @@
   <link rel="stylesheet" href="chrome-extension://gijhmcgnnbcpigflkfoimbnfjnbcphah/css/night-eye-scroll.css">
   <link rel="stylesheet" href="chrome-extension://gijhmcgnnbcpigflkfoimbnfjnbcphah/css/night-eye-custom-styles.css">
   <style>
-    /* Ép toàn bộ trang không được tràn ngang */
-    html,
-    body {
-      max-width: 100vw !important;
-      overflow-x: hidden !important;
-      margin: 0 !important;
-      padding: 0 !important;
-    }
-
-    /* Sửa các khung hình p-absolute đang bị đặt chiều rộng cứng */
-    .com-image,
-    .com-text,
-    .com-container,
-    div[class*="p-absolute"] {
-      max-width: 100% !important;
-      height: auto !important;
-    }
-
-    /* Tự động căn giữa các phần tử bị lệch trên mobile */
-    .p-absolute {
-      left: 0 !important;
-      right: 0 !important;
-      margin-left: auto !important;
-      margin-right: auto !important;
-      width: 100% !important;
-    }
-
-    /* Đảm bảo ảnh sản phẩm không bị to quá màn hình */
+    /* Ép tất cả các hình ảnh không được vượt quá chiều rộng màn hình */
     img {
-      max-width: 100% !important;
-      height: auto !important;
-      display: block;
+      max-width: 100%;
+      height: auto;
     }
 
-    /* Chỉnh lại font chữ trên mobile cho dễ đọc, không bị bé quá hoặc to quá */
-    @media (max-width: 768px) {
-      .com-text {
-        font-size: 16px !important;
-        line-height: 1.4 !important;
-      }
+    /* Sửa lỗi tràn khung ngang trên mobile */
+    body,
+    html {
+      overflow-x: hidden;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Nếu các phần tử bị phóng to quá mức, ta ép nó tỉ lệ theo màn hình */
+    .container,
+    .main-content {
+      width: 100% !important;
+      left: 0 !important;
+      margin: 0 !important;
     }
   </style>
 </head>
