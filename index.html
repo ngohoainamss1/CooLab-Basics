@@ -24268,34 +24268,25 @@
   </style>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
-      // 1. Tìm đúng Form theo ID bạn đã gửi
       const orderForm = document.getElementById('v22h7pto');
-      // Tìm cái div chứa chữ "HOÀN TẤT ĐƠN HÀNG"
+      // Tìm div chứa nút giả nếu có
       const fakeBtn = document.querySelector('.button-css');
 
       if (orderForm) {
-        // Xử lý khi click vào cái div "giả" (nếu nút thật bị display:none không bấm được)
+        // Ép sự kiện click cho nút giả
         if (fakeBtn) {
-          fakeBtn.style.cursor = 'pointer';
-          fakeBtn.addEventListener('click', function () {
-            orderForm.requestSubmit(); // Lệnh này ép form phải submit
-          });
+          fakeBtn.addEventListener('click', () => orderForm.requestSubmit());
         }
 
         orderForm.addEventListener('submit', function (e) {
           e.preventDefault();
-          console.log("Đã bắt được sự kiện Submit!");
-
           const submitBtnText = orderForm.querySelector('.button-text');
-          const originalText = submitBtnText ? submitBtnText.innerText : "HOÀN TẤT ĐƠN HÀNG";
-
           if (submitBtnText) submitBtnText.innerText = "⌛ ĐANG GỬI...";
 
-          // 2. Thu thập dữ liệu
           const formData = new FormData(orderForm);
           const rawData = Object.fromEntries(formData.entries());
 
-          // Gom nhóm các Size (Checkbox)
+          // Gom nhóm Size
           const selectedSizes = [];
           orderForm.querySelectorAll('.checkbox-group-input:checked').forEach(cb => {
             selectedSizes.push(cb.name);
@@ -24305,37 +24296,30 @@
             full_name: rawData.full_name,
             phone_number: rawData.phone_number,
             address: rawData.address,
-            textarea_input_1: rawData.textarea_input_1 || "",
+            textarea_input_1: rawData.textarea_input_1,
             radio_input_1: rawData.radio_input_1,
             sizes: selectedSizes.join(', ')
           };
 
-          console.log("Dữ liệu chuẩn bị gửi:", finalData);
-
-          // 3. Gửi sang Render
-          fetch('https://coolab-basics.onrender.com/submit-order', {
+          // GỬI ĐƯỜNG DẪN NGẮN (Vì cùng server)
+          fetch('/submit-order', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(finalData)
           })
-            .then(response => {
-              if (response.ok) {
-                alert("✅ Đặt hàng thành công! Cảm ơn bạn.");
+            .then(res => {
+              if (res.ok) {
+                alert("Đặt hàng thành công!");
                 orderForm.reset();
               } else {
-                alert("❌ Lỗi server (Mã: " + response.status + "). Vui lòng thử lại.");
+                alert("Lỗi server, hãy thử lại!");
               }
             })
-            .catch(error => {
-              console.error('Lỗi Fetch:', error);
-              alert("❌ Không thể kết nối tới Server. Vui lòng kiểm tra mạng.");
-            })
+            .catch(() => alert("Lỗi kết nối!"))
             .finally(() => {
-              if (submitBtnText) submitBtnText.innerText = originalText;
+              if (submitBtnText) submitBtnText.innerText = "HOÀN TẤT ĐƠN HÀNG";
             });
         });
-      } else {
-        console.error("Không tìm thấy Form với ID v22h7pto");
       }
     });
   </script>
