@@ -1,6 +1,14 @@
-<html class="light" lang="en">
+<!DOCTYPE html>
+<html lang="vi">
 
 <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <meta name="theme-color" content="#000000" />
+  <title>Quần Sịp Nam Cao Cấp MEN'S BASIC - Flash Sale 50% OFF</title>
+  <meta name="description" content="Quần Sịp Nam Cao Cấp MEN'S BASIC - Vải Coton Lạnh, Không Đường May, Co Giãn 4 Chiều. Size 45-95kg. Flash Sale Mua 3 Tặng 1 chỉ 119.000đ!" />
+
+  <!-- Facebook Pixel -->
   <script>
     !function (f, b, e, v, n, t, s) {
       if (f.fbq) return; n = f.fbq = function () {
@@ -13,28 +21,20 @@
       s.parentNode.insertBefore(t, s)
     }(window, document, 'script',
       'https://connect.facebook.net/en_US/fbevents.js');
-
-    fbq('init', '959395916490425'); // Thay ID_PIXEL_CUA_BAN bằng ID thật của bạn
+    fbq('init', '959395916490425');
     fbq('track', 'PageView');
   </script>
   <noscript>
     <img height="1" width="1" style="display:none"
-      src="https://www.facebook.com/tr?id=ID_PIXEL_CUA_BAN&ev=PageView&noscript=1" />
+      src="https://www.facebook.com/tr?id=959395916490425&ev=PageView&noscript=1" />
   </noscript>
-</head>
-
-<body class="bg-background text-on-background font-body-md antialiased pb-20">```html
-
-  <meta charset="utf-8" />
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-  <title>MEN'S BASIC - FLASH SALE</title>
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&amp;family=Lexend:wght@400;700;800;900&amp;family=Great+Vibes&amp;display=swap"
-    rel="stylesheet" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-    rel="stylesheet" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Lexend:wght@400;700;800;900&family=Great+Vibes&display=swap" rel="stylesheet" />
+  <!-- Material Symbols -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+  <!-- Tailwind Config -->
   <script id="tailwind-config">
     tailwind.config = {
       darkMode: "class",
@@ -89,28 +89,12 @@
             "primary-fixed-dim": "#ffb693",
             "surface-tint": "#a04100"
           },
-          "borderRadius": {
-            "DEFAULT": "0.125rem",
-            "lg": "0.25rem",
-            "xl": "0.5rem",
-            "full": "0.75rem"
-          },
-          "spacing": {
-            "margin-desktop": "24px",
-            "margin-mobile": "16px",
-            "section-gap": "64px",
-            "gutter": "16px",
-            "unit": "4px"
-          },
+          "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" },
+          "spacing": { "margin-desktop": "24px", "margin-mobile": "16px", "section-gap": "64px", "gutter": "16px", "unit": "4px" },
           "fontFamily": {
-            "label-bold": ["Inter"],
-            "body-lg": ["Inter"],
-            "body-md": ["Inter"],
-            "headline-xl": ["Lexend"],
-            "headline-md": ["Lexend"],
-            "price-display": ["Lexend"],
-            "headline-lg": ["Lexend"],
-            "cursive": ["Great Vibes"]
+            "label-bold": ["Inter"], "body-lg": ["Inter"], "body-md": ["Inter"],
+            "headline-xl": ["Lexend"], "headline-md": ["Lexend"], "price-display": ["Lexend"],
+            "headline-lg": ["Lexend"], "cursive": ["Great Vibes"]
           },
           "fontSize": {
             "label-bold": ["14px", { "lineHeight": "1", "fontWeight": "700" }],
@@ -126,140 +110,129 @@
     }
   </script>
   <style>
-    body {
-      min-height: max(884px, 100dvh);
+    /* Mobile-first: prevent iOS zoom on input focus */
+    input, select, textarea { font-size: 16px !important; }
+    /* Remove 300ms tap delay */
+    * { touch-action: manipulation; }
+    /* Smooth scroll */
+    html { scroll-behavior: smooth; }
+    /* Body padding for sticky elements */
+    body { padding-bottom: 72px; }
+    /* Animations */
+    @keyframes pulse-fast { 0%,100%{transform:scale(1)} 50%{transform:scale(1.1)} }
+    .animate-pulse-fast { animation: pulse-fast 0.8s ease-in-out infinite; }
+    @keyframes flash-fast { 0%,100%{opacity:1} 50%{opacity:0.1} }
+    .animate-flash-fast { animation: flash-fast 0.4s ease-in-out infinite; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.5} }
+    .animate-blink { animation: blink 1.5s ease-in-out infinite; }
+    @keyframes pulse-standard { 0%,100%{transform:scale(1)} 50%{transform:scale(1.05)} }
+    .animate-pulse-standard { animation: pulse-standard 2s ease-in-out infinite; }
+    /* Carousel */
+    .slide { position:absolute; inset:0; transition: opacity 0.5s ease; }
+    .slide.active { opacity:1; z-index:10; }
+    .slide.hidden { opacity:0; z-index:0; pointer-events:none; }
+    /* Sticky bottom CTA */
+    #sticky-cta { transition: transform 0.3s ease, opacity 0.3s ease; }
+    #sticky-cta.cta-hidden { transform: translateY(100%); opacity: 0; pointer-events: none; }
+    /* Demo image placeholder */
+    .demo-img {
+      background: linear-gradient(135deg, #1c1c1c 0%, #2a2a2a 100%);
+      display:flex; flex-direction:column; align-items:center; justify-content:center;
+      width:100%; height:100%;
+    }
+    /* Combo selected highlight */
+    .combo-option:has(input:checked) { background: #FFF8EE; border-color: #FF9933; }
+    /* Size selected highlight */
+    .size-option:has(input:checked) { background: #FFF0DE; border-color: #FF9933; }
+    /* Min tap target */
+    button, label[for] { min-height: 44px; }
+    /* Countdown digits */
+    .digit-box {
+      background: #1f1f1f;
+      color: white;
+      font-weight: 900;
+      font-size: 14px;
+      padding: 3px 7px;
+      border-radius: 4px;
+      min-width: 28px;
+      text-align: center;
+      display: inline-block;
     }
   </style>
-  <style>
-    @keyframes pulse-fast {
+</head>
 
-      0%,
-      100% {
-        transform: scale(1);
-      }
+<body class="bg-background text-on-background font-body-md antialiased">
 
-      50% {
-        transform: scale(1.1);
-      }
-    }
 
-    .animate-pulse-fast {
-      animation: pulse-fast 0.8s ease-in-out infinite;
-    }
-
-    @keyframes flash-fast {
-
-      0%,
-      100% {
-        opacity: 1;
-      }
-
-      50% {
-        opacity: 0.1;
-      }
-    }
-
-    .animate-flash-fast {
-      animation: flash-fast 0.4s ease-in-out infinite;
-    }
-
-    @keyframes blink {
-
-      0%,
-      100% {
-        opacity: 1;
-      }
-
-      50% {
-        opacity: 0.5;
-      }
-    }
-
-    .animate-blink {
-      animation: blink 1.5s ease-in-out infinite;
-    }
-
-    @keyframes pulse-standard {
-
-      0%,
-      100% {
-        transform: scale(1);
-      }
-
-      50% {
-        transform: scale(1.05);
-      }
-    }
-
-    .animate-pulse-standard {
-      animation: pulse-standard 2s ease-in-out infinite;
-    }
-  </style>
   <!-- TopAppBar -->
   <header class="bg-white fixed top-0 w-full z-50 shadow-md flex justify-between items-center px-2 py-2">
-    <div class="flex flex-col items-center justify-center border-2 border-zinc-500 rounded-full w-12 h-12 p-1">
-      <span class="text-[8px] font-bold text-zinc-800 uppercase tracking-tighter leading-tight text-center">MEN'S
-        BASIC</span>
-      <span class="material-symbols-outlined text-zinc-700 text-lg"
-        style="font-variation-settings: 'FILL' 0;">checkroom</span>
+    <div class="flex flex-col items-center justify-center border-2 border-zinc-600 rounded-full w-11 h-11 flex-shrink-0">
+      <span class="text-[7px] font-black text-zinc-800 uppercase leading-tight tracking-tight text-center">MEN'S<br>BASIC</span>
+      <span class="material-symbols-outlined text-zinc-700 text-base leading-none" style="font-variation-settings:'FILL' 0;">checkroom</span>
     </div>
-    <div class="flex flex-col items-center justify-center flex-1 mx-2">
+    <div class="flex flex-col items-center mx-2 flex-1">
+      <div class="flex items-center space-x-1 mb-1">
+        <span class="text-xs font-bold text-zinc-600 uppercase tracking-tight">GIẢM GIÁ</span>
+        <span class="text-lg font-black text-orange-500 leading-none">50%</span>
+      </div>
       <div class="flex items-center space-x-1">
-        <span class="font-bold text-zinc-700 uppercase tracking-tight text-sm">GIẢM GIÁ</span>
-        <span class="font-black text-orange-400 text-xl tracking-tighter">50%</span>
-      </div>
-      <div class="flex items-center space-x-1 mt-0.5">
-        <div class="bg-white text-zinc-800 px-1.5 py-0.5 shadow-sm text-sm border border-zinc-200">04</div>
-        <div class="bg-white text-zinc-800 px-1.5 py-0.5 shadow-sm text-sm border border-zinc-200">51</div>
-        <div class="bg-white text-zinc-800 px-1.5 py-0.5 shadow-sm text-sm border border-zinc-200">51</div>
+        <span class="digit-box countdown-h">00</span>
+        <span class="text-zinc-600 font-black text-sm">:</span>
+        <span class="digit-box countdown-m">00</span>
+        <span class="text-zinc-600 font-black text-sm">:</span>
+        <span class="digit-box countdown-s">00</span>
       </div>
     </div>
-    <button
-      class="bg-gradient-to-r from-blue-200 via-blue-400 to-blue-800 text-black font-black text-xs px-3 py-1.5 rounded-full active:scale-95 transition-all flex items-center shadow border border-blue-900 scroll-to-order animate-pulse-fast">
-      <span class="material-symbols-outlined text-sm mr-1 text-zinc-600">shopping_cart</span>
+    <button id="header-cta"
+      class="scroll-to-order bg-gradient-to-r from-blue-500 to-blue-700 text-white font-black text-xs px-3 py-2.5 rounded-full flex items-center shadow-lg animate-pulse-fast flex-shrink-0">
+      <span class="material-symbols-outlined text-sm mr-1 leading-none">shopping_cart</span>
       MUA NGAY
     </button>
   </header>
-  <main class="pt-16 max-w-[1200px] mx-auto md:px-margin-desktop bg-surface-container-lowest">
+  <main class="pt-14 max-w-lg mx-auto bg-surface-container-lowest">
     <!-- Hero Section -->
     <section class="relative w-full">
-      <div class="relative w-full h-[400px] bg-zinc-900 overflow-hidden" id="hero-carousel">
-        <div class="relative w-full h-full" id="carousel-inner">
-          <div class="gallery-view-item absolute inset-0 transition-opacity duration-500 opacity-100 z-10">
-            <img alt="Product image main 1" class="w-full h-full object-cover"
-              src="https://lh3.googleusercontent.com/aida/ADBb0uhM4PwMO7s3-UJZVt43x3XXqAE9AjZlxU1ewZ67RYYE7JCC91Q2RkZltgN-9ENbivpao2Hks9C5yyjEVXRhEWd1UYPcZk0wH0RQleVbvr8954eJXtNdsAwpzTWdfmi2ABRBpPZu-p5zeacsR_r61zFtdQOC_H8Ph1VoLdCKxz5fbol1NebqDxgw6xFlTIQd3XES47RTYMe-vo1T_URjbs_AqjODyM_hGbQOXYz0FJL0sWiA-f43gjb8CeOGiUDQLm_O8Cn4ZNZu" />
-          </div>
-          <div class="gallery-view-item absolute inset-0 transition-opacity duration-500 opacity-0 z-0">
-            <img alt="Product image main 2" class="w-full h-full object-cover object-top"
-              src="https://lh3.googleusercontent.com/aida/ADBb0uhzOtYNi5N-mf3mDxBqETamr_mcl4XnDu2fE4Ri242DE1fnPeET2wm0ZDNhWbfHKyGVQCUhGd5pXmifE0FENejarHTWLiWR4Y7MIkCktPCm3Z3oyKNhSjwtYUzs6ji4gIhm_TgLYowqdQsFrve_IBYPmuUvQ9diRXEhfMDncO2bFocTtCuzm2Zc92epg7T9jF_plaaMVjRqKdC9iOJu8g8L6mXzI1X6jogyQ8i9tyaqYNTR6HbizAiKmVw" />
+      <div class="relative w-full h-[380px] bg-zinc-900 overflow-hidden" id="hero-carousel">
+        <!-- Slide 1 -->
+        <div class="slide active" id="hero-slide-0">
+          <div style="background:linear-gradient(135deg,#1a1a2e,#16213e,#0f3460);display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;">
+            <span class="material-symbols-outlined text-7xl text-orange-400 mb-3" style="font-variation-settings:'FILL' 1;">checkroom</span>
+            <span class="font-headline-lg text-white font-black text-3xl tracking-wide">MEN'S BASIC</span>
+            <span class="text-zinc-300 text-sm mt-2">Quần Sịp Nam Cao Cấp</span>
+            <span class="mt-4 bg-orange-500 text-white text-sm font-black px-4 py-1.5 rounded-full">[ Thêm ảnh thật vào đây ]</span>
           </div>
         </div>
-        <!-- Navigation Arrows -->
-        <button
-          class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/40 text-white hover:bg-black/70 rounded-full p-2 z-20 transition-colors shadow-md backdrop-blur-sm"
-          id="prev-btn">
+        <!-- Slide 2 -->
+        <div class="slide hidden" id="hero-slide-1">
+          <div style="background:linear-gradient(135deg,#0d2137,#1a3a4a,#0d4b63);display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;">
+            <span class="material-symbols-outlined text-7xl text-cyan-400 mb-3" style="font-variation-settings:'FILL' 1;">ac_unit</span>
+            <span class="font-headline-lg text-white font-black text-2xl">VẢI COTON LẠNH</span>
+            <span class="text-zinc-300 text-sm mt-2">Mềm Mịn · Mát Lạnh · Kháng Khuẩn</span>
+            <span class="mt-4 bg-cyan-600 text-white text-sm font-black px-4 py-1.5 rounded-full">[ Thêm ảnh thật vào đây ]</span>
+          </div>
+        </div>
+        <!-- Slide 3 -->
+        <div class="slide hidden" id="hero-slide-2">
+          <div style="background:linear-gradient(135deg,#2d1b00,#4a2f00,#6b4200);display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;">
+            <span class="material-symbols-outlined text-7xl text-amber-400 mb-3" style="font-variation-settings:'FILL' 1;">local_offer</span>
+            <span class="font-headline-lg text-white font-black text-3xl">SALE 50%</span>
+            <span class="text-zinc-300 text-sm mt-2">Mua 3 Tặng 1 · Chỉ 119.000đ</span>
+            <span class="mt-4 bg-amber-500 text-white text-sm font-black px-4 py-1.5 rounded-full">[ Thêm ảnh thật vào đây ]</span>
+          </div>
+        </div>
+        <!-- Arrows -->
+        <button id="prev-btn" class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 text-white rounded-full p-2 z-20 shadow-md">
           <span class="material-symbols-outlined">chevron_left</span>
         </button>
-        <button
-          class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/40 text-white hover:bg-black/70 rounded-full p-2 z-20 transition-colors shadow-md backdrop-blur-sm"
-          id="next-btn">
+        <button id="next-btn" class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 text-white rounded-full p-2 z-20 shadow-md">
           <span class="material-symbols-outlined">chevron_right</span>
         </button>
-      </div>
-      <!-- Thumbnails -->
-      <div class="flex items-center justify-center gap-3 py-3 bg-black">
-        <button
-          class="thumbnail-btn w-16 h-16 border-2 border-white overflow-hidden opacity-100 transition-all rounded-sm shadow-sm"
-          data-index="0">
-          <img alt="Thumbnail 1" class="w-full h-full object-cover"
-            src="https://lh3.googleusercontent.com/aida/ADBb0uhM4PwMO7s3-UJZVt43x3XXqAE9AjZlxU1ewZ67RYYE7JCC91Q2RkZltgN-9ENbivpao2Hks9C5yyjEVXRhEWd1UYPcZk0wH0RQleVbvr8954eJXtNdsAwpzTWdfmi2ABRBpPZu-p5zeacsR_r61zFtdQOC_H8Ph1VoLdCKxz5fbol1NebqDxgw6xFlTIQd3XES47RTYMe-vo1T_URjbs_AqjODyM_hGbQOXYz0FJL0sWiA-f43gjb8CeOGiUDQLm_O8Cn4ZNZu" />
-        </button>
-        <button
-          class="thumbnail-btn w-16 h-16 border-2 border-transparent overflow-hidden opacity-50 hover:opacity-100 transition-all rounded-sm shadow-sm"
-          data-index="1">
-          <img alt="Thumbnail 2" class="w-full h-full object-cover object-top"
-            src="https://lh3.googleusercontent.com/aida/ADBb0uhzOtYNi5N-mf3mDxBqETamr_mcl4XnDu2fE4Ri242DE1fnPeET2wm0ZDNhWbfHKyGVQCUhGd5pXmifE0FENejarHTWLiWR4Y7MIkCktPCm3Z3oyKNhSjwtYUzs6ji4gIhm_TgLYowqdQsFrve_IBYPmuUvQ9diRXEhfMDncO2bFocTtCuzm2Zc92epg7T9jF_plaaMVjRqKdC9iOJu8g8L6mXzI1X6jogyQ8i9tyaqYNTR6HbizAiKmVw" />
-        </button>
+        <!-- Dots -->
+        <div id="hero-dots" class="absolute bottom-3 left-0 right-0 flex justify-center gap-2 z-20">
+          <span class="w-2 h-2 rounded-full bg-white transition-all dot"></span>
+          <span class="w-2 h-2 rounded-full bg-white/40 transition-all dot"></span>
+          <span class="w-2 h-2 rounded-full bg-white/40 transition-all dot"></span>
+        </div>
       </div>
       <!-- Black Section & Cyan Button -->
       <div class="bg-black w-full flex flex-col items-center py-6 px-4 text-center">
@@ -377,7 +350,7 @@
         alt="Man stretching wearing comfortable athletic underwear to show 4-way stretch capability in studio lighting"
         class="w-full h-auto mt-6 rounded-lg shadow-sm"
         data-alt="Fitness model demonstrating the flexibility and stretch of premium grey boxer briefs in a well-lit studio setting"
-        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPms6J97Luh6Fa24CFPKRrprU9YokeJIBPmGy40gd2UZ-S3LINwzZxp4hvgtT4OhdvEZOpwg11yQRa1S2GHEd7xTEq9dvyV2PPA05oF3lxHSddSfKzJ8KAIsrQtQCSM1ANUE6jlyGkSKXFS-_dAaGU9ILqMmneJgQ07pNn9RW20hPYrLN0n9k6IvXPY2ty4RdBZpXEfZ9BCZg3_1hfhTD2epWTDbBbQ6PWBh5LYZUA1pgiYRrUWeZQhVj39Njc6cwcGccGOdnPN_s" />
+        src="https://placehold.co/600x600/1e1e2f/ffffff?text=Demo+Image" />
     </section>
     <!-- Size Chart -->
     <section class="bg-surface-container-lowest mt-2 px-margin-mobile py-8 hidden">
@@ -425,7 +398,7 @@
         <div class="flex flex-row mt-2 relative">
           <div class="w-2/3 bg-zinc-100 flex items-center justify-center rounded-l-md overflow-hidden p-2">
             <img alt="Product Image" class="w-full h-auto object-cover"
-              src="https://lh3.googleusercontent.com/aida/ADBb0uhM4PwMO7s3-UJZVt43x3XXqAE9AjZlxU1ewZ67RYYE7JCC91Q2RkZltgN-9ENbivpao2Hks9C5yyjEVXRhEWd1UYPcZk0wH0RQleVbvr8954eJXtNdsAwpzTWdfmi2ABRBpPZu-p5zeacsR_r61zFtdQOC_H8Ph1VoLdCKxz5fbol1NebqDxgw6xFlTIQd3XES47RTYMe-vo1T_URjbs_AqjODyM_hGbQOXYz0FJL0sWiA-f43gjb8CeOGiUDQLm_O8Cn4ZNZu" />
+              src="https://placehold.co/600x600/1e1e2f/ffffff?text=Demo+Image" />
           </div>
           <div class="w-1/3 flex flex-col items-center justify-between pl-2 space-y-2">
             <div
@@ -552,7 +525,7 @@
       </div>
       <div class="max-w-lg mx-auto mt-6">
         <img alt="Product Features and Size Chart" class="w-full rounded-xl shadow-md object-cover"
-          src="https://lh3.googleusercontent.com/aida/ADBb0ui8xDP0Mg3aM8hWKGJYQYEwE4xV2u82ZllQ8ZA4eHbE_D8v5jSQJxIV0CFHSxTB8-dygAUAJcZ9QbPpvuG96XYN1CaOsPdILLu8wDJr2JRN_WUVgYzqg5blw4UNAMsZt-wKIGmi9fMYwXlidBPaqg6vygRIFhv06UcRJKf2iYtgnYYS_g1PIQpu29Dw3PNf7cp7eSB3iR1RioNIA1vF83erg6sCf3jCLC4kfWu3wyoZlp8Wy4HfuMn1xiOdw71Z4QKjGox-iBRLsg" />
+          src="https://placehold.co/600x600/1e1e2f/ffffff?text=Demo+Image" />
       </div>
     </section>
     <!-- Size Chart Section -->
@@ -661,15 +634,15 @@
           <div class="relative w-full h-full" id="gallery-inner">
             <div class="gallery-view-item absolute inset-0 transition-opacity duration-500 opacity-100 z-10">
               <img alt="Gallery Image 1" class="w-full h-full object-cover"
-                src="https://lh3.googleusercontent.com/aida/ADBb0uhTLjhx8T69y2CvxCAWBPklelRTl6RkyUmPYdgDmWqb_2qICRsnuMNlhBgMsG_eX1WUsaSLIrUzpcNS2Ds3p8pxXEyriDRxAj6dYj_Wfp_sPngBhNN0pxh-zquxdkeN1ZqeY6vUth21o-ji0b0VN_H8zZ_hXp5cnhsIRPydcFtXuiXzuOVuJ2bB32PlXl4wwL1ZxMrc2Tk3yAZbEz4r2Dkr84yIsa7HTfc-emUKC86uYCWLKscvD7KclvD-2j6QDuBCJh0pzio5Eg" />
+                src="https://placehold.co/600x600/1e1e2f/ffffff?text=Demo+Image" />
             </div>
             <div class="gallery-view-item absolute inset-0 transition-opacity duration-500 opacity-0 z-0">
               <img alt="Gallery Image 2" class="w-full h-full object-cover object-top"
-                src="https://lh3.googleusercontent.com/aida/ADBb0ujLhiChvLULVXEpHXym1_zqJpe2GLzGyjvVkG5qGo6l26ZRwq_S9vJPHryEEgIWxYiae_xn5bEYQGBbRleW4TVaB3_YozDE3_rJI-xbdDnZ5clrw69HWVh8gJaEfvhLYZV04IfTLgEB5L0yAPX-v5QEs8ON7IX729xrwL8KmYusO5p7lWYzDJWmfwnPuEH1i4ofwg6Wt3W1R9f9DzY9Cz7bL1XSvcRu6LVK0JtXED1Y-v9lb6pGXXrcNSDiZfDgJ7zs3qlAhwAggg" />
+                src="https://placehold.co/600x600/1e1e2f/ffffff?text=Demo+Image" />
             </div>
             <div class="gallery-view-item absolute inset-0 transition-opacity duration-500 opacity-0 z-0">
               <img alt="Gallery Image 3" class="w-full h-full object-cover object-top"
-                src="https://lh3.googleusercontent.com/aida/ADBb0uhM4PwMO7s3-UJZVt43x3XXqAE9AjZlxU1ewZ67RYYE7JCC91Q2RkZltgN-9ENbivpao2Hks9C5yyjEVXRhEWd1UYPcZk0wH0RQleVbvr8954eJXtNdsAwpzTWdfmi2ABRBpPZu-p5zeacsR_r61zFtdQOC_H8Ph1VoLdCKxz5fbol1NebqDxgw6xFlTIQd3XES47RTYMe-vo1T_URjbs_AqjODyM_hGbQOXYz0FJL0sWiA-f43gjb8CeOGiUDQLm_O8Cn4ZNZu" />
+                src="https://placehold.co/600x600/1e1e2f/ffffff?text=Demo+Image" />
             </div>
           </div>
           <!-- Navigation Arrows -->
@@ -690,19 +663,19 @@
             class="gallery-thumbnail-btn w-16 h-16 border-2 border-orange-500 overflow-hidden opacity-100 transition-all rounded-md shadow-sm"
             data-index="0">
             <img alt="Thumbnail 1" class="w-full h-full object-cover"
-              src="https://lh3.googleusercontent.com/aida/ADBb0uhTLjhx8T69y2CvxCAWBPklelRTl6RkyUmPYdgDmWqb_2qICRsnuMNlhBgMsG_eX1WUsaSLIrUzpcNS2Ds3p8pxXEyriDRxAj6dYj_Wfp_sPngBhNN0pxh-zquxdkeN1ZqeY6vUth21o-ji0b0VN_H8zZ_hXp5cnhsIRPydcFtXuiXzuOVuJ2bB32PlXl4wwL1ZxMrc2Tk3yAZbEz4r2Dkr84yIsa7HTfc-emUKC86uYCWLKscvD7KclvD-2j6QDuBCJh0pzio5Eg" />
+              src="https://placehold.co/600x600/1e1e2f/ffffff?text=Demo+Image" />
           </button>
           <button
             class="gallery-thumbnail-btn w-16 h-16 border-2 border-transparent overflow-hidden opacity-50 hover:opacity-100 transition-all rounded-md shadow-sm"
             data-index="1">
             <img alt="Thumbnail 2" class="w-full h-full object-cover object-top"
-              src="https://lh3.googleusercontent.com/aida/ADBb0ujLhiChvLULVXEpHXym1_zqJpe2GLzGyjvVkG5qGo6l26ZRwq_S9vJPHryEEgIWxYiae_xn5bEYQGBbRleW4TVaB3_YozDE3_rJI-xbdDnZ5clrw69HWVh8gJaEfvhLYZV04IfTLgEB5L0yAPX-v5QEs8ON7IX729xrwL8KmYusO5p7lWYzDJWmfwnPuEH1i4ofwg6Wt3W1R9f9DzY9Cz7bL1XSvcRu6LVK0JtXED1Y-v9lb6pGXXrcNSDiZfDgJ7zs3qlAhwAggg" />
+              src="https://placehold.co/600x600/1e1e2f/ffffff?text=Demo+Image" />
           </button>
           <button
             class="gallery-thumbnail-btn w-16 h-16 border-2 border-transparent overflow-hidden opacity-50 hover:opacity-100 transition-all rounded-md shadow-sm"
             data-index="2">
             <img alt="Thumbnail 3" class="w-full h-full object-cover object-top"
-              src="https://lh3.googleusercontent.com/aida/ADBb0uhM4PwMO7s3-UJZVt43x3XXqAE9AjZlxU1ewZ67RYYE7JCC91Q2RkZltgN-9ENbivpao2Hks9C5yyjEVXRhEWd1UYPcZk0wH0RQleVbvr8954eJXtNdsAwpzTWdfmi2ABRBpPZu-p5zeacsR_r61zFtdQOC_H8Ph1VoLdCKxz5fbol1NebqDxgw6xFlTIQd3XES47RTYMe-vo1T_URjbs_AqjODyM_hGbQOXYz0FJL0sWiA-f43gjb8CeOGiUDQLm_O8Cn4ZNZu" />
+              src="https://placehold.co/600x600/1e1e2f/ffffff?text=Demo+Image" />
           </button>
         </div>
       </div>
@@ -744,30 +717,26 @@
           <!-- Timer -->
           <div class="flex justify-center space-x-3 mb-6">
             <div class="flex flex-col items-center">
-              <div
-                class="w-16 h-12 rounded bg-gradient-to-b from-gray-100 to-gray-500 flex items-center justify-center shadow-md border border-gray-400">
-                <span class="text-2xl font-bold text-zinc-900 drop-shadow-sm">00</span>
+              <div class="w-16 h-12 rounded bg-gradient-to-b from-gray-100 to-gray-500 flex items-center justify-center shadow-md border border-gray-400">
+                <span class="text-2xl font-bold text-zinc-900 drop-shadow-sm countdown-d-large">00</span>
               </div>
               <span class="text-xs font-bold text-zinc-800 mt-1.5">Ngày</span>
             </div>
             <div class="flex flex-col items-center">
-              <div
-                class="w-16 h-12 rounded bg-gradient-to-b from-gray-100 to-gray-500 flex items-center justify-center shadow-md border border-gray-400">
-                <span class="text-2xl font-bold text-zinc-900 drop-shadow-sm">04</span>
+              <div class="w-16 h-12 rounded bg-gradient-to-b from-gray-100 to-gray-500 flex items-center justify-center shadow-md border border-gray-400">
+                <span class="text-2xl font-bold text-zinc-900 drop-shadow-sm countdown-h-large">00</span>
               </div>
               <span class="text-xs font-bold text-zinc-800 mt-1.5">Giờ</span>
             </div>
             <div class="flex flex-col items-center">
-              <div
-                class="w-16 h-12 rounded bg-gradient-to-b from-gray-100 to-gray-500 flex items-center justify-center shadow-md border border-gray-400">
-                <span class="text-2xl font-bold text-zinc-900 drop-shadow-sm">58</span>
+              <div class="w-16 h-12 rounded bg-gradient-to-b from-gray-100 to-gray-500 flex items-center justify-center shadow-md border border-gray-400">
+                <span class="text-2xl font-bold text-zinc-900 drop-shadow-sm countdown-m-large">00</span>
               </div>
               <span class="text-xs font-bold text-zinc-800 mt-1.5">Phút</span>
             </div>
             <div class="flex flex-col items-center">
-              <div
-                class="w-16 h-12 rounded bg-gradient-to-b from-gray-100 to-gray-500 flex items-center justify-center shadow-md border border-gray-400">
-                <span class="text-2xl font-bold text-zinc-900 drop-shadow-sm">16</span>
+              <div class="w-16 h-12 rounded bg-gradient-to-b from-gray-100 to-gray-500 flex items-center justify-center shadow-md border border-gray-400">
+                <span class="text-2xl font-bold text-zinc-900 drop-shadow-sm countdown-s-large">00</span>
               </div>
               <span class="text-xs font-bold text-zinc-800 mt-1.5">Giây</span>
             </div>
@@ -777,21 +746,24 @@
             !</p>
         </div>
         <!-- Form -->
-        <form class="space-y-5">
+        <form id="order-form-el" class="space-y-5">
+          <!-- Form Message -->
+          <div id="form-message" class="hidden rounded-md p-3 text-sm font-bold text-center"></div>
+          
           <!-- Inputs -->
           <div class="space-y-4">
             <div>
-              <input
+              <input name="full_name" required
                 class="w-full bg-[#FFFDF5] border border-[#FF9933] rounded-full p-3.5 font-body-md text-on-surface focus:outline-none focus:ring-1 focus:ring-[#FF9933]"
                 placeholder="Họ và tên" type="text" />
             </div>
             <div>
-              <input
+              <input name="address" required
                 class="w-full bg-[#FFFDF5] border border-[#FF9933] rounded-full p-3.5 font-body-md text-on-surface focus:outline-none focus:ring-1 focus:ring-[#FF9933]"
                 placeholder="Địa chỉ" type="text" />
             </div>
             <div>
-              <input
+              <input name="phone_number" required pattern="[0-9]{10,11}"
                 class="w-full bg-[#FFFDF5] border border-[#FF9933] rounded-full p-3.5 font-body-md text-on-surface focus:outline-none focus:ring-1 focus:ring-[#FF9933]"
                 placeholder="Số Điện Thoại" type="tel" />
             </div>
@@ -844,13 +816,13 @@
           </div>
           <!-- Notes -->
           <div>
-            <input
+            <input name="textarea_input_1"
               class="w-full bg-[#FFFDF5] border border-[#FF9933] rounded-[15px] p-4 font-body-md text-on-surface focus:outline-none focus:ring-1 focus:ring-[#FF9933]"
               placeholder="Để lại lời nhắn cho chúng tôi" type="text" />
           </div>
           <!-- Submit Button -->
-          <button
-            class="w-full bg-gradient-to-b from-[#EF8F31] to-[#E27618] text-white font-black text-xl py-4 rounded-[10px] shadow-md uppercase tracking-wide hover:opacity-90 active:scale-[0.98] transition-all">
+          <button type="submit" id="submit-btn"
+            class="w-full bg-gradient-to-b from-[#EF8F31] to-[#E27618] text-white font-black text-xl py-4 rounded-[10px] shadow-md uppercase tracking-wide hover:opacity-90 active:scale-[0.98] transition-all flex items-center justify-center">
             HOÀN TẤT ĐƠN HÀNG
           </button>
 
@@ -860,10 +832,204 @@
     <section class="w-full flex justify-center bg-white py-4">
       <div class="max-w-lg w-full px-margin-mobile">
         <img alt="Quality Assurance" class="w-full h-auto rounded-xl shadow-sm"
-          src="https://lh3.googleusercontent.com/aida/ADBb0ugQUzzQBoimZhBdwJPeEoxG1-UcioGItueAeF3FZ8GahRSSNamZ8uL08Y6JnDNq1ilNLIvkp0lP4F8j1IPFKk1F1btQsBhjr_f9tR5zDG-_2bEz2A417RnEBPhq146N3tjs3VP8IiIjL-U2nGXcprAmZYDPAhRPwMA9J2oGa1_Sha09VcUm_hteoLy61iyKqX0SER1Qdmon5tXyPQs_vlr2-M749X7lusjxSXm-XtADYArlub-quMVEAuIpO8q60sWdKn1s5ycjnw" />
+          src="https://placehold.co/600x600/1e1e2f/ffffff?text=Demo+Image" />
       </div>
     </section>
   </main>
+  
+  <!-- Sticky Bottom CTA (Mobile) -->
+  <div id="sticky-cta" class="fixed bottom-0 left-0 w-full bg-white border-t border-zinc-200 p-3 shadow-[0_-4px_10px_rgba(0,0,0,0.1)] z-40 md:hidden flex justify-between items-center">
+    <div class="flex flex-col">
+      <span class="text-xs font-bold text-zinc-500 line-through">238.000đ</span>
+      <span class="text-lg font-black text-red-600 leading-none">119k <span class="text-xs font-bold text-zinc-800">/ 4 CÁI</span></span>
+    </div>
+    <button class="scroll-to-order bg-gradient-to-r from-orange-500 to-red-600 text-white font-black px-6 py-2.5 rounded-full shadow-md animate-pulse-fast">
+      ĐẶT HÀNG
+    </button>
+  </div>
+
+  <!-- JavaScript Logic -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Smooth Scroll to Order Form
+      document.querySelectorAll('.scroll-to-order').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          const form = document.getElementById('order-form');
+          if (form) {
+            form.scrollIntoView({ behavior: 'smooth' });
+          }
+        });
+      });
+
+      // 2. Countdown Timer (Tự động reset qua ngày mới)
+      function updateCountdown() {
+        const now = new Date();
+        const endOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59);
+        const diff = endOfDay - now;
+
+        if (diff <= 0) return;
+
+        const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const m = Math.floor((diff / 1000 / 60) % 60);
+        const s = Math.floor((diff / 1000) % 60);
+
+        const format = num => num.toString().padStart(2, '0');
+        
+        // Header countdown
+        const hEls = document.querySelectorAll('.countdown-h');
+        const mEls = document.querySelectorAll('.countdown-m');
+        const sEls = document.querySelectorAll('.countdown-s');
+        
+        hEls.forEach(el => el.textContent = format(h));
+        mEls.forEach(el => el.textContent = format(m));
+        sEls.forEach(el => el.textContent = format(s));
+
+        // Form countdown
+        const hlEls = document.querySelectorAll('.countdown-h-large');
+        const mlEls = document.querySelectorAll('.countdown-m-large');
+        const slEls = document.querySelectorAll('.countdown-s-large');
+        
+        hlEls.forEach(el => el.textContent = format(h));
+        mlEls.forEach(el => el.textContent = format(m));
+        slEls.forEach(el => el.textContent = format(s));
+      }
+      setInterval(updateCountdown, 1000);
+      updateCountdown();
+
+      // 3. Hero Carousel (Auto-play & Swipe)
+      const slides = document.querySelectorAll('.slide');
+      const dots = document.querySelectorAll('.dot');
+      let currentSlide = 0;
+      let slideInterval;
+
+      function goToSlide(n) {
+        if(slides.length === 0) return;
+        slides[currentSlide].classList.remove('active');
+        slides[currentSlide].classList.add('hidden');
+        if(dots.length > 0) dots[currentSlide].classList.replace('bg-white', 'bg-white/40');
+        
+        currentSlide = (n + slides.length) % slides.length;
+        
+        slides[currentSlide].classList.remove('hidden');
+        slides[currentSlide].classList.add('active');
+        if(dots.length > 0) dots[currentSlide].classList.replace('bg-white/40', 'bg-white');
+      }
+
+      function nextSlide() { goToSlide(currentSlide + 1); }
+      function prevSlide() { goToSlide(currentSlide - 1); }
+
+      document.getElementById('next-btn')?.addEventListener('click', () => { nextSlide(); resetInterval(); });
+      document.getElementById('prev-btn')?.addEventListener('click', () => { prevSlide(); resetInterval(); });
+
+      function resetInterval() {
+        clearInterval(slideInterval);
+        slideInterval = setInterval(nextSlide, 3000);
+      }
+      resetInterval();
+
+      // Swipe logic for carousel
+      let touchStartX = 0;
+      let touchEndX = 0;
+      const carousel = document.getElementById('hero-carousel');
+      if (carousel) {
+        carousel.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, {passive: true});
+        carousel.addEventListener('touchend', e => {
+          touchEndX = e.changedTouches[0].screenX;
+          if (touchStartX - touchEndX > 50) nextSlide();
+          if (touchEndX - touchStartX > 50) prevSlide();
+          resetInterval();
+        }, {passive: true});
+      }
+
+      // 4. Sticky CTA Visibility Logic
+      const stickyCta = document.getElementById('sticky-cta');
+      const orderForm = document.getElementById('order-form');
+      
+      window.addEventListener('scroll', () => {
+        if (!stickyCta || !orderForm) return;
+        const formRect = orderForm.getBoundingClientRect();
+        // Hide sticky CTA when form is visible in viewport
+        if (formRect.top < window.innerHeight && formRect.bottom > 0) {
+          stickyCta.classList.add('cta-hidden');
+        } else {
+          stickyCta.classList.remove('cta-hidden');
+        }
+      });
+
+      // 5. Form Submission Logic
+      const formEl = document.getElementById('order-form-el');
+      const submitBtn = document.getElementById('submit-btn');
+      const msgBox = document.getElementById('form-message');
+
+      if (formEl) {
+        formEl.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          
+          // Basic validation
+          const phone = formEl.phone_number.value;
+          if(!/^[0-9]{10,11}$/.test(phone)) {
+            msgBox.textContent = "Vui lòng nhập số điện thoại hợp lệ (10-11 số)!";
+            msgBox.className = "block rounded-md p-3 text-sm font-bold text-center bg-red-100 text-red-700";
+            return;
+          }
+
+          // Lấy radio đang check (combo)
+          let comboValue = '';
+          const comboRadios = formEl.querySelectorAll('input[name="combo_new"]');
+          comboRadios.forEach((r) => {
+            if(r.checked) {
+              comboValue = r.nextElementSibling.textContent.trim();
+            }
+          });
+
+          // Get selected size
+          const sizeCheckboxes = formEl.querySelectorAll('input[name="size_new"]:checked');
+          const sizes = Array.from(sizeCheckboxes).map(cb => cb.value).join(', ');
+          
+          if(sizes.length === 0) {
+            msgBox.textContent = "Vui lòng chọn ít nhất 1 Size!";
+            msgBox.className = "block rounded-md p-3 text-sm font-bold text-center bg-red-100 text-red-700";
+            return;
+          }
+
+          const formData = {
+            full_name: formEl.full_name.value,
+            address: formEl.address.value,
+            phone_number: phone,
+            textarea_input_1: formEl.textarea_input_1 ? formEl.textarea_input_1.value : '',
+            radio_input_1: comboValue,
+            sizes: sizes
+          };
+
+          submitBtn.disabled = true;
+          submitBtn.innerHTML = '<span class="material-symbols-outlined animate-spin mr-2" style="animation: spin 1s linear infinite;">progress_activity</span> ĐANG XỬ LÝ...';
+
+          try {
+            const res = await fetch('/submit-order', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(formData)
+            });
+            
+            if(res.ok) {
+              formEl.reset();
+              msgBox.textContent = "🎉 Đặt hàng thành công! Chúng tôi sẽ gọi lại cho bạn sớm nhất.";
+              msgBox.className = "block rounded-md p-3 text-sm font-bold text-center bg-green-100 text-green-700";
+            } else {
+              throw new Error('Server error');
+            }
+          } catch (err) {
+            msgBox.textContent = "❌ Có lỗi xảy ra, vui lòng thử lại sau!";
+            msgBox.className = "block rounded-md p-3 text-sm font-bold text-center bg-red-100 text-red-700";
+          } finally {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = 'HOÀN TẤT ĐƠN HÀNG';
+          }
+        });
+      }
+    });
+  </script>
 </body>
 
 </html>
