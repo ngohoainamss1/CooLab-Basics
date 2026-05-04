@@ -49,6 +49,25 @@
   </style>
 
   <title>Quần Sịp Mát Lạnh 29k Mua 3 Tặng 1</title>
+<script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    
+    fbq('init', '959395916490425'); // Thay ID_PIXEL_CUA_BAN bằng ID thật của bạn
+    fbq('track', 'PageView');
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none"
+         src="https://www.facebook.com/tr?id=ID_PIXEL_CUA_BAN&ev=PageView&noscript=1"/>
+  </noscript>
+
+        
   <meta name="keywords" content="Quần sịp mát lạnh giá chỉ 29k">
   <meta name="description" content="Quần sịp mát lạnh giá chỉ 29k">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -24313,13 +24332,19 @@
             body: JSON.stringify(finalData)
           })
             .then(response => {
-              if (response.ok) {
-                alert("✅ Đặt hàng thành công! Chúng tôi sẽ gọi lại cho bạn ngay.");
-                orderForm.reset();
-              } else {
-                alert("❌ Có lỗi từ máy chủ. Vui lòng thử lại sau.");
-              }
-            })
+                  if (response.ok) {
+                    // KÍCH HOẠT PIXEL KHI ĐẶT HÀNG THÀNH CÔNG
+                    fbq('track', 'Purchase', {
+                      value: 139000, // Giá trị đơn hàng (nếu muốn)
+                      currency: 'VND'
+                    });
+                
+                    alert("✅ Đặt hàng thành công! Chúng tôi sẽ gọi lại cho bạn ngay.");
+                    orderForm.reset();
+                  } else {
+                    alert("❌ Có lỗi từ máy chủ.");
+                  }
+                })
             .catch(error => {
               console.error('Lỗi kết nối:', error);
               alert("❌ Không kết nối được với Server.");
