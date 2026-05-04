@@ -6,7 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
   <meta name="theme-color" content="#000000" />
   <title>Quần Sịp Nam Cao Cấp MEN'S BASIC - Flash Sale 50% OFF</title>
-  <meta name="description" content="Quần Sịp Nam Cao Cấp MEN'S BASIC - Vải Coton Lạnh, Không Đường May, Co Giãn 4 Chiều. Size 45-95kg. Flash Sale Mua 3 Tặng 1 chỉ 119.000đ!" />
+  <meta name="description"
+    content="Quần Sịp Nam Cao Cấp MEN'S BASIC - Vải Coton Lạnh, Không Đường May, Co Giãn 4 Chiều. Size 45-95kg. Flash Sale Mua 3 Tặng 1 chỉ 119.000đ!" />
 
   <!-- Facebook Pixel -->
   <script>
@@ -31,9 +32,12 @@
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Lexend:wght@400;700;800;900&family=Great+Vibes&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Lexend:wght@400;700;800;900&family=Great+Vibes&display=swap"
+    rel="stylesheet" />
   <!-- Material Symbols -->
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+    rel="stylesheet" />
   <!-- Tailwind Config -->
   <script id="tailwind-config">
     tailwind.config = {
@@ -111,41 +115,150 @@
   </script>
   <style>
     /* Mobile-first: prevent iOS zoom on input focus */
-    input, select, textarea { font-size: 16px !important; }
+    input,
+    select,
+    textarea {
+      font-size: 16px !important;
+    }
+
     /* Remove 300ms tap delay */
-    * { touch-action: manipulation; }
+    * {
+      touch-action: manipulation;
+    }
+
     /* Smooth scroll */
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
+
     /* Body padding for sticky elements */
-    body { padding-bottom: 72px; }
+    body {
+      padding-bottom: 72px;
+    }
+
     /* Animations */
-    @keyframes pulse-fast { 0%,100%{transform:scale(1)} 50%{transform:scale(1.1)} }
-    .animate-pulse-fast { animation: pulse-fast 0.8s ease-in-out infinite; }
-    @keyframes flash-fast { 0%,100%{opacity:1} 50%{opacity:0.1} }
-    .animate-flash-fast { animation: flash-fast 0.4s ease-in-out infinite; }
-    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.5} }
-    .animate-blink { animation: blink 1.5s ease-in-out infinite; }
-    @keyframes pulse-standard { 0%,100%{transform:scale(1)} 50%{transform:scale(1.05)} }
-    .animate-pulse-standard { animation: pulse-standard 2s ease-in-out infinite; }
+    @keyframes pulse-fast {
+
+      0%,
+      100% {
+        transform: scale(1)
+      }
+
+      50% {
+        transform: scale(1.1)
+      }
+    }
+
+    .animate-pulse-fast {
+      animation: pulse-fast 0.8s ease-in-out infinite;
+    }
+
+    @keyframes flash-fast {
+
+      0%,
+      100% {
+        opacity: 1
+      }
+
+      50% {
+        opacity: 0.1
+      }
+    }
+
+    .animate-flash-fast {
+      animation: flash-fast 0.4s ease-in-out infinite;
+    }
+
+    @keyframes blink {
+
+      0%,
+      100% {
+        opacity: 1
+      }
+
+      50% {
+        opacity: 0.5
+      }
+    }
+
+    .animate-blink {
+      animation: blink 1.5s ease-in-out infinite;
+    }
+
+    @keyframes pulse-standard {
+
+      0%,
+      100% {
+        transform: scale(1)
+      }
+
+      50% {
+        transform: scale(1.05)
+      }
+    }
+
+    .animate-pulse-standard {
+      animation: pulse-standard 2s ease-in-out infinite;
+    }
+
     /* Carousel */
-    .slide { position:absolute; inset:0; transition: opacity 0.5s ease; }
-    .slide.active { opacity:1; z-index:10; }
-    .slide.hidden { opacity:0; z-index:0; pointer-events:none; }
+    .slide {
+      position: absolute;
+      inset: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    .slide.active {
+      opacity: 1;
+      z-index: 10;
+    }
+
+    .slide.hidden {
+      opacity: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+
     /* Sticky bottom CTA */
-    #sticky-cta { transition: transform 0.3s ease, opacity 0.3s ease; }
-    #sticky-cta.cta-hidden { transform: translateY(100%); opacity: 0; pointer-events: none; }
+    #sticky-cta {
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    #sticky-cta.cta-hidden {
+      transform: translateY(100%);
+      opacity: 0;
+      pointer-events: none;
+    }
+
     /* Demo image placeholder */
     .demo-img {
       background: linear-gradient(135deg, #1c1c1c 0%, #2a2a2a 100%);
-      display:flex; flex-direction:column; align-items:center; justify-content:center;
-      width:100%; height:100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
     }
+
     /* Combo selected highlight */
-    .combo-option:has(input:checked) { background: #FFF8EE; border-color: #FF9933; }
+    .combo-option:has(input:checked) {
+      background: #FFF8EE;
+      border-color: #FF9933;
+    }
+
     /* Size selected highlight */
-    .size-option:has(input:checked) { background: #FFF0DE; border-color: #FF9933; }
+    .size-option:has(input:checked) {
+      background: #FFF0DE;
+      border-color: #FF9933;
+    }
+
     /* Min tap target */
-    button, label[for] { min-height: 44px; }
+    button,
+    label[for] {
+      min-height: 44px;
+    }
+
     /* Countdown digits */
     .digit-box {
       background: #1f1f1f;
@@ -166,9 +279,12 @@
 
   <!-- TopAppBar -->
   <header class="bg-white fixed top-0 w-full z-50 shadow-md flex justify-between items-center px-2 py-2">
-    <div class="flex flex-col items-center justify-center border-2 border-zinc-600 rounded-full w-11 h-11 flex-shrink-0">
-      <span class="text-[7px] font-black text-zinc-800 uppercase leading-tight tracking-tight text-center">MEN'S<br>BASIC</span>
-      <span class="material-symbols-outlined text-zinc-700 text-base leading-none" style="font-variation-settings:'FILL' 0;">checkroom</span>
+    <div
+      class="flex flex-col items-center justify-center border-2 border-zinc-600 rounded-full w-11 h-11 flex-shrink-0">
+      <span
+        class="text-[7px] font-black text-zinc-800 uppercase leading-tight tracking-tight text-center">COOLAB<br>BASIC</span>
+      <span class="material-symbols-outlined text-zinc-700 text-base leading-none"
+        style="font-variation-settings:'FILL' 0;">checkroom</span>
     </div>
     <div class="flex flex-col items-center mx-2 flex-1">
       <div class="flex items-center space-x-1 mb-1">
@@ -195,36 +311,47 @@
       <div class="relative w-full h-[380px] bg-zinc-900 overflow-hidden" id="hero-carousel">
         <!-- Slide 1 -->
         <div class="slide active" id="hero-slide-0">
-          <div style="background:linear-gradient(135deg,#1a1a2e,#16213e,#0f3460);display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;">
-            <span class="material-symbols-outlined text-7xl text-orange-400 mb-3" style="font-variation-settings:'FILL' 1;">checkroom</span>
+          <div
+            style="background:linear-gradient(135deg,#1a1a2e,#16213e,#0f3460);display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;">
+            <span class="material-symbols-outlined text-7xl text-orange-400 mb-3"
+              style="font-variation-settings:'FILL' 1;">checkroom</span>
             <span class="font-headline-lg text-white font-black text-3xl tracking-wide">MEN'S BASIC</span>
             <span class="text-zinc-300 text-sm mt-2">Quần Sịp Nam Cao Cấp</span>
-            <span class="mt-4 bg-orange-500 text-white text-sm font-black px-4 py-1.5 rounded-full">[ Thêm ảnh thật vào đây ]</span>
+            <span class="mt-4 bg-orange-500 text-white text-sm font-black px-4 py-1.5 rounded-full">[ Thêm ảnh thật vào
+              đây ]</span>
           </div>
         </div>
         <!-- Slide 2 -->
         <div class="slide hidden" id="hero-slide-1">
-          <div style="background:linear-gradient(135deg,#0d2137,#1a3a4a,#0d4b63);display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;">
-            <span class="material-symbols-outlined text-7xl text-cyan-400 mb-3" style="font-variation-settings:'FILL' 1;">ac_unit</span>
+          <div
+            style="background:linear-gradient(135deg,#0d2137,#1a3a4a,#0d4b63);display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;">
+            <span class="material-symbols-outlined text-7xl text-cyan-400 mb-3"
+              style="font-variation-settings:'FILL' 1;">ac_unit</span>
             <span class="font-headline-lg text-white font-black text-2xl">VẢI COTON LẠNH</span>
             <span class="text-zinc-300 text-sm mt-2">Mềm Mịn · Mát Lạnh · Kháng Khuẩn</span>
-            <span class="mt-4 bg-cyan-600 text-white text-sm font-black px-4 py-1.5 rounded-full">[ Thêm ảnh thật vào đây ]</span>
+            <span class="mt-4 bg-cyan-600 text-white text-sm font-black px-4 py-1.5 rounded-full">[ Thêm ảnh thật vào
+              đây ]</span>
           </div>
         </div>
         <!-- Slide 3 -->
         <div class="slide hidden" id="hero-slide-2">
-          <div style="background:linear-gradient(135deg,#2d1b00,#4a2f00,#6b4200);display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;">
-            <span class="material-symbols-outlined text-7xl text-amber-400 mb-3" style="font-variation-settings:'FILL' 1;">local_offer</span>
+          <div
+            style="background:linear-gradient(135deg,#2d1b00,#4a2f00,#6b4200);display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;">
+            <span class="material-symbols-outlined text-7xl text-amber-400 mb-3"
+              style="font-variation-settings:'FILL' 1;">local_offer</span>
             <span class="font-headline-lg text-white font-black text-3xl">SALE 50%</span>
             <span class="text-zinc-300 text-sm mt-2">Mua 3 Tặng 1 · Chỉ 119.000đ</span>
-            <span class="mt-4 bg-amber-500 text-white text-sm font-black px-4 py-1.5 rounded-full">[ Thêm ảnh thật vào đây ]</span>
+            <span class="mt-4 bg-amber-500 text-white text-sm font-black px-4 py-1.5 rounded-full">[ Thêm ảnh thật vào
+              đây ]</span>
           </div>
         </div>
         <!-- Arrows -->
-        <button id="prev-btn" class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 text-white rounded-full p-2 z-20 shadow-md">
+        <button id="prev-btn"
+          class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 text-white rounded-full p-2 z-20 shadow-md">
           <span class="material-symbols-outlined">chevron_left</span>
         </button>
-        <button id="next-btn" class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 text-white rounded-full p-2 z-20 shadow-md">
+        <button id="next-btn"
+          class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 text-white rounded-full p-2 z-20 shadow-md">
           <span class="material-symbols-outlined">chevron_right</span>
         </button>
         <!-- Dots -->
@@ -717,25 +844,29 @@
           <!-- Timer -->
           <div class="flex justify-center space-x-3 mb-6">
             <div class="flex flex-col items-center">
-              <div class="w-16 h-12 rounded bg-gradient-to-b from-gray-100 to-gray-500 flex items-center justify-center shadow-md border border-gray-400">
+              <div
+                class="w-16 h-12 rounded bg-gradient-to-b from-gray-100 to-gray-500 flex items-center justify-center shadow-md border border-gray-400">
                 <span class="text-2xl font-bold text-zinc-900 drop-shadow-sm countdown-d-large">00</span>
               </div>
               <span class="text-xs font-bold text-zinc-800 mt-1.5">Ngày</span>
             </div>
             <div class="flex flex-col items-center">
-              <div class="w-16 h-12 rounded bg-gradient-to-b from-gray-100 to-gray-500 flex items-center justify-center shadow-md border border-gray-400">
+              <div
+                class="w-16 h-12 rounded bg-gradient-to-b from-gray-100 to-gray-500 flex items-center justify-center shadow-md border border-gray-400">
                 <span class="text-2xl font-bold text-zinc-900 drop-shadow-sm countdown-h-large">00</span>
               </div>
               <span class="text-xs font-bold text-zinc-800 mt-1.5">Giờ</span>
             </div>
             <div class="flex flex-col items-center">
-              <div class="w-16 h-12 rounded bg-gradient-to-b from-gray-100 to-gray-500 flex items-center justify-center shadow-md border border-gray-400">
+              <div
+                class="w-16 h-12 rounded bg-gradient-to-b from-gray-100 to-gray-500 flex items-center justify-center shadow-md border border-gray-400">
                 <span class="text-2xl font-bold text-zinc-900 drop-shadow-sm countdown-m-large">00</span>
               </div>
               <span class="text-xs font-bold text-zinc-800 mt-1.5">Phút</span>
             </div>
             <div class="flex flex-col items-center">
-              <div class="w-16 h-12 rounded bg-gradient-to-b from-gray-100 to-gray-500 flex items-center justify-center shadow-md border border-gray-400">
+              <div
+                class="w-16 h-12 rounded bg-gradient-to-b from-gray-100 to-gray-500 flex items-center justify-center shadow-md border border-gray-400">
                 <span class="text-2xl font-bold text-zinc-900 drop-shadow-sm countdown-s-large">00</span>
               </div>
               <span class="text-xs font-bold text-zinc-800 mt-1.5">Giây</span>
@@ -749,7 +880,7 @@
         <form id="order-form-el" class="space-y-5">
           <!-- Form Message -->
           <div id="form-message" class="hidden rounded-md p-3 text-sm font-bold text-center"></div>
-          
+
           <!-- Inputs -->
           <div class="space-y-4">
             <div>
@@ -836,14 +967,17 @@
       </div>
     </section>
   </main>
-  
+
   <!-- Sticky Bottom CTA (Mobile) -->
-  <div id="sticky-cta" class="fixed bottom-0 left-0 w-full bg-white border-t border-zinc-200 p-3 shadow-[0_-4px_10px_rgba(0,0,0,0.1)] z-40 md:hidden flex justify-between items-center">
+  <div id="sticky-cta"
+    class="fixed bottom-0 left-0 w-full bg-white border-t border-zinc-200 p-3 shadow-[0_-4px_10px_rgba(0,0,0,0.1)] z-40 md:hidden flex justify-between items-center">
     <div class="flex flex-col">
       <span class="text-xs font-bold text-zinc-500 line-through">238.000đ</span>
-      <span class="text-lg font-black text-red-600 leading-none">119k <span class="text-xs font-bold text-zinc-800">/ 4 CÁI</span></span>
+      <span class="text-lg font-black text-red-600 leading-none">119k <span class="text-xs font-bold text-zinc-800">/ 4
+          CÁI</span></span>
     </div>
-    <button class="scroll-to-order bg-gradient-to-r from-orange-500 to-red-600 text-white font-black px-6 py-2.5 rounded-full shadow-md animate-pulse-fast">
+    <button
+      class="scroll-to-order bg-gradient-to-r from-orange-500 to-red-600 text-white font-black px-6 py-2.5 rounded-full shadow-md animate-pulse-fast">
       ĐẶT HÀNG
     </button>
   </div>
@@ -851,10 +985,49 @@
   <!-- JavaScript Logic -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
+      // 0. Fire ViewContent on page load
+      if (typeof fbq === 'function') {
+        fbq('track', 'ViewContent', { content_name: "MEN'S BASIC", content_category: "Apparel" });
+      }
+
+      // 0.1 Time on Site Tracking
+      const timeMilestones = [15, 30, 60]; // seconds
+      timeMilestones.forEach(seconds => {
+        setTimeout(() => {
+          if (typeof fbq === 'function') {
+            fbq('trackCustom', 'TimeOnPage', { time_spent: `${seconds}s` });
+          }
+        }, seconds * 1000);
+      });
+
+      // 0.2 Scroll Depth Tracking
+      const scrollMilestones = [25, 50, 75, 90];
+      const scrollTracked = new Set();
+      
+      window.addEventListener('scroll', () => {
+        if (scrollTracked.size === scrollMilestones.length) return; // Đã track hết
+        
+        const scrollPosition = window.scrollY + window.innerHeight;
+        const totalHeight = document.body.scrollHeight;
+        const scrollPercentage = (scrollPosition / totalHeight) * 100;
+
+        scrollMilestones.forEach(milestone => {
+          if (scrollPercentage >= milestone && !scrollTracked.has(milestone)) {
+            scrollTracked.add(milestone);
+            if (typeof fbq === 'function') {
+              fbq('trackCustom', 'ScrollDepth', { depth: `${milestone}%` });
+            }
+          }
+        });
+      }, { passive: true });
+
       // 1. Smooth Scroll to Order Form
       document.querySelectorAll('.scroll-to-order').forEach(btn => {
         btn.addEventListener('click', (e) => {
           e.preventDefault();
+          // Fire AddToCart event when clicking CTA
+          if (typeof fbq === 'function') fbq('track', 'AddToCart');
+          
           const form = document.getElementById('order-form');
           if (form) {
             form.scrollIntoView({ behavior: 'smooth' });
@@ -875,12 +1048,12 @@
         const s = Math.floor((diff / 1000) % 60);
 
         const format = num => num.toString().padStart(2, '0');
-        
+
         // Header countdown
         const hEls = document.querySelectorAll('.countdown-h');
         const mEls = document.querySelectorAll('.countdown-m');
         const sEls = document.querySelectorAll('.countdown-s');
-        
+
         hEls.forEach(el => el.textContent = format(h));
         mEls.forEach(el => el.textContent = format(m));
         sEls.forEach(el => el.textContent = format(s));
@@ -889,7 +1062,7 @@
         const hlEls = document.querySelectorAll('.countdown-h-large');
         const mlEls = document.querySelectorAll('.countdown-m-large');
         const slEls = document.querySelectorAll('.countdown-s-large');
-        
+
         hlEls.forEach(el => el.textContent = format(h));
         mlEls.forEach(el => el.textContent = format(m));
         slEls.forEach(el => el.textContent = format(s));
@@ -904,16 +1077,16 @@
       let slideInterval;
 
       function goToSlide(n) {
-        if(slides.length === 0) return;
+        if (slides.length === 0) return;
         slides[currentSlide].classList.remove('active');
         slides[currentSlide].classList.add('hidden');
-        if(dots.length > 0) dots[currentSlide].classList.replace('bg-white', 'bg-white/40');
-        
+        if (dots.length > 0) dots[currentSlide].classList.replace('bg-white', 'bg-white/40');
+
         currentSlide = (n + slides.length) % slides.length;
-        
+
         slides[currentSlide].classList.remove('hidden');
         slides[currentSlide].classList.add('active');
-        if(dots.length > 0) dots[currentSlide].classList.replace('bg-white/40', 'bg-white');
+        if (dots.length > 0) dots[currentSlide].classList.replace('bg-white/40', 'bg-white');
       }
 
       function nextSlide() { goToSlide(currentSlide + 1); }
@@ -933,19 +1106,19 @@
       let touchEndX = 0;
       const carousel = document.getElementById('hero-carousel');
       if (carousel) {
-        carousel.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, {passive: true});
+        carousel.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
         carousel.addEventListener('touchend', e => {
           touchEndX = e.changedTouches[0].screenX;
           if (touchStartX - touchEndX > 50) nextSlide();
           if (touchEndX - touchStartX > 50) prevSlide();
           resetInterval();
-        }, {passive: true});
+        }, { passive: true });
       }
 
       // 4. Sticky CTA Visibility Logic
       const stickyCta = document.getElementById('sticky-cta');
       const orderForm = document.getElementById('order-form');
-      
+
       window.addEventListener('scroll', () => {
         if (!stickyCta || !orderForm) return;
         const formRect = orderForm.getBoundingClientRect();
@@ -956,6 +1129,16 @@
           stickyCta.classList.remove('cta-hidden');
         }
       });
+      // 4.5. InitiateCheckout Event
+      let checkoutInitiated = false;
+      if (orderForm) {
+        orderForm.addEventListener('click', () => {
+          if (!checkoutInitiated && typeof fbq === 'function') {
+            fbq('track', 'InitiateCheckout');
+            checkoutInitiated = true;
+          }
+        }, { once: true });
+      }
 
       // 5. Form Submission Logic
       const formEl = document.getElementById('order-form-el');
@@ -965,10 +1148,10 @@
       if (formEl) {
         formEl.addEventListener('submit', async (e) => {
           e.preventDefault();
-          
+
           // Basic validation
           const phone = formEl.phone_number.value;
-          if(!/^[0-9]{10,11}$/.test(phone)) {
+          if (!/^[0-9]{10,11}$/.test(phone)) {
             msgBox.textContent = "Vui lòng nhập số điện thoại hợp lệ (10-11 số)!";
             msgBox.className = "block rounded-md p-3 text-sm font-bold text-center bg-red-100 text-red-700";
             return;
@@ -978,7 +1161,7 @@
           let comboValue = '';
           const comboRadios = formEl.querySelectorAll('input[name="combo_new"]');
           comboRadios.forEach((r) => {
-            if(r.checked) {
+            if (r.checked) {
               comboValue = r.nextElementSibling.textContent.trim();
             }
           });
@@ -986,8 +1169,8 @@
           // Get selected size
           const sizeCheckboxes = formEl.querySelectorAll('input[name="size_new"]:checked');
           const sizes = Array.from(sizeCheckboxes).map(cb => cb.value).join(', ');
-          
-          if(sizes.length === 0) {
+
+          if (sizes.length === 0) {
             msgBox.textContent = "Vui lòng chọn ít nhất 1 Size!";
             msgBox.className = "block rounded-md p-3 text-sm font-bold text-center bg-red-100 text-red-700";
             return;
@@ -1011,8 +1194,16 @@
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify(formData)
             });
-            
-            if(res.ok) {
+
+            if (res.ok) {
+              if (typeof fbq === 'function') {
+                // Xác định giá trị đơn hàng để track Purchase
+                let value = 119000;
+                if (comboValue.includes('235.000')) value = 235000;
+                else if (comboValue.includes('89.000')) value = 89000;
+                
+                fbq('track', 'Purchase', { value: value, currency: 'VND' });
+              }
               formEl.reset();
               msgBox.textContent = "🎉 Đặt hàng thành công! Chúng tôi sẽ gọi lại cho bạn sớm nhất.";
               msgBox.className = "block rounded-md p-3 text-sm font-bold text-center bg-green-100 text-green-700";
