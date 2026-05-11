@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover" />
   <meta name="theme-color" content="#000000" />
   <title>Quần Sịp Nam Cao Cấp COOLAB BASICS - Flash Sale 50% OFF</title>
   <meta name="description"
@@ -202,19 +202,12 @@
     }
 
     @keyframes pulse-standard {
-
-      0%,
-      100% {
-        transform: scale(1)
-      }
-
-      50% {
-        transform: scale(1.2)
-      }
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.8; }
     }
 
     .animate-pulse-standard {
-      animation: pulse-standard 2s ease-in-out infinite;
+      animation: pulse-standard 1.5s ease-in-out infinite;
     }
 
     /* Carousel */
@@ -294,7 +287,8 @@
 
 
   <!-- TopAppBar -->
-  <header class="bg-white fixed top-0 w-full z-50 shadow-md flex justify-between items-center px-2 py-2">
+  <header class="bg-white fixed top-0 left-0 right-0 z-50 shadow-md flex justify-between items-center px-2 py-2" 
+          style="transform: translate3d(0,0,0); -webkit-backface-visibility: hidden; backface-visibility: hidden;">
     <div
       class="flex flex-col items-center justify-center border-2 border-zinc-600 rounded-full w-11 h-11 flex-shrink-0">
       <span
@@ -852,7 +846,8 @@
               <button
                 class="gallery-thumbnail-btn flex-shrink-0 w-20 h-20 border-2 border-orange-500 rounded-md overflow-hidden opacity-100"
                 data-index="0">
-                <img loading="lazy" src="src/Screenshot_20260511_212317_TikTok.jpg" class="w-full h-full object-cover" />
+                <img loading="lazy" src="src/Screenshot_20260511_212317_TikTok.jpg"
+                  class="w-full h-full object-cover" />
               </button>
               <button
                 class="gallery-thumbnail-btn flex-shrink-0 w-20 h-20 border-2 border-transparent rounded-md overflow-hidden opacity-50"
@@ -1215,7 +1210,8 @@
       <!-- Logo & Title -->
       <div class="flex items-center gap-4 mb-10">
         <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center p-2 shadow-lg">
-          <img loading="lazy" src="src/Screenshot_20260511_212010_TikTok.jpg" class="w-full h-full object-contain" alt="Logo">
+          <img loading="lazy" src="src/Screenshot_20260511_212010_TikTok.jpg" class="w-full h-full object-contain"
+            alt="Logo">
         </div>
         <div class="flex-1">
           <h2 class="font-bold text-lg leading-tight uppercase tracking-wider">COOLAB BASICS - KÊNH MUA SẮM THỜI TRANG
