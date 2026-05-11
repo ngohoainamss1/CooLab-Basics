@@ -1499,12 +1499,18 @@
       if (formEl) {
         formEl.addEventListener('submit', async (e) => {
           e.preventDefault();
+          console.log("Form submission started...");
+
+          // Reset message box
+          msgBox.classList.add('hidden');
+          msgBox.textContent = "";
 
           // Basic validation
-          const phone = formEl.phone_number.value;
+          const phone = formEl.elements['phone_number'].value;
           if (!/^[0-9]{10,11}$/.test(phone)) {
             msgBox.textContent = "Vui lòng nhập số điện thoại hợp lệ (10-11 số)!";
             msgBox.className = "block rounded-md p-3 text-sm font-bold text-center bg-red-100 text-red-700";
+            msgBox.classList.remove('hidden');
             return;
           }
 
@@ -1524,17 +1530,20 @@
           if (sizes.length === 0) {
             msgBox.textContent = "Vui lòng chọn ít nhất 1 Size!";
             msgBox.className = "block rounded-md p-3 text-sm font-bold text-center bg-red-100 text-red-700";
+            msgBox.classList.remove('hidden');
             return;
           }
 
           const formData = {
-            full_name: formEl.full_name.value,
-            address: formEl.address.value,
+            full_name: formEl.elements['full_name'].value,
+            address: formEl.elements['address'].value,
             phone_number: phone,
-            textarea_input_1: formEl.textarea_input_1 ? formEl.textarea_input_1.value : '',
+            textarea_input_1: formEl.elements['textarea_input_1'] ? formEl.elements['textarea_input_1'].value : '',
             radio_input_1: comboValue,
             sizes: sizes
           };
+
+          console.log("Sending data:", formData);
 
           submitBtn.disabled = true;
           submitBtn.innerHTML = '<span class="material-symbols-outlined animate-spin mr-2" style="animation: spin 1s linear infinite;">progress_activity</span> ĐANG XỬ LÝ...';
@@ -1546,24 +1555,27 @@
               body: JSON.stringify(formData)
             });
 
+            console.log("Server response status:", res.status);
+
             if (res.ok) {
               if (typeof fbq === 'function') {
-                // Xác định giá trị đơn hàng để track Purchase
                 let value = 119000;
                 if (comboValue.includes('235.000')) value = 235000;
                 else if (comboValue.includes('89.000')) value = 89000;
-
                 fbq('track', 'Purchase', { value: value, currency: 'VND' });
               }
               formEl.reset();
               msgBox.textContent = "🎉 Đặt hàng thành công! Chúng tôi sẽ gọi lại cho bạn sớm nhất.";
               msgBox.className = "block rounded-md p-3 text-sm font-bold text-center bg-green-100 text-green-700";
+              msgBox.classList.remove('hidden');
             } else {
-              throw new Error('Server error');
+              throw new Error('Server error: ' + res.status);
             }
           } catch (err) {
+            console.error("Submission error:", err);
             msgBox.textContent = "❌ Có lỗi xảy ra, vui lòng thử lại sau!";
             msgBox.className = "block rounded-md p-3 text-sm font-bold text-center bg-red-100 text-red-700";
+            msgBox.classList.remove('hidden');
           } finally {
             submitBtn.disabled = false;
             submitBtn.innerHTML = 'HOÀN TẤT ĐƠN HÀNG';
