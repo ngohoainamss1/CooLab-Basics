@@ -10,6 +10,12 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// Middleware log mọi request để kiểm tra kết nối
+app.use((req, res, next) => {
+    console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`);
+    next();
+});
+
 // --- PHỤC VỤ GIAO DIỆN ---
 app.use(express.static(__dirname));
 app.get('/', (req, res) => {
