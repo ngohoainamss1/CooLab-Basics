@@ -202,8 +202,15 @@
     }
 
     @keyframes pulse-standard {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.1); }
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.1);
+      }
     }
 
     .animate-pulse-standard {
@@ -289,8 +296,8 @@
 
 
   <!-- TopAppBar -->
-  <header class="bg-white fixed top-0 left-0 right-0 z-50 shadow-md flex justify-between items-center px-2 py-2" 
-          style="transform: translate3d(0,0,0); -webkit-backface-visibility: hidden; backface-visibility: hidden;">
+  <header class="bg-white fixed top-0 left-0 right-0 z-50 shadow-md flex justify-between items-center px-2 py-2"
+    style="transform: translate3d(0,0,0); -webkit-backface-visibility: hidden; backface-visibility: hidden;">
     <div
       class="flex flex-col items-center justify-center border-2 border-zinc-600 rounded-full w-11 h-11 flex-shrink-0">
       <span
@@ -1283,51 +1290,13 @@
   </div>
 
   <!-- JavaScript Logic -->
+  <!-- JavaScript Logic -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // 0. Fire ViewContent on page load
-      if (typeof fbq === 'function') {
-        fbq('track', 'ViewContent', { content_name: "COOLAB BASICS", content_category: "Apparel" });
-      }
-
-      // 0.1 Time on Site Tracking
-      const timeMilestones = [15, 30, 60, 90, 120, 180]; // seconds
-      timeMilestones.forEach(seconds => {
-        setTimeout(() => {
-          if (typeof fbq === 'function') {
-            fbq('trackCustom', 'TimeOnPage', { time_spent: `${seconds}s` });
-          }
-        }, seconds * 1000);
-      });
-
-      // 0.2 Scroll Depth Tracking
-      const scrollMilestones = [25, 50, 75, 90];
-      const scrollTracked = new Set();
-
-      window.addEventListener('scroll', () => {
-        if (scrollTracked.size === scrollMilestones.length) return; // Đã track hết
-
-        const scrollPosition = window.scrollY + window.innerHeight;
-        const totalHeight = document.body.scrollHeight;
-        const scrollPercentage = (scrollPosition / totalHeight) * 100;
-
-        scrollMilestones.forEach(milestone => {
-          if (scrollPercentage >= milestone && !scrollTracked.has(milestone)) {
-            scrollTracked.add(milestone);
-            if (typeof fbq === 'function') {
-              fbq('trackCustom', 'ScrollDepth', { depth: `${milestone}%` });
-            }
-          }
-        });
-      }, { passive: true });
-
       // 1. Smooth Scroll to Order Form
       document.querySelectorAll('.scroll-to-order').forEach(btn => {
         btn.addEventListener('click', (e) => {
           e.preventDefault();
-          // Fire AddToCart event when clicking CTA
-          if (typeof fbq === 'function') fbq('track', 'AddToCart');
-
           const form = document.getElementById('order-form');
           if (form) {
             form.scrollIntoView({ behavior: 'smooth' });
@@ -1372,30 +1341,22 @@
 
       // 3. Hero Carousel (Auto-play & Swipe)
       const slides = document.querySelectorAll('.slide');
-      const heroThumbs = document.querySelectorAll('.hero-thumbnail-btn');
+      const dots = document.querySelectorAll('.dot');
       let currentSlide = 0;
       let slideInterval;
 
       function goToSlide(n) {
         if (slides.length === 0) return;
-        slides[currentSlide].classList.replace('active', 'hidden');
-        if (heroThumbs.length > 0) {
-          heroThumbs[currentSlide].classList.replace('border-orange-500', 'border-transparent');
-          heroThumbs[currentSlide].classList.replace('opacity-100', 'opacity-50');
-        }
+        slides[currentSlide].classList.remove('active');
+        slides[currentSlide].classList.add('hidden');
+        if (dots.length > 0) dots[currentSlide].classList.replace('bg-white', 'bg-white/40');
 
         currentSlide = (n + slides.length) % slides.length;
 
-        slides[currentSlide].classList.replace('hidden', 'active');
-        if (heroThumbs.length > 0) {
-          heroThumbs[currentSlide].classList.replace('border-transparent', 'border-orange-500');
-          heroThumbs[currentSlide].classList.replace('opacity-50', 'opacity-100');
-        }
+        slides[currentSlide].classList.remove('hidden');
+        slides[currentSlide].classList.add('active');
+        if (dots.length > 0) dots[currentSlide].classList.replace('bg-white/40', 'bg-white');
       }
-
-      heroThumbs.forEach((thumb, i) => {
-        thumb.addEventListener('click', () => { goToSlide(i); resetInterval(); });
-      });
 
       function nextSlide() { goToSlide(currentSlide + 1); }
       function prevSlide() { goToSlide(currentSlide - 1); }
@@ -1409,60 +1370,17 @@
       }
       resetInterval();
 
-      // 3.5 Product Gallery Logic
-      const gallSlides = document.querySelectorAll('.gallery-view-item');
-      const gallThumbs = document.querySelectorAll('.gallery-thumbnail-btn');
-      const thumbInner = document.getElementById('thumb-inner');
-      let currentGallSlide = 0;
-
-      function goToGallSlide(n) {
-        if (gallSlides.length === 0) return;
-        gallSlides[currentGallSlide].classList.replace('opacity-100', 'opacity-0');
-        gallSlides[currentGallSlide].classList.replace('z-10', 'z-0');
-        gallThumbs[currentGallSlide].classList.replace('border-orange-500', 'border-transparent');
-        gallThumbs[currentGallSlide].classList.replace('opacity-100', 'opacity-50');
-
-        currentGallSlide = (n + gallSlides.length) % gallSlides.length;
-
-        gallSlides[currentGallSlide].classList.replace('opacity-0', 'opacity-100');
-        gallSlides[currentGallSlide].classList.replace('z-0', 'z-10');
-        gallThumbs[currentGallSlide].classList.replace('border-transparent', 'border-orange-500');
-        gallThumbs[currentGallSlide].classList.replace('opacity-50', 'opacity-100');
-
-        // Center thumbnail if it's not visible
-        const thumbWidth = gallThumbs[0].offsetWidth + 8; // width + gap
-        if (thumbInner) {
-          thumbInner.style.transform = `translateX(-${Math.max(0, Math.min((gallSlides.length - 4) * thumbWidth, (currentGallSlide - 1) * thumbWidth))}px)`;
-        }
-      }
-
-      document.getElementById('gallery-next-btn')?.addEventListener('click', () => goToGallSlide(currentGallSlide + 1));
-      document.getElementById('gallery-prev-btn')?.addEventListener('click', () => goToGallSlide(currentGallSlide - 1));
-
-      gallThumbs.forEach((thumb, i) => {
-        thumb.addEventListener('click', () => goToGallSlide(i));
-      });
-
-      // Thumbnail navigation buttons
-      let thumbScrollPos = 0;
-      document.getElementById('thumb-next')?.addEventListener('click', () => {
-        const thumbWidth = gallThumbs[0].offsetWidth + 8;
-        thumbScrollPos = Math.min((gallSlides.length - 3) * thumbWidth, thumbScrollPos + thumbWidth);
-        if (thumbInner) thumbInner.style.transform = `translateX(-${thumbScrollPos}px)`;
-      });
-      document.getElementById('thumb-prev')?.addEventListener('click', () => {
-        const thumbWidth = gallThumbs[0].offsetWidth + 8;
-        thumbScrollPos = Math.max(0, thumbScrollPos - thumbWidth);
-        if (thumbInner) thumbInner.style.transform = `translateX(-${thumbScrollPos}px)`;
-      });
-
-      // Swipe logic for gallery
+      // Swipe logic for carousel
+      let touchStartX = 0;
+      let touchEndX = 0;
+      const carousel = document.getElementById('hero-carousel');
       if (carousel) {
         carousel.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
         carousel.addEventListener('touchend', e => {
           touchEndX = e.changedTouches[0].screenX;
-          if (touchStartX - touchEndX > 50) goToGallSlide(currentGallSlide + 1);
-          if (touchEndX - touchStartX > 50) goToGallSlide(currentGallSlide - 1);
+          if (touchStartX - touchEndX > 50) nextSlide();
+          if (touchEndX - touchStartX > 50) prevSlide();
+          resetInterval();
         }, { passive: true });
       }
 
@@ -1480,16 +1398,6 @@
           stickyCta.classList.remove('cta-hidden');
         }
       });
-      // 4.5. InitiateCheckout Event
-      let checkoutInitiated = false;
-      if (orderForm) {
-        orderForm.addEventListener('click', () => {
-          if (!checkoutInitiated && typeof fbq === 'function') {
-            fbq('track', 'InitiateCheckout');
-            checkoutInitiated = true;
-          }
-        }, { once: true });
-      }
 
       // 5. Form Submission Logic
       const formEl = document.getElementById('order-form-el');
@@ -1497,21 +1405,14 @@
       const msgBox = document.getElementById('form-message');
 
       if (formEl) {
-        console.log("Submit listener attached to #order-form-el");
         formEl.addEventListener('submit', async (e) => {
           e.preventDefault();
-          console.log("Form submission started...");
-
-          // Reset message box
-          msgBox.classList.add('hidden');
-          msgBox.textContent = "";
 
           // Basic validation
-          const phone = formEl.elements['phone_number'].value;
+          const phone = formEl.phone_number.value;
           if (!/^[0-9]{10,11}$/.test(phone)) {
             msgBox.textContent = "Vui lòng nhập số điện thoại hợp lệ (10-11 số)!";
             msgBox.className = "block rounded-md p-3 text-sm font-bold text-center bg-red-100 text-red-700";
-            msgBox.classList.remove('hidden');
             return;
           }
 
@@ -1531,20 +1432,17 @@
           if (sizes.length === 0) {
             msgBox.textContent = "Vui lòng chọn ít nhất 1 Size!";
             msgBox.className = "block rounded-md p-3 text-sm font-bold text-center bg-red-100 text-red-700";
-            msgBox.classList.remove('hidden');
             return;
           }
 
           const formData = {
-            full_name: formEl.elements['full_name'].value,
-            address: formEl.elements['address'].value,
+            full_name: formEl.full_name.value,
+            address: formEl.address.value,
             phone_number: phone,
-            textarea_input_1: formEl.elements['textarea_input_1'] ? formEl.elements['textarea_input_1'].value : '',
+            textarea_input_1: formEl.textarea_input_1 ? formEl.textarea_input_1.value : '',
             radio_input_1: comboValue,
             sizes: sizes
           };
-
-          console.log("Sending data:", formData);
 
           submitBtn.disabled = true;
           submitBtn.innerHTML = '<span class="material-symbols-outlined animate-spin mr-2" style="animation: spin 1s linear infinite;">progress_activity</span> ĐANG XỬ LÝ...';
@@ -1556,76 +1454,22 @@
               body: JSON.stringify(formData)
             });
 
-            console.log("Server response status:", res.status);
-
             if (res.ok) {
-              if (typeof fbq === 'function') {
-                let value = 119000;
-                if (comboValue.includes('235.000')) value = 235000;
-                else if (comboValue.includes('89.000')) value = 89000;
-                fbq('track', 'Purchase', { value: value, currency: 'VND' });
-              }
               formEl.reset();
               msgBox.textContent = "🎉 Đặt hàng thành công! Chúng tôi sẽ gọi lại cho bạn sớm nhất.";
               msgBox.className = "block rounded-md p-3 text-sm font-bold text-center bg-green-100 text-green-700";
-              msgBox.classList.remove('hidden');
             } else {
-              throw new Error('Server error: ' + res.status);
+              throw new Error('Server error');
             }
           } catch (err) {
-            console.error("Submission error:", err);
             msgBox.textContent = "❌ Có lỗi xảy ra, vui lòng thử lại sau!";
             msgBox.className = "block rounded-md p-3 text-sm font-bold text-center bg-red-100 text-red-700";
-            msgBox.classList.remove('hidden');
           } finally {
             submitBtn.disabled = false;
             submitBtn.innerHTML = 'HOÀN TẤT ĐƠN HÀNG';
           }
         });
       }
-      // 6. Lightbox Zoom Logic
-      const lightbox = document.getElementById('lightbox');
-      const lightboxImg = document.getElementById('lightbox-img');
-      const closeLightbox = document.getElementById('close-lightbox');
-
-      function openLightbox(src) {
-        if (!lightbox || !lightboxImg) return;
-        lightboxImg.src = src;
-        lightbox.classList.remove('hidden');
-        setTimeout(() => {
-          lightboxImg.classList.replace('scale-95', 'scale-100');
-        }, 10);
-        document.body.style.overflow = 'hidden';
-      }
-
-      function hideLightbox() {
-        if (!lightbox || !lightboxImg) return;
-        lightboxImg.classList.replace('scale-100', 'scale-95');
-        setTimeout(() => {
-          lightbox.classList.add('hidden');
-          document.body.style.overflow = '';
-        }, 200);
-      }
-
-      // Apply zoom to all product-related images
-      document.querySelectorAll('.gallery-view-item img, .slide img, .px-margin-mobile img').forEach(img => {
-        img.classList.add('cursor-zoom-in');
-        img.addEventListener('click', () => {
-          // Chỉ zoom nếu không phải là thumbnail
-          if (!img.closest('.gallery-thumbnail-btn') && !img.closest('.hero-thumbnail-btn')) {
-            openLightbox(img.src);
-          }
-        });
-      });
-
-      lightbox?.addEventListener('click', (e) => {
-        if (e.target === lightbox || e.target === lightboxImg) hideLightbox();
-      });
-
-      closeLightbox?.addEventListener('click', (e) => {
-        e.stopPropagation();
-        hideLightbox();
-      });
     });
   </script>
 </body>
