@@ -1,76 +1,1633 @@
-const express = require('express');
-const path = require('path');
-const cors = require('cors');
-const { GoogleSpreadsheet } = require('google-spreadsheet');
-const { JWT } = require('google-auth-library');
+<!DOCTYPE html>
+<html lang="vi">
 
-const app = express();
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#000000" />
+  <title>Quần Sịp Nam Cao Cấp COOLAB BASICS - Flash Sale 50% OFF</title>
+  <meta name="description"
+    content="Quần Sịp Nam Cao Cấp COOLAB BASICS - Vải Coton Lạnh, Không Đường May, Co Giãn 4 Chiều. Size 45-95kg. Flash Sale Mua 3 Tặng 1 chỉ 119.000đ!" />
 
-app.use(cors());
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+  <!-- Facebook Pixel -->
+  <script>
+    !function (f, b, e, v, n, t, s) {
+      if (f.fbq) return; n = f.fbq = function () {
+        n.callMethod ?
+          n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+      };
+      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+      n.queue = []; t = b.createElement(e); t.async = !0;
+      t.src = v; s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s)
+    }(window, document, 'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '959395916490425');
+    fbq('track', 'PageView');
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=959395916490425&ev=PageView&noscript=1" />
+  </noscript>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Lexend:wght@400;700;800;900&family=Great+Vibes&display=swap"
+    rel="stylesheet" />
+  <!-- Material Symbols -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+    rel="stylesheet" />
+  <!-- Tailwind Config -->
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-variant": "#e2e2e2",
+            "on-secondary-container": "#646464",
+            "inverse-primary": "#ffb693",
+            "surface-container-highest": "#e2e2e2",
+            "on-surface-variant": "#5a4136",
+            "on-primary-container": "#572000",
+            "on-secondary": "#ffffff",
+            "on-tertiary-container": "#6a0000",
+            "primary-container": "#ff6b00",
+            "inverse-surface": "#2f3131",
+            "on-primary-fixed": "#351000",
+            "on-surface": "#1a1c1c",
+            "outline-variant": "#e2bfb0",
+            "on-tertiary-fixed": "#410000",
+            "tertiary-container": "#ff6854",
+            "surface-dim": "#dadada",
+            "surface": "#f9f9f9",
+            "primary-fixed": "#ffdbcc",
+            "error": "#ba1a1a",
+            "tertiary-fixed": "#ffdad4",
+            "surface-bright": "#f9f9f9",
+            "primary": "#a04100",
+            "on-tertiary": "#ffffff",
+            "tertiary": "#c00000",
+            "surface-container-high": "#e8e8e8",
+            "surface-container-low": "#f3f3f4",
+            "secondary": "#5e5e5e",
+            "on-tertiary-fixed-variant": "#930000",
+            "on-secondary-fixed-variant": "#474747",
+            "on-primary-fixed-variant": "#7a3000",
+            "surface-container-lowest": "#ffffff",
+            "on-primary": "#ffffff",
+            "inverse-on-surface": "#f0f1f1",
+            "on-background": "#1a1c1c",
+            "error-container": "#ffdad6",
+            "surface-container": "#eeeeee",
+            "secondary-fixed": "#e2e2e2",
+            "background": "#f9f9f9",
+            "secondary-container": "#e2e2e2",
+            "on-error": "#ffffff",
+            "tertiary-fixed-dim": "#ffb4a8",
+            "secondary-fixed-dim": "#c6c6c6",
+            "on-error-container": "#93000a",
+            "outline": "#8e7164",
+            "on-secondary-fixed": "#1b1b1b",
+            "primary-fixed-dim": "#ffb693",
+            "surface-tint": "#a04100"
+          },
+          "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" },
+          "spacing": { "margin-desktop": "24px", "margin-mobile": "16px", "section-gap": "64px", "gutter": "16px", "unit": "4px" },
+          "fontFamily": {
+            "label-bold": ["Inter"], "body-lg": ["Inter"], "body-md": ["Inter"],
+            "headline-xl": ["Lexend"], "headline-md": ["Lexend"], "price-display": ["Lexend"],
+            "headline-lg": ["Lexend"], "cursive": ["Great Vibes"]
+          },
+          "fontSize": {
+            "label-bold": ["14px", { "lineHeight": "1", "fontWeight": "700" }],
+            "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+            "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+            "headline-xl": ["40px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+            "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "700" }],
+            "price-display": ["28px", { "lineHeight": "1", "fontWeight": "800" }],
+            "headline-lg": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }]
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Mobile-first: prevent iOS zoom on input focus */
+    input,
+    select,
+    textarea {
+      font-size: 16px !important;
+    }
 
-// Middleware log mọi request để kiểm tra kết nối
-app.use((req, res, next) => {
-    console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`);
-    next();
-});
+    /* Remove 300ms tap delay */
+    * {
+      touch-action: manipulation;
+    }
 
-// --- PHỤC VỤ GIAO DIỆN ---
-app.use(express.static(__dirname));
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'));
-});
+    /* Smooth scroll */
+    html {
+      scroll-behavior: smooth;
+    }
 
-// --- XỬ LÝ ĐƠN HÀNG ---
-const SHEET_ID = '1_2OIa0tBXlp-WQ7hBp9SXxgxGVnbED14YFmy-21eSzw';
+    /* Body padding for sticky elements */
+    body {
+      padding-bottom: 72px;
+    }
 
-app.post('/submit-order', async (req, res) => {
-    console.log("-----------------------------------");
-    console.log("📩 NHẬN ĐƠN HÀNG MỚI:", req.body.full_name);
+    /* Animations */
+    @keyframes pulse-fast {
 
-    try {
-        const { full_name, phone_number, address, textarea_input_1, radio_input_1, sizes } = req.body;
+      0%,
+      100% {
+        transform: scale(1)
+      }
 
-        // Lấy thông tin từ Biến môi trường (Environment Variables)
-        const clientEmail = process.env.G_EMAIL;
-        const privateKey = process.env.G_KEY;
+      50% {
+        transform: scale(1.1)
+      }
+    }
 
-        if (!clientEmail || !privateKey) {
-            throw new Error("Chưa cấu hình G_EMAIL hoặc G_KEY trên Render Settings");
+    .animate-pulse-fast {
+      animation: pulse-fast 0.8s ease-in-out infinite;
+    }
+
+    @keyframes flash-fast {
+
+      0%,
+      100% {
+        opacity: 1
+      }
+
+      50% {
+        opacity: 0.1
+      }
+    }
+
+    .animate-flash-fast {
+      animation: flash-fast 0.8s ease-in-out infinite;
+    }
+
+    @keyframes flash-standard {
+
+      0%,
+      100% {
+        opacity: 1
+      }
+
+      50% {
+        opacity: 0.2
+      }
+    }
+
+    .animate-flash-standard {
+      animation: flash-standard 1s ease-in-out infinite;
+    }
+
+    @keyframes blink {
+
+      0%,
+      100% {
+        opacity: 1
+      }
+
+      50% {
+        opacity: 0.5
+      }
+    }
+
+    .animate-blink {
+      animation: blink 1.5s ease-in-out infinite;
+    }
+
+    @keyframes pulse-standard {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    .animate-pulse-standard {
+      animation: pulse-standard 1.5s ease-in-out infinite;
+      will-change: transform;
+      display: inline-block;
+    }
+
+    /* Carousel */
+    .slide {
+      position: absolute;
+      inset: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    .slide.active {
+      opacity: 1;
+      z-index: 10;
+    }
+
+    .slide.hidden {
+      opacity: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* Sticky bottom CTA */
+    #sticky-cta {
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    #sticky-cta.cta-hidden {
+      transform: translateY(100%);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* Demo image placeholder */
+    .demo-img {
+      background: linear-gradient(135deg, #1c1c1c 0%, #2a2a2a 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Combo selected highlight */
+    .combo-option:has(input:checked) {
+      background: #FFF8EE;
+      border-color: #FF9933;
+    }
+
+    /* Size selected highlight */
+    .size-option:has(input:checked) {
+      background: #FFF0DE;
+      border-color: #FF9933;
+    }
+
+    /* Min tap target */
+    button,
+    label[for] {
+      min-height: 44px;
+    }
+
+    /* Countdown digits */
+    .digit-box {
+      background: #1f1f1f;
+      color: white;
+      font-weight: 900;
+      font-size: 14px;
+      padding: 3px 7px;
+      border-radius: 4px;
+      min-width: 28px;
+      text-align: center;
+      display: inline-block;
+    }
+  </style>
+</head>
+
+<body class="bg-background text-on-background font-body-md antialiased">
+
+
+  <!-- TopAppBar -->
+  <header class="bg-white fixed top-0 left-0 right-0 z-50 shadow-md flex justify-between items-center px-2 py-2" 
+          style="transform: translate3d(0,0,0); -webkit-backface-visibility: hidden; backface-visibility: hidden;">
+    <div
+      class="flex flex-col items-center justify-center border-2 border-zinc-600 rounded-full w-11 h-11 flex-shrink-0">
+      <span
+        class="text-[7px] font-black text-zinc-800 uppercase leading-tight tracking-tight text-center">COOLAB<br>BASICS</span>
+      <span class="material-symbols-outlined text-zinc-700 text-base leading-none"
+        style="font-variation-settings:'FILL' 0;">checkroom</span>
+    </div>
+    <div class="flex flex-col items-center mx-2 flex-1">
+      <div class="flex items-center space-x-1 mb-1">
+        <span class="text-xs font-bold text-zinc-600 uppercase tracking-tight">GIẢM GIÁ</span>
+        <span class="text-lg font-black text-orange-500 leading-none">50%</span>
+      </div>
+      <div class="flex items-center space-x-1">
+        <span class="digit-box countdown-h">00</span>
+        <span class="text-zinc-600 font-black text-sm">:</span>
+        <span class="digit-box countdown-m">00</span>
+        <span class="text-zinc-600 font-black text-sm">:</span>
+        <span class="digit-box countdown-s">00</span>
+      </div>
+    </div>
+    <button id="header-cta"
+      class="scroll-to-order bg-gradient-to-r from-blue-500 to-blue-700 text-white font-black text-xs px-3 py-2.5 rounded-full flex items-center shadow-lg animate-pulse-standard flex-shrink-0 transform-gpu">
+      <span class="material-symbols-outlined text-sm mr-1 leading-none">shopping_cart</span>
+      MUA NGAY
+    </button>
+  </header>
+  <main class="pt-14 max-w-lg mx-auto bg-surface-container-lowest">
+    <!-- Hero Section -->
+    <section class="relative w-full">
+      <div class="relative w-full h-[380px] bg-zinc-900 overflow-hidden" id="hero-carousel">
+        <!-- Slide 1 -->
+        <div class="slide active" id="hero-slide-0">
+          <img src="src/Screenshot_20260511_211953_TikTok.jpg" class="w-full h-full object-cover" alt="Hero 1">
+          <div class="absolute inset-0 bg-black/20 flex flex-col items-center justify-center">
+            <span class="material-symbols-outlined text-7xl text-orange-400 mb-3"
+              style="font-variation-settings:'FILL' 1;">checkroom</span>
+            <span class="font-headline-lg text-white font-black text-3xl tracking-wide">COOLAB BASICS</span>
+            <span class="text-zinc-300 text-sm mt-2">Quần Sịp Nam Cao Cấp</span>
+          </div>
+        </div>
+        <!-- Slide 2 -->
+        <div class="slide hidden" id="hero-slide-1">
+          <img src="src/Screenshot_20260511_212010_TikTok.jpg" class="w-full h-full object-cover" alt="Hero 2">
+          <div class="absolute inset-0 bg-black/20 flex flex-col items-center justify-center">
+            <span class="material-symbols-outlined text-7xl text-cyan-400 mb-3"
+              style="font-variation-settings:'FILL' 1;">ac_unit</span>
+            <span class="font-headline-lg text-white font-black text-2xl">VẢI COTON LẠNH</span>
+            <span class="text-zinc-300 text-sm mt-2">Mềm Mịn · Mát Lạnh · Kháng Khuẩn</span>
+          </div>
+        </div>
+        <!-- Slide 3 -->
+        <div class="slide hidden" id="hero-slide-2">
+          <img src="src/Screenshot_20260511_212025_TikTok.jpg" class="w-full h-full object-cover" alt="Hero 3">
+          <div class="absolute inset-0 bg-black/20 flex flex-col items-center justify-center">
+            <span class="material-symbols-outlined text-7xl text-amber-400 mb-3"
+              style="font-variation-settings:'FILL' 1;">local_offer</span>
+            <span class="font-headline-lg text-white font-black text-3xl">SALE 50%</span>
+            <span class="text-zinc-300 text-sm mt-2">Mua 3 Tặng 1 · Chỉ 119.000đ</span>
+          </div>
+        </div>
+        <!-- Slide 4 -->
+        <div class="slide hidden" id="hero-slide-3">
+          <img src="src/Screenshot_20260511_212317_TikTok.jpg" class="w-full h-full object-cover" alt="Hero 4">
+          <div class="absolute inset-0 bg-black/20 flex flex-col items-center justify-center">
+            <span class="material-symbols-outlined text-7xl text-green-400 mb-3"
+              style="font-variation-settings:'FILL' 1;">verified_user</span>
+            <span class="font-headline-lg text-white font-black text-2xl uppercase tracking-tighter">ĐẢM BẢO CHẤT
+              LƯỢNG</span>
+            <span class="text-zinc-300 text-sm mt-2 font-bold italic">Hoàn tiền 100% nếu không hài lòng</span>
+          </div>
+        </div>
+        <!-- Arrows -->
+        <button id="prev-btn"
+          class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/30 text-white rounded-md p-1.5 z-20 hover:bg-black/50 transition-colors shadow-md">
+          <span class="material-symbols-outlined text-2xl">chevron_left</span>
+        </button>
+        <button id="next-btn"
+          class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/30 text-white rounded-md p-1.5 z-20 hover:bg-black/50 transition-colors shadow-md">
+          <span class="material-symbols-outlined text-2xl">chevron_right</span>
+        </button>
+      </div>
+
+      <!-- Hero Thumbnails (Interactive - Moved Below) -->
+      <div id="hero-thumbnails"
+        class="relative bg-white py-3 flex justify-center gap-2 px-2 overflow-x-auto no-scrollbar border-b border-zinc-100">
+        <button
+          class="hero-thumbnail-btn w-14 h-14 border-2 border-orange-500 rounded-md overflow-hidden transition-all opacity-100 shadow-sm"
+          data-index="0">
+          <img src="src/Screenshot_20260511_211953_TikTok.jpg" class="w-full h-full object-cover" />
+        </button>
+        <button
+          class="hero-thumbnail-btn w-14 h-14 border-2 border-transparent rounded-md overflow-hidden transition-all opacity-50 shadow-sm"
+          data-index="1">
+          <img src="src/Screenshot_20260511_212010_TikTok.jpg" class="w-full h-full object-cover" />
+        </button>
+        <button
+          class="hero-thumbnail-btn w-14 h-14 border-2 border-transparent rounded-md overflow-hidden transition-all opacity-50 shadow-sm"
+          data-index="2">
+          <img src="src/Screenshot_20260511_212025_TikTok.jpg" class="w-full h-full object-cover" />
+        </button>
+        <button
+          class="hero-thumbnail-btn w-14 h-14 border-2 border-transparent rounded-md overflow-hidden transition-all opacity-50 shadow-sm"
+          data-index="3">
+          <img src="src/Screenshot_20260511_212317_TikTok.jpg" class="w-full h-full object-cover" />
+        </button>
+      </div>
+      <!-- Black Section & Cyan Button -->
+      <div class="bg-black w-full flex flex-col items-center py-6 px-4 text-center">
+        <h2 class="text-white font-bold text-3xl tracking-wide mb-1">QUẦN SỊP NAM CAO CẤP</h2>
+        <h3 class="text-white font-bold text-2xl mb-2">SIZE 45-95KG</h3>
+        <p class="text-white text-[15px] mb-3">Bằng Vải Coton Lạnh Cao Cấp - Mềm Mịn Mát Lạnh Không Đường May Menswear
+        </p>
+        <h1 class="text-[#F3D2B3] font-black text-5xl tracking-tighter mb-4">COOLAB BASICS</h1>
+        <button
+          class="bg-gradient-to-r from-cyan-600 via-cyan-400 to-cyan-200 text-white font-black text-xl px-8 py-2 rounded-sm shadow-[0_0_10px_rgba(0,255,255,0.5)] border border-cyan-300 scroll-to-order animate-pulse-standard transform-gpu">
+          MUA 3 TẶNG 1
+        </button>
+      </div>
+      <!-- Promotion Section -->
+      <div class="flex flex-col items-center justify-center py-6 bg-white w-full">
+        <div class="flex items-center justify-center relative w-full mb-2">
+          <div class="font-cursive text-red-700 text-5xl z-10 absolute -top-4 -left-4 w-full text-center"
+            style="text-shadow: 1px 1px 0px white, -1px -1px 0px white, 1px -1px 0px white, -1px 1px 0px white;">Giảm
+            giá</div>
+          <div class="flex items-center z-0 relative mt-4">
+            <div class="w-1.5 h-16 bg-[#8c5a32] mr-3"></div>
+            <span class="font-black text-red-500 text-7xl tracking-tighter"
+              style="text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">50%</span>
+          </div>
+        </div>
+        <div class="relative mt-8 mb-2 flex flex-col items-center">
+          <div
+            class="absolute -top-3 bg-orange-500 text-white text-1xl font-black px-4 py-1 rounded-full z-10 shadow-md uppercase tracking-wider">
+            COMBO 3 TẶNG 1</div>
+          <div
+            class="border-4 border-orange-500 px-20 py-4 flex flex-col items-center justify-center rounded-2xl bg-white shadow-[0_10px_20px_rgba(249,115,22,0.15)]">
+            <span class="font-black text-red-600 text-5xl tracking-tighter animate-flash-fast">119.000đ</span>
+            <span class="text-1xl font-bold text-zinc-500 mt-1 uppercase tracking-widest">Duy nhất hôm nay</span>
+          </div>
+        </div>
+        <div class="text-1xl font-black text-blue-900 mt-3 flex items-center">
+          <span class="material-symbols-outlined text-lg mr-1" style="font-variation-settings:'FILL' 1;">stars</span>
+          CHỈ 29.000 / 1 CÁI
+        </div>
+        <div class="text-1xl font-bold text-zinc-600 mt-1">
+          Giá gốc: <span class="line-through">238.000đ</span> (Giảm 50%)
+        </div>
+      </div>
+      <div class="px-margin-mobile py-6 bg-surface-container-lowest hidden">
+        <div class="flex items-end space-x-3 mb-2">
+          <h1 class="font-price-display text-price-display text-primary">119.000đ</h1>
+          <span class="font-body-md text-body-md text-on-surface-variant line-through mb-1">200.000đ</span>
+        </div>
+        <div
+          class="bg-primary-container text-on-primary-container font-label-bold text-label-bold inline-block px-3 py-1 rounded-sm mb-4">
+          CHỈ 29.000đ/CÁI
+        </div>
+        <h2 class="font-headline-md text-headline-md text-on-surface mb-6">Quần Lót Nam Kháng Khuẩn Cao Cấp COOLAB
+          BASICS
+        </h2>
+        <!-- Progress Bar -->
+        <div class="mb-6">
+          <div class="flex justify-between font-label-bold text-label-bold text-on-surface-variant mb-2">
+            <span>Đã bán: 89%</span>
+            <span class="text-tertiary">Chỉ còn 11 bộ!</span>
+          </div>
+          <div class="w-full bg-surface-variant h-2 rounded-full overflow-hidden">
+            <div class="bg-primary-container h-full w-[89%] rounded-full"></div>
+          </div>
+        </div>
+        <!-- Feature Icons -->
+        <div class="grid grid-cols-2 gap-4 border-t border-b border-surface-variant py-4 mb-6">
+          <div class="flex items-center space-x-2">
+            <span class="material-symbols-outlined text-primary-container"
+              style="font-variation-settings: 'FILL' 1;">verified</span>
+            <span class="font-label-bold text-label-bold text-on-surface">MADE IN VIETNAM</span>
+          </div>
+          <div class="flex items-center space-x-2">
+            <span class="material-symbols-outlined text-primary-container"
+              style="font-variation-settings: 'FILL' 1;">cached</span>
+            <span class="font-label-bold text-label-bold text-on-surface">ĐỔI TRẢ 7 NGÀY</span>
+          </div>
+          <div class="flex items-center space-x-2">
+            <span class="material-symbols-outlined text-primary-container"
+              style="font-variation-settings: 'FILL' 1;">local_shipping</span>
+            <span class="font-label-bold text-label-bold text-on-surface">FREESHIP ĐƠN 200K</span>
+          </div>
+          <div class="flex items-center space-x-2">
+            <span class="material-symbols-outlined text-primary-container"
+              style="font-variation-settings: 'FILL' 1;">shield</span>
+            <span class="font-label-bold text-label-bold text-on-surface">KIỂM HÀNG TRƯỚC</span>
+          </div>
+        </div>
+        <button
+          class="w-full bg-primary-container text-on-primary font-headline-md text-headline-md py-4 rounded shadow-md active:scale-[0.98] transition-transform uppercase tracking-wide scroll-to-order animate-pulse-standard transform-gpu">
+          ĐẶT HÀNG NGAY
+        </button>
+      </div>
+    </section>
+    <!-- Product Details -->
+    <section class="bg-surface-container-low mt-2 px-margin-mobile py-8 hidden">
+      <h3 class="font-headline-md text-headline-md text-on-surface mb-6 text-center">ĐẶC ĐIỂM NỔI BẬT</h3>
+      <div class="space-y-4">
+        <div class="flex items-start space-x-3 bg-surface-container-lowest p-4 rounded-lg shadow-sm">
+          <span class="material-symbols-outlined text-primary-container mt-1">check_circle</span>
+          <div>
+            <h4 class="font-label-bold text-label-bold text-on-surface mb-1">Chất Liệu Đỉnh Cao</h4>
+            <p class="font-body-md text-body-md text-on-surface-variant">Cotton lạnh cao cấp, mềm mịn, thấm hút mồ hôi
+              tuyệt đối, kháng khuẩn khử mùi.</p>
+          </div>
+        </div>
+        <div class="flex items-start space-x-3 bg-surface-container-lowest p-4 rounded-lg shadow-sm">
+          <span class="material-symbols-outlined text-primary-container mt-1">check_circle</span>
+          <div>
+            <h4 class="font-label-bold text-label-bold text-on-surface mb-1">Thiết Kế Không Viền</h4>
+            <p class="font-body-md text-body-md text-on-surface-variant">Công nghệ seamless không đường may, không gây
+              hằn ngứa, thoải mái 24/7.</p>
+          </div>
+        </div>
+        <div class="flex items-start space-x-3 bg-surface-container-lowest p-4 rounded-lg shadow-sm">
+          <span class="material-symbols-outlined text-primary-container mt-1">check_circle</span>
+          <div>
+            <h4 class="font-label-bold text-label-bold text-on-surface mb-1">Co Giãn 4 Chiều</h4>
+            <p class="font-body-md text-body-md text-on-surface-variant">Ôm vừa vặn cơ thể, giữ form tốt sau nhiều lần
+              giặt, không bai nhão.</p>
+          </div>
+        </div>
+      </div>
+      <img
+        alt="Man stretching wearing comfortable athletic underwear to show 4-way stretch capability in studio lighting"
+        class="w-full h-auto mt-6 rounded-lg shadow-sm"
+        data-alt="Fitness model demonstrating the flexibility and stretch of premium grey boxer briefs in a well-lit studio setting"
+        src="https://placehold.co/600x600/1e1e2f/ffffff?text=Demo+Image" />
+    </section>
+    <!-- Size Chart -->
+    <section class="bg-surface-container-lowest mt-2 px-margin-mobile py-8 hidden">
+      <h3 class="font-headline-md text-headline-md text-on-surface mb-6 text-center">BẢNG CHỌN SIZE</h3>
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse">
+          <thead>
+            <tr class="bg-surface-container text-on-surface font-label-bold text-label-bold">
+              <th class="p-3 border border-surface-variant">Size</th>
+              <th class="p-3 border border-surface-variant">Cân nặng (kg)</th>
+            </tr>
+          </thead>
+          <tbody class="font-body-md text-body-md text-on-surface-variant">
+            <tr class="border-b border-surface-variant">
+              <td class="p-3 border-r border-surface-variant font-label-bold text-on-surface">L</td>
+              <td class="p-3">45 - 55 kg</td>
+            </tr>
+            <tr class="border-b border-surface-variant bg-surface-bright">
+              <td class="p-3 border-r border-surface-variant font-label-bold text-on-surface">XL</td>
+              <td class="p-3">55 - 65 kg</td>
+            </tr>
+            <tr class="border-b border-surface-variant">
+              <td class="p-3 border-r border-surface-variant font-label-bold text-on-surface">XXL</td>
+              <td class="p-3">65 - 75 kg</td>
+            </tr>
+            <tr class="border-b border-surface-variant bg-surface-bright">
+              <td class="p-3 border-r border-surface-variant font-label-bold text-on-surface">3XL</td>
+              <td class="p-3">75 - 85 kg</td>
+            </tr>
+            <tr>
+              <td class="p-3 border-r border-surface-variant font-label-bold text-on-surface">4XL</td>
+              <td class="p-3">85 - 100 kg</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+    <!-- New Product Details Section -->
+    <section
+      class="bg-white px-margin-mobile py-6 flex flex-col items-center border-t border-b border-zinc-200 shadow-sm mt-4">
+      <div class="w-full max-w-lg border border-orange-500 p-1 relative">
+        <div class="bg-black text-white text-center py-1 text-sm font-bold flex items-center justify-center">
+          <span class="material-symbols-outlined mr-2 text-xl">sell</span> KELIVIN CELIN | Official Store
+        </div>
+        <div class="flex flex-row mt-2 relative">
+          <div class="w-2/3 bg-zinc-100 flex items-center justify-center rounded-l-md overflow-hidden p-2">
+            <img alt="Product Image" class="w-full h-auto object-cover"
+              src="src/Screenshot_20260511_212010_TikTok.jpg" />
+          </div>
+          <div class="w-1/3 flex flex-col items-center justify-between pl-2 space-y-2">
+            <div
+              class="border border-black rounded-sm w-full text-center py-2 flex flex-col items-center justify-center shadow-sm">
+              <span class="material-symbols-outlined text-black text-3xl">verified</span>
+              <span class="text-[10px] font-bold mt-1 uppercase">MADE IN VIETNAM</span>
+            </div>
+            <div
+              class="border border-black rounded-sm w-full text-center py-2 flex flex-col items-center justify-center shadow-sm">
+              <span class="material-symbols-outlined text-black text-3xl">cached</span>
+              <span class="text-[10px] font-bold mt-1 uppercase text-center leading-tight">ĐỔI TRẢ<br />7 NGÀY</span>
+            </div>
+            <div
+              class="border border-black rounded-sm w-full text-center py-2 flex flex-col items-center justify-center shadow-sm">
+              <span class="material-symbols-outlined text-black text-3xl">local_shipping</span>
+              <span class="text-[10px] font-bold mt-1 uppercase text-center leading-tight">MIỄN PHÍ<br />GIAO
+                HÀNG</span>
+            </div>
+            <div
+              class="border border-black rounded-sm w-full text-center py-2 flex flex-col items-center justify-center shadow-sm">
+              <span class="material-symbols-outlined text-black text-3xl">thumb_up</span>
+              <span class="text-[10px] font-bold mt-1 uppercase text-center leading-tight">100%<br />CHẤT LƯỢNG</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="w-full max-w-lg mt-4 text-center">
+        <h2 class="text-xl font-bold text-zinc-900 leading-tight">Quần Sịp Nam Cao Cấp size 45-95kg Co Giãn Mát Lạnh
+        </h2>
+        <div class="flex items-center justify-center space-x-4 mt-3 border-y border-zinc-200 py-2">
+          <div class="flex items-center text-red-500 font-bold">
+            <span class="text-lg">4.9</span>
+            <span class="material-symbols-outlined text-sm ml-1" style="font-variation-settings: 'FILL' 1;">star</span>
+            <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+            <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+            <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+            <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star_half</span>
+          </div>
+          <div class="w-px h-4 bg-zinc-400"></div>
+          <div class="text-sm font-bold text-zinc-800">6786 đánh giá</div>
+          <div class="w-px h-4 bg-zinc-400"></div>
+          <div class="text-sm font-bold text-zinc-800">88.6K lượt bán</div>
+        </div>
+        <div class="mt-4 flex items-center justify-center text-sm font-medium text-zinc-800">
+          <span class="material-symbols-outlined text-zinc-600 mr-2">visibility</span>
+          Đang có <span class="text-red-600 font-bold mx-1 ">258</span> người đang xem sản phẩm này
+        </div>
+        <div class="flex items-center justify-center w-full mt-3">
+          <span class="material-symbols-outlined text-orange-500 text-3xl mr-2">bolt</span>
+          <div
+            class="w-full max-w-[250px] bg-zinc-200 h-6 rounded-full overflow-hidden relative border border-zinc-300">
+            <div
+              class="absolute top-0 left-0 h-full bg-gradient-to-r from-orange-400 to-orange-600 w-4/5 flex items-center justify-center">
+              <span
+                class="text-white text-[10px] font-black tracking-wider shadow-sm absolute w-full text-center z-10 drop-shadow-md">NHANH
+                TAY LÊN</span>
+            </div>
+          </div>
+        </div>
+        <div class="text-sm text-zinc-800 mt-2 font-medium">Sắp hết hàng! chỉ còn <span
+            class="text-orange-500 font-bold text-lg animate-flash-fast">55</span> Sản phẩm cuối cùng</div>
+        <div class="mt-4 flex flex-col items-center">
+          <div class="flex items-center space-x-2">
+            <span class="bg-red-500 text-white font-bold px-2 py-0.5 rounded text-xs">GIẢM 50%</span>
+            <span class="text-red-500 font-black text-2xl">Giá chỉ: 119.000đ / 3 TẶNG 1</span>
+          </div>
+          <div class="text-sm font-bold text-black mt-1">( Tiết kiệm 50% so với giá niêm yết )</div>
+          <div class="text-sm text-blue-700 font-bold mt-2 flex items-center">
+            <span class="material-symbols-outlined text-sm mr-1">local_shipping</span> Miễn ship khi mua từ 2 combo
+          </div>
+        </div>
+
+        <button
+          class="mt-6 bg-[#4A4A4A] hover:bg-[#333333] text-white font-black text-lg px-8 py-3 rounded-full shadow-[0_4px_10px_rgba(0,0,0,0.3)] w-full max-w-[280px] uppercase tracking-wide scroll-to-order animate-pulse-standard border border-zinc-600 transform-gpu">
+          ĐẶT MUA NGAY
+        </button>
+      </div>
+    </section>
+    <!-- Features Section -->
+    <section class="bg-surface-container-low px-margin-mobile py-8 mt-2">
+      <h3 class="font-headline-md text-[24px] font-bold text-zinc-900 mb-6 text-center uppercase tracking-wide">TÍNH
+        NĂNG NỔI BẬT</h3>
+      <div class="space-y-4 max-w-lg mx-auto">
+        <div class="bg-white p-5 rounded-xl shadow-md border border-zinc-100 flex items-center space-x-4">
+          <div class="bg-blue-100 p-3 rounded-full text-blue-600 flex-shrink-0">
+            <span class="material-symbols-outlined text-3xl">ac_unit</span>
+          </div>
+          <div>
+            <h4 class="font-bold text-lg text-zinc-900 mb-1">Vải thun lạnh chuẩn Nhật</h4>
+            <p class="text-sm text-zinc-600">Mềm mịn, mát mẻ, thấm hút siêu tốc.</p>
+          </div>
+        </div>
+        <div class="bg-white p-5 rounded-xl shadow-md border border-zinc-100 flex items-center space-x-4">
+          <div class="bg-cyan-100 p-3 rounded-full text-cyan-600 flex-shrink-0">
+            <span class="material-symbols-outlined text-3xl">air</span>
+          </div>
+          <div>
+            <h4 class="font-bold text-lg text-zinc-900 mb-1">Nhẹ như không</h4>
+            <p class="text-sm text-zinc-600">Cảm giác mặc như không mặc, thoải mái tối đa.</p>
+          </div>
+        </div>
+        <div class="bg-white p-5 rounded-xl shadow-md border border-zinc-100 flex items-center space-x-4">
+          <div class="bg-indigo-100 p-3 rounded-full text-indigo-600 flex-shrink-0">
+            <span class="material-symbols-outlined text-3xl">coronavirus</span>
+          </div>
+          <div>
+            <h4 class="font-bold text-lg text-zinc-900 mb-1">Lớp lót tổ ong kháng khuẩn 5A</h4>
+            <p class="text-sm text-zinc-600">Bảo vệ sức khỏe, khử mùi hiệu quả cả ngày dài.</p>
+          </div>
+        </div>
+      </div>
+      <div class="max-w-lg mx-auto mt-6">
+        <img alt="Product Features and Size Chart" class="w-full rounded-xl shadow-md object-cover"
+          src="src/Screenshot_20260511_212113_TikTok.jpg" />
+      </div>
+      <div class="max-w-lg mx-auto mt-6">
+        <img alt="Product Features and Size Chart" class="w-full rounded-xl shadow-md object-cover"
+          src="src/Screenshot_20260511_212159_TikTok.jpg" />
+      </div>
+    </section>
+    <!-- Size Chart Section -->
+    <section class="bg-white px-margin-mobile py-8 border-t border-zinc-200">
+      <div class="max-w-lg mx-auto">
+        <h3 class="font-headline-md text-[24px] font-bold text-zinc-900 mb-6 text-center uppercase tracking-wide">Bảng
+          Chọn Size</h3>
+        <div class="bg-zinc-900 rounded-xl overflow-hidden shadow-lg border border-zinc-800">
+          <table class="w-full text-center border-collapse">
+            <thead>
+              <tr class="bg-zinc-800 text-white font-bold text-sm uppercase tracking-wider">
+                <th class="py-4 px-2 w-1/2 border-r border-zinc-700">Size</th>
+                <th class="py-4 px-2 w-1/2">Cân nặng</th>
+              </tr>
+            </thead>
+            <tbody class="text-zinc-300 font-medium text-base">
+              <tr class="border-b border-zinc-700 bg-zinc-900">
+                <td class="py-4 px-2 border-r border-zinc-700 font-bold text-white text-lg">L</td>
+                <td class="py-4 px-2">45 - 50 kg</td>
+              </tr>
+              <tr class="border-b border-zinc-700 bg-zinc-800/50">
+                <td class="py-4 px-2 border-r border-zinc-700 font-bold text-white text-lg">XL</td>
+                <td class="py-4 px-2">51 - 62 kg</td>
+              </tr>
+              <tr class="border-b border-zinc-700 bg-zinc-900">
+                <td class="py-4 px-2 border-r border-zinc-700 font-bold text-white text-lg">2XL</td>
+                <td class="py-4 px-2">63 - 70 kg</td>
+              </tr>
+              <tr class="border-b border-zinc-700 bg-zinc-800/50">
+                <td class="py-4 px-2 border-r border-zinc-700 font-bold text-white text-lg">3XL</td>
+                <td class="py-4 px-2">71 - 82 kg</td>
+              </tr>
+              <tr class="bg-zinc-900">
+                <td class="py-4 px-2 border-r border-zinc-700 font-bold text-white text-lg">4XL</td>
+                <td class="py-4 px-2">82 - 95 kg</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="text-center text-xs text-zinc-500 mt-4 italic">* Nếu bạn có bụng bự hoặc thích mặc thoải mái, vui lòng
+          chọn lớn hơn 1 size.</p>
+      </div>
+    </section>
+    <!-- Flash Sale Highlights Section -->
+    <section class="bg-[#FFF8F5] px-margin-mobile py-8 border-t border-zinc-200 mt-2">
+      <div class="max-w-lg mx-auto">
+        <h2 class="text-2xl font-bold text-center text-zinc-900 mb-6 leading-snug">Quần Sịp Nam Cao Cấp size
+          45-95kg<br />Co Giãn Mát Lạnh</h2>
+        <div class="flex flex-col items-center mb-6">
+          <div class="flex items-center space-x-2 text-lg">
+            <span class="text-2xl font-bold text-zinc-800">Giá chỉ:</span>
+            <span class="text-2xl font-black text-red-600">119.000đ / 3 TẶNG 1</span>
+            <span class="bg-red-600 text-white text-xs font-bold px-2 py-1 rounded-full">GIẢM
+              50%</span>
+          </div>
+          <div class="text-sm text-zinc-500 mt-1">Miễn ship khi mua từ 2 combo</div>
+        </div>
+        <div class="mb-8">
+          <h3 class="font-bold text-lg text-zinc-900 mb-3">Sản phẩm chất lượng</h3>
+          <div class="bg-slate-200/50 border-l-[6px] border-[#9C5B32] p-4 space-y-3 rounded-r-md">
+            <p class="text-base text-zinc-800 leading-relaxed"><span class="mr-1">👉</span> Vải 100% coton lạnh, mềm
+              mại,
+              siêu mát lạnh, mỏng nhẹ mặc êm thoáng mát và dễ chịu.</p>
+            <p class="text-base text-zinc-800 leading-relaxed"><span class="mr-1">👉</span> Sịp Đúc không đường may, cạp
+              và viền quần được đúc theo công nghệ tiên tiến của Nhật Bản.</p>
+            <p class="text-base text-zinc-800 leading-relaxed"><span class="mr-1">👉</span> Co dãn 4 chiều cực đỉnh</p>
+            <p class="text-base text-zinc-800 leading-relaxed"><span class="mr-1">👉</span> Shop về đủ size: L, XL, 2XL,
+              3XL, 4XL ( từ 45-95kg)</p>
+            <p class="text-base text-zinc-800 leading-relaxed"><span class="mr-1">👉</span> Hoàn tiền 100% nếu sản phẩm
+              bạn nhận được không như quảng cáo.</p>
+            <p class="text-base text-zinc-800 leading-relaxed"><span class="mr-1">👉</span> Hỗ trợ đổi size trong vòng 7
+              ngày (kể từ khi nhận hàng).</p>
+          </div>
+        </div>
+        <div class="flex items-center justify-between mb-4">
+          <div class="text-red-800 font-bold text-2xl leading-tight">
+            Giá ưu đãi đặc biệt khi<br />mua sản phẩm
+          </div>
+          <div
+            class="bg-gradient-to-r from-red-600 to-orange-500 text-white font-black italic px-4 py-2 rounded-full shadow-md transform -rotate-2">
+            FLASH SALE
+          </div>
+        </div>
+        <div class="flex items-center justify-center space-x-2 mb-4 text-zinc-800 font-bold">
+          <span class="material-symbols-outlined text-6xl">local_shipping</span>
+          <span class="text-1xl">Miễn phí ship vận chuyển từ 2 combo</span>
+        </div>
+        <div class="w-full h-px bg-zinc-400 mb-4 max-w-[200px] mx-auto"></div>
+        <div class="text-center mb-6 flex justify-center items-end space-x-2">
+          <span class="font-bold text-zinc-800 text-lg pb-1">Giá chỉ :</span>
+          <span class="font-black text-red-600 text-5xl tracking-tighter">119k</span>
+          <span class="font-bold text-zinc-800 text-sm pb-1">Combo 3 tặng 1</span>
+        </div>
+        <button
+          class="w-full bg-gradient-to-r from-red-600 via-orange-500 to-red-600 text-white font-black text-xl py-4 rounded-full shadow-[0_4px_15px_rgba(220,38,38,0.5)] active:scale-[0.98] transition-transform uppercase tracking-widest scroll-to-order animate-pulse-standard border-2 border-orange-300 transform-gpu">
+          ĐẶT MUA NGAY
+        </button>
+      </div>
+    </section>
+    <!-- Interactive Image Gallery -->
+    <section class="bg-white px-margin-mobile py-8 border-t border-zinc-200 mt-2">
+      <div class="max-w-lg mx-auto">
+        <h3 class="font-headline-md text-[24px] font-bold text-zinc-900 mb-6 text-center uppercase tracking-wide">Hình
+          ảnh sản phẩm</h3>
+
+        <!-- Main Image View -->
+        <div class="relative w-full aspect-square bg-zinc-100 overflow-hidden rounded-xl shadow-md mb-4"
+          id="gallery-carousel">
+          <div class="relative w-full h-full" id="gallery-inner">
+            <div class="gallery-view-item absolute inset-0 transition-opacity duration-500 opacity-100 z-10">
+              <img alt="Gallery Image 1" class="w-full h-full object-cover"
+                src="src/Screenshot_20260511_212317_TikTok.jpg" />
+            </div>
+            <div class="gallery-view-item absolute inset-0 transition-opacity duration-500 opacity-0 z-0">
+              <img alt="Gallery Image 2" class="w-full h-full object-cover"
+                src="src/Screenshot_20260511_212159_TikTok.jpg" />
+            </div>
+            <div class="gallery-view-item absolute inset-0 transition-opacity duration-500 opacity-0 z-0">
+              <img alt="Gallery Image 3" class="w-full h-full object-cover"
+                src="src/Screenshot_20260511_212248_TikTok.jpg" />
+            </div>
+            <div class="gallery-view-item absolute inset-0 transition-opacity duration-500 opacity-0 z-0">
+              <img alt="Gallery Image 4" class="w-full h-full object-cover"
+                src="src/Screenshot_20260511_212010_TikTok.jpg" />
+            </div>
+            <div class="gallery-view-item absolute inset-0 transition-opacity duration-500 opacity-0 z-0">
+              <img alt="Gallery Image 5" class="w-full h-full object-cover"
+                src="src/Screenshot_20260511_212025_TikTok.jpg" />
+            </div>
+            <div class="gallery-view-item absolute inset-0 transition-opacity duration-500 opacity-0 z-0">
+              <img alt="Gallery Image 6" class="w-full h-full object-cover"
+                src="src/Screenshot_20260511_211953_TikTok.jpg" />
+            </div>
+          </div>
+          <!-- Navigation Arrows (Styled like the image) -->
+          <button
+            class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/30 text-white rounded-md p-1.5 z-20 hover:bg-black/50 transition-colors"
+            id="gallery-prev-btn">
+            <span class="material-symbols-outlined text-2xl">chevron_left</span>
+          </button>
+          <button
+            class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/30 text-white rounded-md p-1.5 z-20 hover:bg-black/50 transition-colors"
+            id="gallery-next-btn">
+            <span class="material-symbols-outlined text-2xl">chevron_right</span>
+          </button>
+        </div>
+
+        <!-- Thumbnails Area -->
+        <div class="relative flex items-center px-8">
+          <button class="absolute left-0 top-1/2 -translate-y-1/2 bg-zinc-200 rounded-md p-1 z-10" id="thumb-prev">
+            <span class="material-symbols-outlined text-lg">chevron_left</span>
+          </button>
+
+          <div class="w-full overflow-hidden" id="thumb-container">
+            <div class="flex gap-2 transition-transform duration-300" id="thumb-inner">
+              <button
+                class="gallery-thumbnail-btn flex-shrink-0 w-20 h-20 border-2 border-orange-500 rounded-md overflow-hidden opacity-100"
+                data-index="0">
+                <img loading="lazy" src="src/Screenshot_20260511_212317_TikTok.jpg"
+                  class="w-full h-full object-cover" />
+              </button>
+              <button
+                class="gallery-thumbnail-btn flex-shrink-0 w-20 h-20 border-2 border-transparent rounded-md overflow-hidden opacity-50"
+                data-index="1">
+                <img src="src/Screenshot_20260511_212159_TikTok.jpg" class="w-full h-full object-cover" />
+              </button>
+              <button
+                class="gallery-thumbnail-btn flex-shrink-0 w-20 h-20 border-2 border-transparent rounded-md overflow-hidden opacity-50"
+                data-index="2">
+                <img src="src/Screenshot_20260511_212248_TikTok.jpg" class="w-full h-full object-cover" />
+              </button>
+              <button
+                class="gallery-thumbnail-btn flex-shrink-0 w-20 h-20 border-2 border-transparent rounded-md overflow-hidden opacity-50"
+                data-index="3">
+                <img src="src/Screenshot_20260511_212010_TikTok.jpg" class="w-full h-full object-cover" />
+              </button>
+              <button
+                class="gallery-thumbnail-btn flex-shrink-0 w-20 h-20 border-2 border-transparent rounded-md overflow-hidden opacity-50"
+                data-index="4">
+                <img src="src/Screenshot_20260511_212025_TikTok.jpg" class="w-full h-full object-cover" />
+              </button>
+              <button
+                class="gallery-thumbnail-btn flex-shrink-0 w-20 h-20 border-2 border-transparent rounded-md overflow-hidden opacity-50"
+                data-index="5">
+                <img src="src/Screenshot_20260511_211953_TikTok.jpg" class="w-full h-full object-cover" />
+              </button>
+            </div>
+          </div>
+
+          <button class="absolute right-0 top-1/2 -translate-y-1/2 bg-zinc-200 rounded-md p-1 z-10" id="thumb-next">
+            <span class="material-symbols-outlined text-lg">chevron_right</span>
+          </button>
+        </div>
+      </div>
+    </section>
+    <!-- Order Form -->
+    <section class="mt-2 py-8 bg-[#FFF9E6]" id="order-form">
+      <div class="bg-[#FFF9E6] border-2 border-[#FF9933] rounded-[15px] p-6 max-w-lg mx-auto shadow-md">
+        <!-- Dynamic 50% SALE Graphic -->
+        <div
+          class="flex flex-col items-center justify-center mb-8 transform -rotate-3 transition-transform hover:rotate-0 duration-300 animate-pulse-standard">
+          <div class="relative inline-block text-center mb-[-20px] z-10">
+            <span
+              class="font-black text-red-600 text-[100px] leading-none tracking-tighter drop-shadow-[0_5px_5px_rgba(220,38,38,0.4)]"
+              style="-webkit-text-stroke: 2px white; text-shadow: 0 0 20px rgba(220,38,38,0.8), 0 0 10px rgba(255,255,255,0.5);">50</span>
+            <div class="absolute top-2 -right-8 flex flex-col items-start leading-none">
+              <span class="font-black text-red-600 text-[40px] drop-shadow-[0_2px_2px_rgba(220,38,38,0.4)]"
+                style="-webkit-text-stroke: 1px white;">%</span>
+              <span
+                class="font-black text-white text-[20px] bg-red-600 px-1 transform -skew-x-12 mt-1 shadow-md">OFF</span>
+            </div>
+          </div>
+          <div
+            class="bg-gradient-to-b from-red-500 to-red-700 w-full max-w-[280px] py-2 px-6 rounded relative shadow-[0_8px_15px_rgba(220,38,38,0.5)] border-t-2 border-red-400 z-0">
+            <!-- Ribbon Ends -->
+            <div
+              class="absolute -left-3 top-1/2 -translate-y-1/2 w-6 h-12 bg-red-800 rounded-l-lg shadow-inner z-[-1] before:content-[''] before:absolute before:top-[-4px] before:right-0 before:w-0 before:h-0 before:border-l-[8px] before:border-l-transparent before:border-b-[4px] before:border-b-red-900">
+            </div>
+            <div
+              class="absolute -right-3 top-1/2 -translate-y-1/2 w-6 h-12 bg-red-800 rounded-r-lg shadow-inner z-[-1] before:content-[''] before:absolute before:top-[-4px] before:left-0 before:w-0 before:h-0 before:border-r-[8px] before:border-r-transparent before:border-b-[4px] before:border-b-red-900">
+            </div>
+            <span
+              class="block text-center font-black text-white text-4xl tracking-widest uppercase drop-shadow-md">SALE</span>
+          </div>
+        </div>
+        <!-- Header -->
+        <div class="text-center mb-6">
+          <h3 class="font-headline-lg text-[32px] font-bold text-[#A66F42] mb-2 leading-tight">Nhận ngay ưu đãi</h3>
+          <p class="font-headline-md text-[20px] font-bold text-[#111111] underline mb-4">Thời gian ưu đãi còn :</p>
+          <!-- Timer -->
+          <div class="flex justify-center space-x-3 mb-6">
+            <div class="flex flex-col items-center">
+              <div
+                class="w-16 h-12 rounded bg-gradient-to-b from-gray-100 to-gray-500 flex items-center justify-center shadow-md border border-gray-400">
+                <span class="text-2xl font-bold text-zinc-900 drop-shadow-sm countdown-d-large">00</span>
+              </div>
+              <span class="text-xs font-bold text-zinc-800 mt-1.5">Ngày</span>
+            </div>
+            <div class="flex flex-col items-center">
+              <div
+                class="w-16 h-12 rounded bg-gradient-to-b from-gray-100 to-gray-500 flex items-center justify-center shadow-md border border-gray-400">
+                <span class="text-2xl font-bold text-zinc-900 drop-shadow-sm countdown-h-large">00</span>
+              </div>
+              <span class="text-xs font-bold text-zinc-800 mt-1.5">Giờ</span>
+            </div>
+            <div class="flex flex-col items-center">
+              <div
+                class="w-16 h-12 rounded bg-gradient-to-b from-gray-100 to-gray-500 flex items-center justify-center shadow-md border border-gray-400">
+                <span class="text-2xl font-bold text-zinc-900 drop-shadow-sm countdown-m-large">00</span>
+              </div>
+              <span class="text-xs font-bold text-zinc-800 mt-1.5">Phút</span>
+            </div>
+            <div class="flex flex-col items-center">
+              <div
+                class="w-16 h-12 rounded bg-gradient-to-b from-gray-100 to-gray-500 flex items-center justify-center shadow-md border border-gray-400">
+                <span class="text-2xl font-bold text-zinc-900 drop-shadow-sm countdown-s-large">00</span>
+              </div>
+              <span class="text-xs font-bold text-zinc-800 mt-1.5">Giây</span>
+            </div>
+          </div>
+          <!-- Scarcity -->
+          <p class="text-[#D09062] font-bold text-sm animate-flash-fast">Chỉ còn 28 combo cuối cùng, nhanh tay đặt hàng
+            ngay
+            !</p>
+        </div>
+        <!-- Form -->
+        <form id="order-form-el" class="space-y-5">
+          <!-- Form Message -->
+          <div id="form-message" class="hidden rounded-md p-3 text-sm font-bold text-center"></div>
+
+          <!-- Inputs -->
+          <div class="space-y-4">
+            <div>
+              <input name="full_name" required
+                class="w-full bg-[#FFFDF5] border border-[#FF9933] rounded-full p-3.5 font-body-md text-on-surface focus:outline-none focus:ring-1 focus:ring-[#FF9933]"
+                placeholder="Họ và tên" type="text" />
+            </div>
+            <div>
+              <input name="address" required
+                class="w-full bg-[#FFFDF5] border border-[#FF9933] rounded-full p-3.5 font-body-md text-on-surface focus:outline-none focus:ring-1 focus:ring-[#FF9933]"
+                placeholder="Địa chỉ" type="text" />
+            </div>
+            <div>
+              <input name="phone_number" required pattern="[0-9]{10,11}"
+                class="w-full bg-[#FFFDF5] border border-[#FF9933] rounded-full p-3.5 font-body-md text-on-surface focus:outline-none focus:ring-1 focus:ring-[#FF9933]"
+                placeholder="Số Điện Thoại" type="tel" />
+            </div>
+          </div>
+          <!-- Combos -->
+          <div class="border border-[#FF9933] rounded-[15px] bg-[#FFFDF5] p-5 space-y-4 shadow-sm">
+            <label class="flex items-center cursor-pointer">
+              <input class="form-radio text-[#A66F42] w-5 h-5 border-[#FF9933] focus:ring-0" name="combo_new"
+                type="radio" />
+              <span class="ml-3 font-body-md text-[#A66F42]">Combo mua 6 tặng 2: 235.000 + Miễn Ship</span>
+            </label>
+            <label class="flex items-center cursor-pointer">
+              <input class="form-radio text-[#A66F42] w-5 h-5 border-[#FF9933] focus:ring-0" name="combo_new"
+                type="radio" />
+              <span class="ml-3 font-body-md text-[#A66F42]">Combo mua 3 tặng 1: 119.000 + 30k Ship</span>
+            </label>
+            <label class="flex items-center cursor-pointer">
+              <input checked="" class="form-radio text-[#A66F42] w-5 h-5 border-[#FF9933] focus:ring-0" name="combo_new"
+                type="radio" />
+              <span class="ml-3 font-body-md text-[#A66F42]">Mua 2 cái: 89.000 + 30k Ship</span>
+            </label>
+          </div>
+          <!-- Sizes -->
+          <div class="border border-[#FF9933] rounded-[15px] bg-[#FFFDF5] p-5 space-y-3 shadow-sm">
+            <label class="flex items-center cursor-pointer">
+              <input class="form-checkbox text-[#A66F42] w-5 h-5 rounded-sm border-[#FF9933] focus:ring-0"
+                name="size_new" type="checkbox" value="L" />
+              <span class="ml-3 font-body-md text-[#A66F42]">Size L : 45 - 50Kg</span>
+            </label>
+            <label class="flex items-center cursor-pointer">
+              <input class="form-checkbox text-[#A66F42] w-5 h-5 rounded-sm border-[#FF9933] focus:ring-0"
+                name="size_new" type="checkbox" value="XL" />
+              <span class="ml-3 font-body-md text-[#A66F42]">Size XL: 51 - 62Kg</span>
+            </label>
+            <label class="flex items-center cursor-pointer">
+              <input class="form-checkbox text-[#A66F42] w-5 h-5 rounded-sm border-[#FF9933] focus:ring-0"
+                name="size_new" type="checkbox" value="2XL" />
+              <span class="ml-3 font-body-md text-[#A66F42]">Size 2XL: 63 - 70Kg</span>
+            </label>
+            <label class="flex items-center cursor-pointer">
+              <input class="form-checkbox text-[#A66F42] w-5 h-5 rounded-sm border-[#FF9933] focus:ring-0"
+                name="size_new" type="checkbox" value="3XL" />
+              <span class="ml-3 font-body-md text-[#A66F42]">Size 3XL: 71 - 82Kg</span>
+            </label>
+            <label class="flex items-center cursor-pointer">
+              <input class="form-checkbox text-[#A66F42] w-5 h-5 rounded-sm border-[#FF9933] focus:ring-0"
+                name="size_new" type="checkbox" value="4XL" />
+              <span class="ml-3 font-body-md text-[#A66F42]">Size 4XL: 83 - 95Kg</span>
+            </label>
+          </div>
+          <!-- Notes -->
+          <div>
+            <input name="textarea_input_1"
+              class="w-full bg-[#FFFDF5] border border-[#FF9933] rounded-[15px] p-4 font-body-md text-on-surface focus:outline-none focus:ring-1 focus:ring-[#FF9933]"
+              placeholder="Để lại lời nhắn cho chúng tôi" type="text" />
+          </div>
+          <!-- Submit Button -->
+          <button type="submit" id="submit-btn"
+            class="w-full bg-gradient-to-b from-[#EF8F31] to-[#E27618] text-white font-black text-xl py-4 rounded-[10px] shadow-md uppercase tracking-wide hover:opacity-90 active:scale-[0.98] transition-all flex items-center justify-center">
+            HOÀN TẤT ĐƠN HÀNG
+          </button>
+
+        </form>
+      </div>
+    </section>
+
+    <section class="w-full bg-white pt-10 pb-12 px-margin-mobile">
+      <div class="max-w-lg mx-auto text-center">
+        <h3 class="text-[32px] font-black text-zinc-900 uppercase leading-tight mb-2 tracking-tighter">LUÔN LUÔN ĐI ĐẦU
+          VỀ <br> CHẤT LƯỢNG</h3>
+        <img alt="Chính sách bán hàng" class="w-full h-auto rounded-xl shadow-md" src="src/chinh_sach.png" />
+      </div>
+    </section>
+
+    <!-- Customer Feedback Section -->
+    <section class="bg-white px-margin-mobile py-10 border-t border-zinc-200">
+      <div class="max-w-lg mx-auto">
+        <h2 class="text-[26px] font-black text-center text-zinc-900 mb-6 uppercase tracking-tight">PHẢN HỒI CỦA KHÁCH
+          HÀNG</h2>
+
+        <!-- Stats Row -->
+        <div
+          class="flex items-center justify-between border-b border-zinc-100 pb-3 mb-6 text-sm font-bold text-zinc-600">
+          <span>9783 Bình luận</span>
+          <div class="flex items-center gap-2">
+            <span>Sắp xếp theo</span>
+            <div class="bg-zinc-100 px-3 py-1.5 rounded-md flex items-center gap-1 cursor-pointer">
+              <span>Hàng đầu</span>
+              <span class="material-symbols-outlined text-sm">unfold_more</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Comment List -->
+        <div class="space-y-8">
+          <!-- Comment 1 -->
+          <div class="flex gap-3">
+            <div class="w-12 h-12 rounded-full overflow-hidden flex-shrink-0 border border-zinc-200">
+              <img src="src/Screenshot_20260511_212040_TikTok.jpg" class="w-full h-full object-cover" />
+            </div>
+            <div class="flex-1">
+              <div class="bg-zinc-100 p-4 rounded-2xl rounded-tl-none shadow-sm relative">
+                <div class="flex justify-between items-start mb-1">
+                  <span class="font-bold text-[#385898]">Nguyễn Mạnh</span>
+                  <span class="text-xs italic text-zinc-400">28 phút trước</span>
+                </div>
+                <p class="text-[15px] text-zinc-800 leading-relaxed">Sản phẩm đúng như shop mô tả. Đóng gói cẩn thận.
+                  chất vải đẹp mát rất hợp mặc mùa hè này. sẽ ủng hộ shop lâu dài</p>
+              </div>
+              <!-- Reply 1 -->
+              <div class="flex gap-3 mt-4 ml-6">
+                <div
+                  class="w-10 h-10 rounded-full overflow-hidden flex-shrink-0 border border-zinc-200 bg-[#F5F1E6] flex items-center justify-center">
+                  <img loading="lazy" src="src/Screenshot_20260511_212010_TikTok.jpg" class="w-8 h-8 object-contain" />
+                </div>
+                <div class="flex-1 bg-zinc-100 p-4 rounded-2xl rounded-tl-none shadow-sm">
+                  <div class="flex justify-between items-start mb-1">
+                    <span class="font-bold text-[#385898]">COOLAB BASICS </span>
+                    <span class="text-xs italic text-zinc-400">15 phút trước</span>
+                  </div>
+                  <p class="text-[14px] text-zinc-800 leading-relaxed"><span class="text-[#385898] font-bold">Nguyễn
+                      Mạnh</span> Shop cảm ơn anh đã ủng hộ ạ!</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Comment 2 -->
+          <div class="flex gap-3">
+            <div class="w-12 h-12 rounded-full overflow-hidden flex-shrink-0 border border-zinc-200">
+              <img src="src/Screenshot_20260511_212333_TikTok.jpg" class="w-full h-full object-cover" />
+            </div>
+            <div class="flex-1">
+              <div class="bg-zinc-100 p-4 rounded-2xl rounded-tl-none shadow-sm">
+                <div class="flex justify-between items-start mb-1">
+                  <span class="font-bold text-[#385898]">Trần Đức</span>
+                  <span class="text-xs italic text-zinc-400">45 phút trước</span>
+                </div>
+                <p class="text-[15px] text-zinc-800 leading-relaxed">Lấy e combo 3 cái nha shop e ở số 45 nguyễn thái
+                  học lãnh quận 1 tphcm sdt của e 0563052678</p>
+              </div>
+              <!-- Reply 2 -->
+              <div class="flex gap-3 mt-4 ml-6">
+                <div
+                  class="w-10 h-10 rounded-full overflow-hidden flex-shrink-0 border border-zinc-200 bg-[#F5F1E6] flex items-center justify-center">
+                  <img loading="lazy" src="src/Screenshot_20260511_212010_TikTok.jpg" class="w-8 h-8 object-contain" />
+                </div>
+                <div class="flex-1 bg-zinc-100 p-4 rounded-2xl rounded-tl-none shadow-sm">
+                  <div class="flex justify-between items-start mb-1">
+                    <span class="font-bold text-[#385898]">COOLAB BASICS </span>
+                    <span class="text-xs italic text-zinc-400">30 phút trước</span>
+                  </div>
+                  <p class="text-[14px] text-zinc-800 leading-relaxed"><span class="text-[#385898] font-bold">Trần
+                      Đức</span> Vâng e xin phép inb để chốt đơn của mình nhé</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Comment 3 -->
+          <div class="flex gap-3">
+            <div class="w-12 h-12 rounded-full overflow-hidden flex-shrink-0 border border-zinc-200">
+              <img src="src/Screenshot_20260511_212402_TikTok.jpg" class="w-full h-full object-cover" />
+            </div>
+            <div class="flex-1">
+              <div class="bg-zinc-100 p-4 rounded-2xl rounded-tl-none shadow-sm">
+                <div class="flex justify-between items-start mb-1">
+                  <span class="font-bold text-[#385898]">Mạnh Cường</span>
+                  <span class="text-xs italic text-zinc-400">56 phút trước</span>
+                </div>
+                <p class="text-[15px] text-zinc-800 leading-relaxed">Sản phẩm chất lượng, chất khá mát đánh giá 5 sao
+                  nhé a e cứ mạnh dạn đặt hàng nhé</p>
+              </div>
+              <!-- Reply 3 -->
+              <div class="flex gap-3 mt-4 ml-6">
+                <div
+                  class="w-10 h-10 rounded-full overflow-hidden flex-shrink-0 border border-zinc-200 bg-[#F5F1E6] flex items-center justify-center">
+                  <img loading="lazy" src="src/Screenshot_20260511_212010_TikTok.jpg" class="w-8 h-8 object-contain" />
+                </div>
+                <div class="flex-1 bg-zinc-100 p-4 rounded-2xl rounded-tl-none shadow-sm">
+                  <div class="flex justify-between items-start mb-1">
+                    <span class="font-bold text-[#385898]">COOLAB BASICS</span>
+                    <span class="text-xs italic text-zinc-400">31 phút trước</span>
+                  </div>
+                  <p class="text-[14px] text-zinc-800 leading-relaxed"><span class="text-[#385898] font-bold">Mạnh
+                      Cường</span> Shop cảm ơn anh nhé !</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Comment 4 -->
+          <div class="flex gap-3">
+            <div class="w-12 h-12 rounded-full overflow-hidden flex-shrink-0 border border-zinc-200">
+              <img src="src/Screenshot_20260511_212402_TikTok.jpg" class="w-full h-full object-cover" />
+            </div>
+            <div class="flex-1">
+              <div class="bg-zinc-100 p-4 rounded-2xl rounded-tl-none shadow-sm">
+                <div class="flex justify-between items-start mb-1">
+                  <span class="font-bold text-[#385898]">Vũ Cao</span>
+                  <span class="text-xs italic text-zinc-400">1 giờ trước</span>
+                </div>
+                <p class="text-[15px] text-zinc-800 leading-relaxed">Quần siêu mát. Giao hàng nhanh mặc dù vào ngày nghỉ
+                  lễ, đánh giá chất lượng 5 sao luôn nhé</p>
+              </div>
+              <!-- Reply 4 -->
+              <div class="flex gap-3 mt-4 ml-6">
+                <div
+                  class="w-10 h-10 rounded-full overflow-hidden flex-shrink-0 border border-zinc-200 bg-[#F5F1E6] flex items-center justify-center">
+                  <img loading="lazy" src="src/Screenshot_20260511_212010_TikTok.jpg" class="w-8 h-8 object-contain" />
+                </div>
+                <div class="flex-1 bg-zinc-100 p-4 rounded-2xl rounded-tl-none shadow-sm">
+                  <div class="flex justify-between items-start mb-1">
+                    <span class="font-bold text-[#385898]">COOLAB BASICS</span>
+                    <span class="text-xs italic text-zinc-400">50 phút trước</span>
+                  </div>
+                  <p class="text-[14px] text-zinc-800 leading-relaxed"><span class="text-[#385898] font-bold">Mạnh
+                      Cường</span> Shop cảm ơn anh nhé !</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>Ai đó đang nhập bình luận...</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer Section -->
+  <footer class="bg-zinc-900 text-white pt-12 pb-24 px-margin-mobile relative overflow-hidden">
+    <!-- Subtle Background Pattern (Simulated) -->
+    <div class="absolute inset-0 opacity-10 pointer-events-none">
+      <div class="w-full h-full bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
+    </div>
+
+    <div class="max-w-lg mx-auto relative z-10">
+      <!-- Logo & Title -->
+      <div class="flex items-center gap-4 mb-10">
+        <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center p-2 shadow-lg">
+          <img loading="lazy" src="src/Screenshot_20260511_212010_TikTok.jpg" class="w-full h-full object-contain"
+            alt="Logo">
+        </div>
+        <div class="flex-1">
+          <h2 class="font-bold text-lg leading-tight uppercase tracking-wider">COOLAB BASICS - KÊNH MUA SẮM THỜI TRANG
+            TRỰC TUYẾN TẠI VIỆT NAM</h2>
+        </div>
+      </div>
+
+      <!-- About Us -->
+      <div class="mb-10">
+        <h3 class="text-xl font-black uppercase mb-6 tracking-widest border-l-4 border-orange-500 pl-3">VỀ CHÚNG TÔI
+        </h3>
+        <ul class="space-y-5 text-zinc-300">
+          <li class="flex items-start gap-4">
+            <span class="material-symbols-outlined text-orange-400">home</span>
+            <span class="text-[15px]">Địa chỉ: Tầng 2 - Aeon Mall Hà Đông - Dương Nội, Hà Đông, Hà Nội</span>
+          </li>
+          <li class="flex items-center gap-4">
+            <span class="material-symbols-outlined text-orange-400">call</span>
+            <span class="text-[15px] font-bold">Hotline: 0877.045.222</span>
+          </li>
+          <li class="flex items-center gap-4">
+            <span class="material-symbols-outlined text-orange-400">mail</span>
+            <span class="text-[15px]">Email: coolabbasics247@gmail.com</span>
+          </li>
+          <li class="flex items-center gap-4">
+            <span class="material-symbols-outlined text-orange-400">language</span>
+            <span class="text-[15px]">Website: menstore.com</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Trust Badges -->
+      <div class="bg-white rounded-lg p-4 inline-flex items-center gap-4 mb-12 shadow-inner">
+        <img loading="lazy" src="src/visa.png" class="h-10" alt="Visa">
+      </div>
+
+      <!-- Copyright Row -->
+      <div class="flex items-center gap-4 text-zinc-500 text-sm">
+        <div class="flex-1 h-px bg-zinc-800"></div>
+        <span class="uppercase tracking-widest whitespace-nowrap">Copyright @ 2026</span>
+        <div class="flex-1 h-px bg-zinc-800"></div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Sticky Bottom CTA (Mobile) -->
+  <div id="sticky-cta"
+    class="fixed bottom-0 left-0 w-full bg-white border-t border-zinc-200 p-3 shadow-[0_-4px_10px_rgba(0,0,0,0.1)] z-40 md:hidden flex justify-between items-center">
+    <div class="flex flex-col">
+      <span class="text-xs font-bold text-zinc-500 line-through">238.000đ</span>
+      <span class="text-lg font-black text-red-600 leading-none">119k <span class="text-xs font-bold text-zinc-800">/ 4
+          CÁI</span></span>
+    </div>
+    <button
+      class="scroll-to-order bg-gradient-to-r from-orange-500 to-red-600 text-white font-black px-6 py-2.5 rounded-full shadow-md animate-pulse-standard">
+      ĐẶT HÀNG
+    </button>
+  </div>
+
+  <!-- Lightbox for Image Zoom -->
+  <div id="lightbox" class="fixed inset-0 bg-black/90 z-50 hidden flex items-center justify-center p-4 cursor-zoom-out">
+    <button id="close-lightbox" class="absolute top-4 right-4 text-white hover:text-orange-500 transition-colors">
+      <span class="material-symbols-outlined text-4xl">close</span>
+    </button>
+    <img id="lightbox-img" src="" alt="Enlarged Image"
+      class="max-w-full max-h-full object-contain rounded-sm shadow-2xl scale-95 transition-transform duration-300">
+  </div>
+
+  <!-- JavaScript Logic -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // 0. Fire ViewContent on page load
+      if (typeof fbq === 'function') {
+        fbq('track', 'ViewContent', { content_name: "COOLAB BASICS", content_category: "Apparel" });
+      }
+
+      // 0.1 Time on Site Tracking
+      const timeMilestones = [15, 30, 60, 90, 120, 180]; // seconds
+      timeMilestones.forEach(seconds => {
+        setTimeout(() => {
+          if (typeof fbq === 'function') {
+            fbq('trackCustom', 'TimeOnPage', { time_spent: `${seconds}s` });
+          }
+        }, seconds * 1000);
+      });
+
+      // 0.2 Scroll Depth Tracking
+      const scrollMilestones = [25, 50, 75, 90];
+      const scrollTracked = new Set();
+
+      window.addEventListener('scroll', () => {
+        if (scrollTracked.size === scrollMilestones.length) return; // Đã track hết
+
+        const scrollPosition = window.scrollY + window.innerHeight;
+        const totalHeight = document.body.scrollHeight;
+        const scrollPercentage = (scrollPosition / totalHeight) * 100;
+
+        scrollMilestones.forEach(milestone => {
+          if (scrollPercentage >= milestone && !scrollTracked.has(milestone)) {
+            scrollTracked.add(milestone);
+            if (typeof fbq === 'function') {
+              fbq('trackCustom', 'ScrollDepth', { depth: `${milestone}%` });
+            }
+          }
+        });
+      }, { passive: true });
+
+      // 1. Smooth Scroll to Order Form
+      document.querySelectorAll('.scroll-to-order').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          // Fire AddToCart event when clicking CTA
+          if (typeof fbq === 'function') fbq('track', 'AddToCart');
+
+          const form = document.getElementById('order-form');
+          if (form) {
+            form.scrollIntoView({ behavior: 'smooth' });
+          }
+        });
+      });
+
+      // 2. Countdown Timer (Tự động reset qua ngày mới)
+      function updateCountdown() {
+        const now = new Date();
+        const endOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59);
+        const diff = endOfDay - now;
+
+        if (diff <= 0) return;
+
+        const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const m = Math.floor((diff / 1000 / 60) % 60);
+        const s = Math.floor((diff / 1000) % 60);
+
+        const format = num => num.toString().padStart(2, '0');
+
+        // Header countdown
+        const hEls = document.querySelectorAll('.countdown-h');
+        const mEls = document.querySelectorAll('.countdown-m');
+        const sEls = document.querySelectorAll('.countdown-s');
+
+        hEls.forEach(el => el.textContent = format(h));
+        mEls.forEach(el => el.textContent = format(m));
+        sEls.forEach(el => el.textContent = format(s));
+
+        // Form countdown
+        const hlEls = document.querySelectorAll('.countdown-h-large');
+        const mlEls = document.querySelectorAll('.countdown-m-large');
+        const slEls = document.querySelectorAll('.countdown-s-large');
+
+        hlEls.forEach(el => el.textContent = format(h));
+        mlEls.forEach(el => el.textContent = format(m));
+        slEls.forEach(el => el.textContent = format(s));
+      }
+      setInterval(updateCountdown, 1000);
+      updateCountdown();
+
+      // 3. Hero Carousel (Auto-play & Swipe)
+      const slides = document.querySelectorAll('.slide');
+      const heroThumbs = document.querySelectorAll('.hero-thumbnail-btn');
+      let currentSlide = 0;
+      let slideInterval;
+
+      function goToSlide(n) {
+        if (slides.length === 0) return;
+        slides[currentSlide].classList.replace('active', 'hidden');
+        if (heroThumbs.length > 0) {
+          heroThumbs[currentSlide].classList.replace('border-orange-500', 'border-transparent');
+          heroThumbs[currentSlide].classList.replace('opacity-100', 'opacity-50');
         }
 
-        const serviceAccountAuth = new JWT({
-            email: clientEmail,
-            // Xử lý cả trường hợp key có dấu xuống dòng thật hoặc ký tự \n
-            key: privateKey.replace(/\\n/g, '\n'),
-            scopes: ['https://www.googleapis.com/auth/spreadsheets'],
+        currentSlide = (n + slides.length) % slides.length;
+
+        slides[currentSlide].classList.replace('hidden', 'active');
+        if (heroThumbs.length > 0) {
+          heroThumbs[currentSlide].classList.replace('border-transparent', 'border-orange-500');
+          heroThumbs[currentSlide].classList.replace('opacity-50', 'opacity-100');
+        }
+      }
+
+      heroThumbs.forEach((thumb, i) => {
+        thumb.addEventListener('click', () => { goToSlide(i); resetInterval(); });
+      });
+
+      function nextSlide() { goToSlide(currentSlide + 1); }
+      function prevSlide() { goToSlide(currentSlide - 1); }
+
+      document.getElementById('next-btn')?.addEventListener('click', () => { nextSlide(); resetInterval(); });
+      document.getElementById('prev-btn')?.addEventListener('click', () => { prevSlide(); resetInterval(); });
+
+      function resetInterval() {
+        clearInterval(slideInterval);
+        slideInterval = setInterval(nextSlide, 3000);
+      }
+      resetInterval();
+
+      // 3.5 Product Gallery Logic
+      const gallSlides = document.querySelectorAll('.gallery-view-item');
+      const gallThumbs = document.querySelectorAll('.gallery-thumbnail-btn');
+      const thumbInner = document.getElementById('thumb-inner');
+      let currentGallSlide = 0;
+
+      function goToGallSlide(n) {
+        if (gallSlides.length === 0) return;
+        gallSlides[currentGallSlide].classList.replace('opacity-100', 'opacity-0');
+        gallSlides[currentGallSlide].classList.replace('z-10', 'z-0');
+        gallThumbs[currentGallSlide].classList.replace('border-orange-500', 'border-transparent');
+        gallThumbs[currentGallSlide].classList.replace('opacity-100', 'opacity-50');
+
+        currentGallSlide = (n + gallSlides.length) % gallSlides.length;
+
+        gallSlides[currentGallSlide].classList.replace('opacity-0', 'opacity-100');
+        gallSlides[currentGallSlide].classList.replace('z-0', 'z-10');
+        gallThumbs[currentGallSlide].classList.replace('border-transparent', 'border-orange-500');
+        gallThumbs[currentGallSlide].classList.replace('opacity-50', 'opacity-100');
+
+        // Center thumbnail if it's not visible
+        const thumbWidth = gallThumbs[0].offsetWidth + 8; // width + gap
+        if (thumbInner) {
+          thumbInner.style.transform = `translateX(-${Math.max(0, Math.min((gallSlides.length - 4) * thumbWidth, (currentGallSlide - 1) * thumbWidth))}px)`;
+        }
+      }
+
+      document.getElementById('gallery-next-btn')?.addEventListener('click', () => goToGallSlide(currentGallSlide + 1));
+      document.getElementById('gallery-prev-btn')?.addEventListener('click', () => goToGallSlide(currentGallSlide - 1));
+
+      gallThumbs.forEach((thumb, i) => {
+        thumb.addEventListener('click', () => goToGallSlide(i));
+      });
+
+      // Thumbnail navigation buttons
+      let thumbScrollPos = 0;
+      document.getElementById('thumb-next')?.addEventListener('click', () => {
+        const thumbWidth = gallThumbs[0].offsetWidth + 8;
+        thumbScrollPos = Math.min((gallSlides.length - 3) * thumbWidth, thumbScrollPos + thumbWidth);
+        if (thumbInner) thumbInner.style.transform = `translateX(-${thumbScrollPos}px)`;
+      });
+      document.getElementById('thumb-prev')?.addEventListener('click', () => {
+        const thumbWidth = gallThumbs[0].offsetWidth + 8;
+        thumbScrollPos = Math.max(0, thumbScrollPos - thumbWidth);
+        if (thumbInner) thumbInner.style.transform = `translateX(-${thumbScrollPos}px)`;
+      });
+
+      // Swipe logic for gallery
+      if (carousel) {
+        carousel.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
+        carousel.addEventListener('touchend', e => {
+          touchEndX = e.changedTouches[0].screenX;
+          if (touchStartX - touchEndX > 50) goToGallSlide(currentGallSlide + 1);
+          if (touchEndX - touchStartX > 50) goToGallSlide(currentGallSlide - 1);
+        }, { passive: true });
+      }
+
+      // 4. Sticky CTA Visibility Logic
+      const stickyCta = document.getElementById('sticky-cta');
+      const orderForm = document.getElementById('order-form');
+
+      window.addEventListener('scroll', () => {
+        if (!stickyCta || !orderForm) return;
+        const formRect = orderForm.getBoundingClientRect();
+        // Hide sticky CTA when form is visible in viewport
+        if (formRect.top < window.innerHeight && formRect.bottom > 0) {
+          stickyCta.classList.add('cta-hidden');
+        } else {
+          stickyCta.classList.remove('cta-hidden');
+        }
+      });
+      // 4.5. InitiateCheckout Event
+      let checkoutInitiated = false;
+      if (orderForm) {
+        orderForm.addEventListener('click', () => {
+          if (!checkoutInitiated && typeof fbq === 'function') {
+            fbq('track', 'InitiateCheckout');
+            checkoutInitiated = true;
+          }
+        }, { once: true });
+      }
+
+      // 5. Form Submission Logic
+      const formEl = document.getElementById('order-form-el');
+      const submitBtn = document.getElementById('submit-btn');
+      const msgBox = document.getElementById('form-message');
+
+      if (formEl) {
+        console.log("Submit listener attached to #order-form-el");
+        formEl.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          console.log("Form submission started...");
+
+          // Reset message box
+          msgBox.classList.add('hidden');
+          msgBox.textContent = "";
+
+          // Basic validation
+          const phone = formEl.elements['phone_number'].value;
+          if (!/^[0-9]{10,11}$/.test(phone)) {
+            msgBox.textContent = "Vui lòng nhập số điện thoại hợp lệ (10-11 số)!";
+            msgBox.className = "block rounded-md p-3 text-sm font-bold text-center bg-red-100 text-red-700";
+            msgBox.classList.remove('hidden');
+            return;
+          }
+
+          // Lấy radio đang check (combo)
+          let comboValue = '';
+          const comboRadios = formEl.querySelectorAll('input[name="combo_new"]');
+          comboRadios.forEach((r) => {
+            if (r.checked) {
+              comboValue = r.nextElementSibling.textContent.trim();
+            }
+          });
+
+          // Get selected size
+          const sizeCheckboxes = formEl.querySelectorAll('input[name="size_new"]:checked');
+          const sizes = Array.from(sizeCheckboxes).map(cb => cb.value).join(', ');
+
+          if (sizes.length === 0) {
+            msgBox.textContent = "Vui lòng chọn ít nhất 1 Size!";
+            msgBox.className = "block rounded-md p-3 text-sm font-bold text-center bg-red-100 text-red-700";
+            msgBox.classList.remove('hidden');
+            return;
+          }
+
+          const formData = {
+            full_name: formEl.elements['full_name'].value,
+            address: formEl.elements['address'].value,
+            phone_number: phone,
+            textarea_input_1: formEl.elements['textarea_input_1'] ? formEl.elements['textarea_input_1'].value : '',
+            radio_input_1: comboValue,
+            sizes: sizes
+          };
+
+          console.log("Sending data:", formData);
+
+          submitBtn.disabled = true;
+          submitBtn.innerHTML = '<span class="material-symbols-outlined animate-spin mr-2" style="animation: spin 1s linear infinite;">progress_activity</span> ĐANG XỬ LÝ...';
+
+          try {
+            const res = await fetch('/submit-order', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(formData)
+            });
+
+            console.log("Server response status:", res.status);
+
+            if (res.ok) {
+              if (typeof fbq === 'function') {
+                let value = 119000;
+                if (comboValue.includes('235.000')) value = 235000;
+                else if (comboValue.includes('89.000')) value = 89000;
+                fbq('track', 'Purchase', { value: value, currency: 'VND' });
+              }
+              formEl.reset();
+              msgBox.textContent = "🎉 Đặt hàng thành công! Chúng tôi sẽ gọi lại cho bạn sớm nhất.";
+              msgBox.className = "block rounded-md p-3 text-sm font-bold text-center bg-green-100 text-green-700";
+              msgBox.classList.remove('hidden');
+            } else {
+              throw new Error('Server error: ' + res.status);
+            }
+          } catch (err) {
+            console.error("Submission error:", err);
+            msgBox.textContent = "❌ Có lỗi xảy ra, vui lòng thử lại sau!";
+            msgBox.className = "block rounded-md p-3 text-sm font-bold text-center bg-red-100 text-red-700";
+            msgBox.classList.remove('hidden');
+          } finally {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = 'HOÀN TẤT ĐƠN HÀNG';
+          }
         });
+      }
+      // 6. Lightbox Zoom Logic
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightbox-img');
+      const closeLightbox = document.getElementById('close-lightbox');
 
-        const doc = new GoogleSpreadsheet(SHEET_ID, serviceAccountAuth);
-        await doc.loadInfo();
-        const sheet = doc.sheetsByIndex[0];
+      function openLightbox(src) {
+        if (!lightbox || !lightboxImg) return;
+        lightboxImg.src = src;
+        lightbox.classList.remove('hidden');
+        setTimeout(() => {
+          lightboxImg.classList.replace('scale-95', 'scale-100');
+        }, 10);
+        document.body.style.overflow = 'hidden';
+      }
 
-        await sheet.addRow({
-            'Thời gian': new Date().toLocaleString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh' }),
-            'Họ tên': full_name || '',
-            'SĐT': phone_number || '',
-            'Địa chỉ': address || '',
-            'Ghi chú': textarea_input_1 || '',
-            'Combo': radio_input_1 || '',
-            'Size': sizes || ''
+      function hideLightbox() {
+        if (!lightbox || !lightboxImg) return;
+        lightboxImg.classList.replace('scale-100', 'scale-95');
+        setTimeout(() => {
+          lightbox.classList.add('hidden');
+          document.body.style.overflow = '';
+        }, 200);
+      }
+
+      // Apply zoom to all product-related images
+      document.querySelectorAll('.gallery-view-item img, .slide img, .px-margin-mobile img').forEach(img => {
+        img.classList.add('cursor-zoom-in');
+        img.addEventListener('click', () => {
+          // Chỉ zoom nếu không phải là thumbnail
+          if (!img.closest('.gallery-thumbnail-btn') && !img.closest('.hero-thumbnail-btn')) {
+            openLightbox(img.src);
+          }
         });
+      });
 
-        console.log(`✅ Ghi thành công đơn hàng: ${full_name}`);
-        res.status(200).json({ message: 'Success' });
+      lightbox?.addEventListener('click', (e) => {
+        if (e.target === lightbox || e.target === lightboxImg) hideLightbox();
+      });
 
-    } catch (error) {
-        console.error('❌ Lỗi tại Server:', error.message);
-        res.status(500).json({ error: error.message });
-    }
-});
+      closeLightbox?.addEventListener('click', (e) => {
+        e.stopPropagation();
+        hideLightbox();
+      });
+    });
+  </script>
+</body>
 
-const PORT = process.env.PORT || 10000;
-app.listen(PORT, () => {
-    console.log(`🚀 Server đang chạy an toàn với Biến môi trường tại Port ${PORT}`);
-});
+</html>
