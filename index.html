@@ -202,12 +202,14 @@
     }
 
     @keyframes pulse-standard {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.8; }
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
     }
 
     .animate-pulse-standard {
       animation: pulse-standard 1.5s ease-in-out infinite;
+      will-change: transform;
+      display: inline-block;
     }
 
     /* Carousel */
@@ -310,7 +312,7 @@
       </div>
     </div>
     <button id="header-cta"
-      class="scroll-to-order bg-gradient-to-r from-blue-500 to-blue-700 text-white font-black text-xs px-3 py-2.5 rounded-full flex items-center shadow-lg animate-pulse-standard flex-shrink-0">
+      class="scroll-to-order bg-gradient-to-r from-blue-500 to-blue-700 text-white font-black text-xs px-3 py-2.5 rounded-full flex items-center shadow-lg animate-pulse-standard flex-shrink-0 transform-gpu">
       <span class="material-symbols-outlined text-sm mr-1 leading-none">shopping_cart</span>
       MUA NGAY
     </button>
@@ -403,7 +405,7 @@
         </p>
         <h1 class="text-[#F3D2B3] font-black text-5xl tracking-tighter mb-4">COOLAB BASICS</h1>
         <button
-          class="bg-gradient-to-r from-cyan-600 via-cyan-400 to-cyan-200 text-white font-black text-xl px-8 py-2 rounded-sm shadow-[0_0_10px_rgba(0,255,255,0.5)] border border-cyan-300 scroll-to-order animate-pulse-standard">
+          class="bg-gradient-to-r from-cyan-600 via-cyan-400 to-cyan-200 text-white font-black text-xl px-8 py-2 rounded-sm shadow-[0_0_10px_rgba(0,255,255,0.5)] border border-cyan-300 scroll-to-order animate-pulse-standard transform-gpu">
           MUA 3 TẶNG 1
         </button>
       </div>
@@ -483,7 +485,7 @@
           </div>
         </div>
         <button
-          class="w-full bg-primary-container text-on-primary font-headline-md text-headline-md py-4 rounded shadow-md active:scale-[0.98] transition-transform uppercase tracking-wide scroll-to-order animate-pulse-standard">
+          class="w-full bg-primary-container text-on-primary font-headline-md text-headline-md py-4 rounded shadow-md active:scale-[0.98] transition-transform uppercase tracking-wide scroll-to-order animate-pulse-standard transform-gpu">
           ĐẶT HÀNG NGAY
         </button>
       </div>
@@ -643,7 +645,7 @@
         </div>
 
         <button
-          class="mt-6 bg-[#4A4A4A] hover:bg-[#333333] text-white font-black text-lg px-8 py-3 rounded-full shadow-[0_4px_10px_rgba(0,0,0,0.3)] w-full max-w-[280px] uppercase tracking-wide scroll-to-order animate-pulse-standard border border-zinc-600">
+          class="mt-6 bg-[#4A4A4A] hover:bg-[#333333] text-white font-black text-lg px-8 py-3 rounded-full shadow-[0_4px_10px_rgba(0,0,0,0.3)] w-full max-w-[280px] uppercase tracking-wide scroll-to-order animate-pulse-standard border border-zinc-600 transform-gpu">
           ĐẶT MUA NGAY
         </button>
       </div>
@@ -782,7 +784,7 @@
           <span class="font-bold text-zinc-800 text-sm pb-1">Combo 3 tặng 1</span>
         </div>
         <button
-          class="w-full bg-gradient-to-r from-red-600 via-orange-500 to-red-600 text-white font-black text-xl py-4 rounded-full shadow-[0_4px_15px_rgba(220,38,38,0.5)] active:scale-[0.98] transition-transform uppercase tracking-widest scroll-to-order animate-pulse-standard border-2 border-orange-300">
+          class="w-full bg-gradient-to-r from-red-600 via-orange-500 to-red-600 text-white font-black text-xl py-4 rounded-full shadow-[0_4px_15px_rgba(220,38,38,0.5)] active:scale-[0.98] transition-transform uppercase tracking-widest scroll-to-order animate-pulse-standard border-2 border-orange-300 transform-gpu">
           ĐẶT MUA NGAY
         </button>
       </div>
