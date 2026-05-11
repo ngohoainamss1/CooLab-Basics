@@ -5,9 +5,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
   <meta name="theme-color" content="#000000" />
-  <title>Quần Sịp Nam Cao Cấp COOLAB BASIC - Flash Sale 50% OFF</title>
+  <title>Quần Sịp Nam Cao Cấp COOLAB BASICS - Flash Sale 50% OFF</title>
   <meta name="description"
-    content="Quần Sịp Nam Cao Cấp COOLAB BASIC - Vải Coton Lạnh, Không Đường May, Co Giãn 4 Chiều. Size 45-95kg. Flash Sale Mua 3 Tặng 1 chỉ 119.000đ!" />
+    content="Quần Sịp Nam Cao Cấp COOLAB BASICS - Vải Coton Lạnh, Không Đường May, Co Giãn 4 Chiều. Size 45-95kg. Flash Sale Mua 3 Tặng 1 chỉ 119.000đ!" />
 
   <!-- Facebook Pixel -->
   <script>
@@ -166,7 +166,23 @@
     }
 
     .animate-flash-fast {
-      animation: flash-fast 0.4s ease-in-out infinite;
+      animation: flash-fast 0.8s ease-in-out infinite;
+    }
+
+    @keyframes flash-standard {
+
+      0%,
+      100% {
+        opacity: 1
+      }
+
+      50% {
+        opacity: 0.2
+      }
+    }
+
+    .animate-flash-standard {
+      animation: flash-standard 1s ease-in-out infinite;
     }
 
     @keyframes blink {
@@ -193,7 +209,7 @@
       }
 
       50% {
-        transform: scale(1.05)
+        transform: scale(1.2)
       }
     }
 
@@ -282,7 +298,7 @@
     <div
       class="flex flex-col items-center justify-center border-2 border-zinc-600 rounded-full w-11 h-11 flex-shrink-0">
       <span
-        class="text-[7px] font-black text-zinc-800 uppercase leading-tight tracking-tight text-center">COOLAB<br>BASIC</span>
+        class="text-[7px] font-black text-zinc-800 uppercase leading-tight tracking-tight text-center">COOLAB<br>BASICS</span>
       <span class="material-symbols-outlined text-zinc-700 text-base leading-none"
         style="font-variation-settings:'FILL' 0;">checkroom</span>
     </div>
@@ -300,7 +316,7 @@
       </div>
     </div>
     <button id="header-cta"
-      class="scroll-to-order bg-gradient-to-r from-blue-500 to-blue-700 text-white font-black text-xs px-3 py-2.5 rounded-full flex items-center shadow-lg animate-pulse-fast flex-shrink-0">
+      class="scroll-to-order bg-gradient-to-r from-blue-500 to-blue-700 text-white font-black text-xs px-3 py-2.5 rounded-full flex items-center shadow-lg animate-pulse-standard flex-shrink-0">
       <span class="material-symbols-outlined text-sm mr-1 leading-none">shopping_cart</span>
       MUA NGAY
     </button>
@@ -311,65 +327,89 @@
       <div class="relative w-full h-[380px] bg-zinc-900 overflow-hidden" id="hero-carousel">
         <!-- Slide 1 -->
         <div class="slide active" id="hero-slide-0">
-          <div
-            style="background:linear-gradient(135deg,#1a1a2e,#16213e,#0f3460);display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;">
+          <img src="src/Screenshot_20260511_211953_TikTok.jpg" class="w-full h-full object-cover" alt="Hero 1">
+          <div class="absolute inset-0 bg-black/20 flex flex-col items-center justify-center">
             <span class="material-symbols-outlined text-7xl text-orange-400 mb-3"
               style="font-variation-settings:'FILL' 1;">checkroom</span>
-            <span class="font-headline-lg text-white font-black text-3xl tracking-wide">MEN'S BASIC</span>
+            <span class="font-headline-lg text-white font-black text-3xl tracking-wide">COOLAB BASICS</span>
             <span class="text-zinc-300 text-sm mt-2">Quần Sịp Nam Cao Cấp</span>
-            <span class="mt-4 bg-orange-500 text-white text-sm font-black px-4 py-1.5 rounded-full">[ Thêm ảnh thật vào
-              đây ]</span>
           </div>
         </div>
         <!-- Slide 2 -->
         <div class="slide hidden" id="hero-slide-1">
-          <div
-            style="background:linear-gradient(135deg,#0d2137,#1a3a4a,#0d4b63);display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;">
+          <img src="src/Screenshot_20260511_212010_TikTok.jpg" class="w-full h-full object-cover" alt="Hero 2">
+          <div class="absolute inset-0 bg-black/20 flex flex-col items-center justify-center">
             <span class="material-symbols-outlined text-7xl text-cyan-400 mb-3"
               style="font-variation-settings:'FILL' 1;">ac_unit</span>
             <span class="font-headline-lg text-white font-black text-2xl">VẢI COTON LẠNH</span>
             <span class="text-zinc-300 text-sm mt-2">Mềm Mịn · Mát Lạnh · Kháng Khuẩn</span>
-            <span class="mt-4 bg-cyan-600 text-white text-sm font-black px-4 py-1.5 rounded-full">[ Thêm ảnh thật vào
-              đây ]</span>
           </div>
         </div>
         <!-- Slide 3 -->
         <div class="slide hidden" id="hero-slide-2">
-          <div
-            style="background:linear-gradient(135deg,#2d1b00,#4a2f00,#6b4200);display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;">
+          <img src="src/Screenshot_20260511_212025_TikTok.jpg" class="w-full h-full object-cover" alt="Hero 3">
+          <div class="absolute inset-0 bg-black/20 flex flex-col items-center justify-center">
             <span class="material-symbols-outlined text-7xl text-amber-400 mb-3"
               style="font-variation-settings:'FILL' 1;">local_offer</span>
             <span class="font-headline-lg text-white font-black text-3xl">SALE 50%</span>
             <span class="text-zinc-300 text-sm mt-2">Mua 3 Tặng 1 · Chỉ 119.000đ</span>
-            <span class="mt-4 bg-amber-500 text-white text-sm font-black px-4 py-1.5 rounded-full">[ Thêm ảnh thật vào
-              đây ]</span>
+          </div>
+        </div>
+        <!-- Slide 4 -->
+        <div class="slide hidden" id="hero-slide-3">
+          <img src="src/Screenshot_20260511_212317_TikTok.jpg" class="w-full h-full object-cover" alt="Hero 4">
+          <div class="absolute inset-0 bg-black/20 flex flex-col items-center justify-center">
+            <span class="material-symbols-outlined text-7xl text-green-400 mb-3"
+              style="font-variation-settings:'FILL' 1;">verified_user</span>
+            <span class="font-headline-lg text-white font-black text-2xl uppercase tracking-tighter">ĐẢM BẢO CHẤT
+              LƯỢNG</span>
+            <span class="text-zinc-300 text-sm mt-2 font-bold italic">Hoàn tiền 100% nếu không hài lòng</span>
           </div>
         </div>
         <!-- Arrows -->
         <button id="prev-btn"
-          class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 text-white rounded-full p-2 z-20 shadow-md">
-          <span class="material-symbols-outlined">chevron_left</span>
+          class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/30 text-white rounded-md p-1.5 z-20 hover:bg-black/50 transition-colors shadow-md">
+          <span class="material-symbols-outlined text-2xl">chevron_left</span>
         </button>
         <button id="next-btn"
-          class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 text-white rounded-full p-2 z-20 shadow-md">
-          <span class="material-symbols-outlined">chevron_right</span>
+          class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/30 text-white rounded-md p-1.5 z-20 hover:bg-black/50 transition-colors shadow-md">
+          <span class="material-symbols-outlined text-2xl">chevron_right</span>
         </button>
-        <!-- Dots -->
-        <div id="hero-dots" class="absolute bottom-3 left-0 right-0 flex justify-center gap-2 z-20">
-          <span class="w-2 h-2 rounded-full bg-white transition-all dot"></span>
-          <span class="w-2 h-2 rounded-full bg-white/40 transition-all dot"></span>
-          <span class="w-2 h-2 rounded-full bg-white/40 transition-all dot"></span>
-        </div>
+      </div>
+
+      <!-- Hero Thumbnails (Interactive - Moved Below) -->
+      <div id="hero-thumbnails"
+        class="relative bg-white py-3 flex justify-center gap-2 px-2 overflow-x-auto no-scrollbar border-b border-zinc-100">
+        <button
+          class="hero-thumbnail-btn w-14 h-14 border-2 border-orange-500 rounded-md overflow-hidden transition-all opacity-100 shadow-sm"
+          data-index="0">
+          <img src="src/Screenshot_20260511_211953_TikTok.jpg" class="w-full h-full object-cover" />
+        </button>
+        <button
+          class="hero-thumbnail-btn w-14 h-14 border-2 border-transparent rounded-md overflow-hidden transition-all opacity-50 shadow-sm"
+          data-index="1">
+          <img src="src/Screenshot_20260511_212010_TikTok.jpg" class="w-full h-full object-cover" />
+        </button>
+        <button
+          class="hero-thumbnail-btn w-14 h-14 border-2 border-transparent rounded-md overflow-hidden transition-all opacity-50 shadow-sm"
+          data-index="2">
+          <img src="src/Screenshot_20260511_212025_TikTok.jpg" class="w-full h-full object-cover" />
+        </button>
+        <button
+          class="hero-thumbnail-btn w-14 h-14 border-2 border-transparent rounded-md overflow-hidden transition-all opacity-50 shadow-sm"
+          data-index="3">
+          <img src="src/Screenshot_20260511_212317_TikTok.jpg" class="w-full h-full object-cover" />
+        </button>
       </div>
       <!-- Black Section & Cyan Button -->
       <div class="bg-black w-full flex flex-col items-center py-6 px-4 text-center">
-        <h2 class="text-white font-bold text-xl tracking-wide mb-1">QUẦN SỊP NAM CAO CẤP</h2>
-        <h3 class="text-white font-bold text-lg mb-2">SIZE 45-95KG</h3>
-        <p class="text-white text-[10px] mb-3">Bằng Vải Coton Lạnh Cao Cấp - Mềm Mịn Mát Lạnh Không Đường May Menswear
+        <h2 class="text-white font-bold text-3xl tracking-wide mb-1">QUẦN SỊP NAM CAO CẤP</h2>
+        <h3 class="text-white font-bold text-2xl mb-2">SIZE 45-95KG</h3>
+        <p class="text-white text-[15px] mb-3">Bằng Vải Coton Lạnh Cao Cấp - Mềm Mịn Mát Lạnh Không Đường May Menswear
         </p>
-        <h1 class="text-[#F3D2B3] font-black text-4xl tracking-tighter mb-4">MEN'S BASIC</h1>
+        <h1 class="text-[#F3D2B3] font-black text-5xl tracking-tighter mb-4">COOLAB BASICS</h1>
         <button
-          class="bg-gradient-to-r from-cyan-600 via-cyan-400 to-cyan-200 text-white font-black text-xl px-8 py-2 rounded-sm shadow-[0_0_10px_rgba(0,255,255,0.5)] border border-cyan-300 scroll-to-order animate-pulse-fast">
+          class="bg-gradient-to-r from-cyan-600 via-cyan-400 to-cyan-200 text-white font-black text-xl px-8 py-2 rounded-sm shadow-[0_0_10px_rgba(0,255,255,0.5)] border border-cyan-300 scroll-to-order animate-pulse-standard">
           MUA 3 TẶNG 1
         </button>
       </div>
@@ -385,13 +425,22 @@
               style="text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">50%</span>
           </div>
         </div>
-        <div class="border border-zinc-400 px-4 py-2 mt-4 flex items-center justify-center w-3/4 max-w-sm">
-          <span class="font-bold text-black mr-2">Combo 3 tặng 1:</span>
-          <span class="font-bold text-red-200 text-xl animate-flash-fast">119.000đ</span>
+        <div class="relative mt-8 mb-2 flex flex-col items-center">
+          <div
+            class="absolute -top-3 bg-orange-500 text-white text-1xl font-black px-4 py-1 rounded-full z-10 shadow-md uppercase tracking-wider">
+            COMBO 3 TẶNG 1</div>
+          <div
+            class="border-4 border-orange-500 px-20 py-4 flex flex-col items-center justify-center rounded-2xl bg-white shadow-[0_10px_20px_rgba(249,115,22,0.15)]">
+            <span class="font-black text-red-600 text-5xl tracking-tighter animate-flash-fast">119.000đ</span>
+            <span class="text-1xl font-bold text-zinc-500 mt-1 uppercase tracking-widest">Duy nhất hôm nay</span>
+          </div>
         </div>
-        <div class="text-xs font-bold text-blue-900 mt-2 mb-3">( CHỈ 29.000 / 1 CÁI )</div>
-        <div class="text-sm font-medium text-blue-900">
-          DUY NHẤT HÔM NAY - Giá cũ <span class="line-through">238.000đ</span>
+        <div class="text-1xl font-black text-blue-900 mt-3 flex items-center">
+          <span class="material-symbols-outlined text-lg mr-1" style="font-variation-settings:'FILL' 1;">stars</span>
+          CHỈ 29.000 / 1 CÁI
+        </div>
+        <div class="text-1xl font-bold text-zinc-600 mt-1">
+          Giá gốc: <span class="line-through">238.000đ</span> (Giảm 50%)
         </div>
       </div>
       <div class="px-margin-mobile py-6 bg-surface-container-lowest hidden">
@@ -403,7 +452,8 @@
           class="bg-primary-container text-on-primary-container font-label-bold text-label-bold inline-block px-3 py-1 rounded-sm mb-4">
           CHỈ 29.000đ/CÁI
         </div>
-        <h2 class="font-headline-md text-headline-md text-on-surface mb-6">Quần Lót Nam Kháng Khuẩn Cao Cấp MEN'S BASIC
+        <h2 class="font-headline-md text-headline-md text-on-surface mb-6">Quần Lót Nam Kháng Khuẩn Cao Cấp COOLAB
+          BASICS
         </h2>
         <!-- Progress Bar -->
         <div class="mb-6">
@@ -439,7 +489,7 @@
           </div>
         </div>
         <button
-          class="w-full bg-primary-container text-on-primary font-headline-md text-headline-md py-4 rounded shadow-md active:scale-[0.98] transition-transform uppercase tracking-wide scroll-to-order animate-pulse-fast">
+          class="w-full bg-primary-container text-on-primary font-headline-md text-headline-md py-4 rounded shadow-md active:scale-[0.98] transition-transform uppercase tracking-wide scroll-to-order animate-pulse-standard">
           ĐẶT HÀNG NGAY
         </button>
       </div>
@@ -525,7 +575,7 @@
         <div class="flex flex-row mt-2 relative">
           <div class="w-2/3 bg-zinc-100 flex items-center justify-center rounded-l-md overflow-hidden p-2">
             <img alt="Product Image" class="w-full h-auto object-cover"
-              src="https://placehold.co/600x600/1e1e2f/ffffff?text=Demo+Image" />
+              src="src/Screenshot_20260511_212010_TikTok.jpg" />
           </div>
           <div class="w-1/3 flex flex-col items-center justify-between pl-2 space-y-2">
             <div
@@ -571,7 +621,7 @@
         </div>
         <div class="mt-4 flex items-center justify-center text-sm font-medium text-zinc-800">
           <span class="material-symbols-outlined text-zinc-600 mr-2">visibility</span>
-          Đang có <span class="text-red-600 font-bold mx-1 animate-flash-fast">258</span> người đang xem sản phẩm này
+          Đang có <span class="text-red-600 font-bold mx-1 ">258</span> người đang xem sản phẩm này
         </div>
         <div class="flex items-center justify-center w-full mt-3">
           <span class="material-symbols-outlined text-orange-500 text-3xl mr-2">bolt</span>
@@ -597,22 +647,9 @@
             <span class="material-symbols-outlined text-sm mr-1">local_shipping</span> Miễn ship khi mua từ 2 combo
           </div>
         </div>
-        <ul class="mt-4 space-y-2 text-left bg-zinc-50 p-4 rounded-lg border border-zinc-200">
-          <li class="flex items-start text-sm font-medium text-zinc-800">
-            <span class="material-symbols-outlined text-green-600 mr-2 text-lg">check_circle</span>
-            Chất liệu Đỉnh Cao
-          </li>
-          <li class="flex items-start text-sm font-medium text-zinc-800">
-            <span class="material-symbols-outlined text-green-600 mr-2 text-lg">check_circle</span>
-            Thiết Kế Không Viền
-          </li>
-          <li class="flex items-start text-sm font-medium text-zinc-800">
-            <span class="material-symbols-outlined text-green-600 mr-2 text-lg">check_circle</span>
-            Co Giãn 4 Chiều
-          </li>
-        </ul>
+
         <button
-          class="mt-6 bg-[#4A4A4A] hover:bg-[#333333] text-white font-black text-lg px-8 py-3 rounded-full shadow-[0_4px_10px_rgba(0,0,0,0.3)] w-full max-w-[280px] uppercase tracking-wide scroll-to-order animate-pulse-fast border border-zinc-600">
+          class="mt-6 bg-[#4A4A4A] hover:bg-[#333333] text-white font-black text-lg px-8 py-3 rounded-full shadow-[0_4px_10px_rgba(0,0,0,0.3)] w-full max-w-[280px] uppercase tracking-wide scroll-to-order animate-pulse-standard border border-zinc-600">
           ĐẶT MUA NGAY
         </button>
       </div>
@@ -652,7 +689,11 @@
       </div>
       <div class="max-w-lg mx-auto mt-6">
         <img alt="Product Features and Size Chart" class="w-full rounded-xl shadow-md object-cover"
-          src="https://placehold.co/600x600/1e1e2f/ffffff?text=Demo+Image" />
+          src="src/Screenshot_20260511_212113_TikTok.jpg" />
+      </div>
+      <div class="max-w-lg mx-auto mt-6">
+        <img alt="Product Features and Size Chart" class="w-full rounded-xl shadow-md object-cover"
+          src="src/Screenshot_20260511_212159_TikTok.jpg" />
       </div>
     </section>
     <!-- Size Chart Section -->
@@ -699,13 +740,13 @@
     <!-- Flash Sale Highlights Section -->
     <section class="bg-[#FFF8F5] px-margin-mobile py-8 border-t border-zinc-200 mt-2">
       <div class="max-w-lg mx-auto">
-        <h2 class="text-xl font-bold text-center text-zinc-900 mb-6 leading-snug">Quần Sịp Nam Cao Cấp size
+        <h2 class="text-2xl font-bold text-center text-zinc-900 mb-6 leading-snug">Quần Sịp Nam Cao Cấp size
           45-95kg<br />Co Giãn Mát Lạnh</h2>
         <div class="flex flex-col items-center mb-6">
           <div class="flex items-center space-x-2 text-lg">
-            <span class="font-bold text-zinc-800">Giá chỉ:</span>
-            <span class="font-black text-red-600">119.000đ / 3 TẶNG 1</span>
-            <span class="bg-red-600 text-white text-xs font-bold px-2 py-1 rounded-full animate-pulse-fast">GIẢM
+            <span class="text-2xl font-bold text-zinc-800">Giá chỉ:</span>
+            <span class="text-2xl font-black text-red-600">119.000đ / 3 TẶNG 1</span>
+            <span class="bg-red-600 text-white text-xs font-bold px-2 py-1 rounded-full">GIẢM
               50%</span>
           </div>
           <div class="text-sm text-zinc-500 mt-1">Miễn ship khi mua từ 2 combo</div>
@@ -713,31 +754,32 @@
         <div class="mb-8">
           <h3 class="font-bold text-lg text-zinc-900 mb-3">Sản phẩm chất lượng</h3>
           <div class="bg-slate-200/50 border-l-[6px] border-[#9C5B32] p-4 space-y-3 rounded-r-md">
-            <p class="text-sm text-zinc-800 leading-relaxed"><span class="mr-1">👉</span> Vải 100% coton lạnh, mềm mại,
+            <p class="text-base text-zinc-800 leading-relaxed"><span class="mr-1">👉</span> Vải 100% coton lạnh, mềm
+              mại,
               siêu mát lạnh, mỏng nhẹ mặc êm thoáng mát và dễ chịu.</p>
-            <p class="text-sm text-zinc-800 leading-relaxed"><span class="mr-1">👉</span> Sịp Đúc không đường may, cạp
+            <p class="text-base text-zinc-800 leading-relaxed"><span class="mr-1">👉</span> Sịp Đúc không đường may, cạp
               và viền quần được đúc theo công nghệ tiên tiến của Nhật Bản.</p>
-            <p class="text-sm text-zinc-800 leading-relaxed"><span class="mr-1">👉</span> Co dãn 4 chiều cực đỉnh</p>
-            <p class="text-sm text-zinc-800 leading-relaxed"><span class="mr-1">👉</span> Shop về đủ size: L, XL, 2XL,
+            <p class="text-base text-zinc-800 leading-relaxed"><span class="mr-1">👉</span> Co dãn 4 chiều cực đỉnh</p>
+            <p class="text-base text-zinc-800 leading-relaxed"><span class="mr-1">👉</span> Shop về đủ size: L, XL, 2XL,
               3XL, 4XL ( từ 45-95kg)</p>
-            <p class="text-sm text-zinc-800 leading-relaxed"><span class="mr-1">👉</span> Hoàn tiền 100% nếu sản phẩm
+            <p class="text-base text-zinc-800 leading-relaxed"><span class="mr-1">👉</span> Hoàn tiền 100% nếu sản phẩm
               bạn nhận được không như quảng cáo.</p>
-            <p class="text-sm text-zinc-800 leading-relaxed"><span class="mr-1">👉</span> Hỗ trợ đổi size trong vòng 7
+            <p class="text-base text-zinc-800 leading-relaxed"><span class="mr-1">👉</span> Hỗ trợ đổi size trong vòng 7
               ngày (kể từ khi nhận hàng).</p>
           </div>
         </div>
         <div class="flex items-center justify-between mb-4">
-          <div class="text-red-600 font-bold text-lg leading-tight w-1/2">
+          <div class="text-red-800 font-bold text-2xl leading-tight">
             Giá ưu đãi đặc biệt khi<br />mua sản phẩm
           </div>
           <div
-            class="bg-gradient-to-r from-red-600 to-orange-500 text-white font-black italic px-4 py-2 rounded-full shadow-md animate-pulse-fast transform -rotate-2">
+            class="bg-gradient-to-r from-red-600 to-orange-500 text-white font-black italic px-4 py-2 rounded-full shadow-md transform -rotate-2">
             FLASH SALE
           </div>
         </div>
         <div class="flex items-center justify-center space-x-2 mb-4 text-zinc-800 font-bold">
-          <span class="material-symbols-outlined text-2xl">local_shipping</span>
-          <span>miễn phí ship vận chuyển từ 2 combo</span>
+          <span class="material-symbols-outlined text-6xl">local_shipping</span>
+          <span class="text-1xl">Miễn phí ship vận chuyển từ 2 combo</span>
         </div>
         <div class="w-full h-px bg-zinc-400 mb-4 max-w-[200px] mx-auto"></div>
         <div class="text-center mb-6 flex justify-center items-end space-x-2">
@@ -746,7 +788,7 @@
           <span class="font-bold text-zinc-800 text-sm pb-1">Combo 3 tặng 1</span>
         </div>
         <button
-          class="w-full bg-gradient-to-r from-red-600 via-orange-500 to-red-600 text-white font-black text-xl py-4 rounded-full shadow-[0_4px_15px_rgba(220,38,38,0.5)] active:scale-[0.98] transition-transform uppercase tracking-widest scroll-to-order animate-pulse-fast border-2 border-orange-300">
+          class="w-full bg-gradient-to-r from-red-600 via-orange-500 to-red-600 text-white font-black text-xl py-4 rounded-full shadow-[0_4px_15px_rgba(220,38,38,0.5)] active:scale-[0.98] transition-transform uppercase tracking-widest scroll-to-order animate-pulse-standard border-2 border-orange-300">
           ĐẶT MUA NGAY
         </button>
       </div>
@@ -756,53 +798,92 @@
       <div class="max-w-lg mx-auto">
         <h3 class="font-headline-md text-[24px] font-bold text-zinc-900 mb-6 text-center uppercase tracking-wide">Hình
           ảnh sản phẩm</h3>
-        <div class="relative w-full h-[400px] bg-zinc-100 overflow-hidden rounded-xl shadow-md mb-4"
+
+        <!-- Main Image View -->
+        <div class="relative w-full aspect-square bg-zinc-100 overflow-hidden rounded-xl shadow-md mb-4"
           id="gallery-carousel">
           <div class="relative w-full h-full" id="gallery-inner">
             <div class="gallery-view-item absolute inset-0 transition-opacity duration-500 opacity-100 z-10">
               <img alt="Gallery Image 1" class="w-full h-full object-cover"
-                src="https://placehold.co/600x600/1e1e2f/ffffff?text=Demo+Image" />
+                src="src/Screenshot_20260511_212317_TikTok.jpg" />
             </div>
             <div class="gallery-view-item absolute inset-0 transition-opacity duration-500 opacity-0 z-0">
-              <img alt="Gallery Image 2" class="w-full h-full object-cover object-top"
-                src="https://placehold.co/600x600/1e1e2f/ffffff?text=Demo+Image" />
+              <img alt="Gallery Image 2" class="w-full h-full object-cover"
+                src="src/Screenshot_20260511_212159_TikTok.jpg" />
             </div>
             <div class="gallery-view-item absolute inset-0 transition-opacity duration-500 opacity-0 z-0">
-              <img alt="Gallery Image 3" class="w-full h-full object-cover object-top"
-                src="https://placehold.co/600x600/1e1e2f/ffffff?text=Demo+Image" />
+              <img alt="Gallery Image 3" class="w-full h-full object-cover"
+                src="src/Screenshot_20260511_212248_TikTok.jpg" />
+            </div>
+            <div class="gallery-view-item absolute inset-0 transition-opacity duration-500 opacity-0 z-0">
+              <img alt="Gallery Image 4" class="w-full h-full object-cover"
+                src="src/Screenshot_20260511_212010_TikTok.jpg" />
+            </div>
+            <div class="gallery-view-item absolute inset-0 transition-opacity duration-500 opacity-0 z-0">
+              <img alt="Gallery Image 5" class="w-full h-full object-cover"
+                src="src/Screenshot_20260511_212025_TikTok.jpg" />
+            </div>
+            <div class="gallery-view-item absolute inset-0 transition-opacity duration-500 opacity-0 z-0">
+              <img alt="Gallery Image 6" class="w-full h-full object-cover"
+                src="src/Screenshot_20260511_211953_TikTok.jpg" />
             </div>
           </div>
-          <!-- Navigation Arrows -->
+          <!-- Navigation Arrows (Styled like the image) -->
           <button
-            class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/40 text-white hover:bg-black/70 rounded-full p-2 z-20 transition-colors shadow-md backdrop-blur-sm"
+            class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/30 text-white rounded-md p-1.5 z-20 hover:bg-black/50 transition-colors"
             id="gallery-prev-btn">
-            <span class="material-symbols-outlined">chevron_left</span>
+            <span class="material-symbols-outlined text-2xl">chevron_left</span>
           </button>
           <button
-            class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/40 text-white hover:bg-black/70 rounded-full p-2 z-20 transition-colors shadow-md backdrop-blur-sm"
+            class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/30 text-white rounded-md p-1.5 z-20 hover:bg-black/50 transition-colors"
             id="gallery-next-btn">
-            <span class="material-symbols-outlined">chevron_right</span>
+            <span class="material-symbols-outlined text-2xl">chevron_right</span>
           </button>
         </div>
-        <!-- Thumbnails -->
-        <div class="flex items-center justify-center gap-3">
-          <button
-            class="gallery-thumbnail-btn w-16 h-16 border-2 border-orange-500 overflow-hidden opacity-100 transition-all rounded-md shadow-sm"
-            data-index="0">
-            <img alt="Thumbnail 1" class="w-full h-full object-cover"
-              src="https://placehold.co/600x600/1e1e2f/ffffff?text=Demo+Image" />
+
+        <!-- Thumbnails Area -->
+        <div class="relative flex items-center px-8">
+          <button class="absolute left-0 top-1/2 -translate-y-1/2 bg-zinc-200 rounded-md p-1 z-10" id="thumb-prev">
+            <span class="material-symbols-outlined text-lg">chevron_left</span>
           </button>
-          <button
-            class="gallery-thumbnail-btn w-16 h-16 border-2 border-transparent overflow-hidden opacity-50 hover:opacity-100 transition-all rounded-md shadow-sm"
-            data-index="1">
-            <img alt="Thumbnail 2" class="w-full h-full object-cover object-top"
-              src="https://placehold.co/600x600/1e1e2f/ffffff?text=Demo+Image" />
-          </button>
-          <button
-            class="gallery-thumbnail-btn w-16 h-16 border-2 border-transparent overflow-hidden opacity-50 hover:opacity-100 transition-all rounded-md shadow-sm"
-            data-index="2">
-            <img alt="Thumbnail 3" class="w-full h-full object-cover object-top"
-              src="https://placehold.co/600x600/1e1e2f/ffffff?text=Demo+Image" />
+
+          <div class="w-full overflow-hidden" id="thumb-container">
+            <div class="flex gap-2 transition-transform duration-300" id="thumb-inner">
+              <button
+                class="gallery-thumbnail-btn flex-shrink-0 w-20 h-20 border-2 border-orange-500 rounded-md overflow-hidden opacity-100"
+                data-index="0">
+                <img src="src/Screenshot_20260511_212317_TikTok.jpg" class="w-full h-full object-cover" />
+              </button>
+              <button
+                class="gallery-thumbnail-btn flex-shrink-0 w-20 h-20 border-2 border-transparent rounded-md overflow-hidden opacity-50"
+                data-index="1">
+                <img src="src/Screenshot_20260511_212159_TikTok.jpg" class="w-full h-full object-cover" />
+              </button>
+              <button
+                class="gallery-thumbnail-btn flex-shrink-0 w-20 h-20 border-2 border-transparent rounded-md overflow-hidden opacity-50"
+                data-index="2">
+                <img src="src/Screenshot_20260511_212248_TikTok.jpg" class="w-full h-full object-cover" />
+              </button>
+              <button
+                class="gallery-thumbnail-btn flex-shrink-0 w-20 h-20 border-2 border-transparent rounded-md overflow-hidden opacity-50"
+                data-index="3">
+                <img src="src/Screenshot_20260511_212010_TikTok.jpg" class="w-full h-full object-cover" />
+              </button>
+              <button
+                class="gallery-thumbnail-btn flex-shrink-0 w-20 h-20 border-2 border-transparent rounded-md overflow-hidden opacity-50"
+                data-index="4">
+                <img src="src/Screenshot_20260511_212025_TikTok.jpg" class="w-full h-full object-cover" />
+              </button>
+              <button
+                class="gallery-thumbnail-btn flex-shrink-0 w-20 h-20 border-2 border-transparent rounded-md overflow-hidden opacity-50"
+                data-index="5">
+                <img src="src/Screenshot_20260511_211953_TikTok.jpg" class="w-full h-full object-cover" />
+              </button>
+            </div>
+          </div>
+
+          <button class="absolute right-0 top-1/2 -translate-y-1/2 bg-zinc-200 rounded-md p-1 z-10" id="thumb-next">
+            <span class="material-symbols-outlined text-lg">chevron_right</span>
           </button>
         </div>
       </div>
@@ -873,7 +954,8 @@
             </div>
           </div>
           <!-- Scarcity -->
-          <p class="text-[#D09062] font-bold text-sm animate-blink">Chỉ còn 28 combo cuối cùng, nhanh tay đặt hàng ngay
+          <p class="text-[#D09062] font-bold text-sm animate-flash-fast">Chỉ còn 28 combo cuối cùng, nhanh tay đặt hàng
+            ngay
             !</p>
         </div>
         <!-- Form -->
@@ -960,13 +1042,224 @@
         </form>
       </div>
     </section>
-    <section class="w-full flex justify-center bg-white py-4">
-      <div class="max-w-lg w-full px-margin-mobile">
-        <img alt="Quality Assurance" class="w-full h-auto rounded-xl shadow-sm"
-          src="https://placehold.co/600x600/1e1e2f/ffffff?text=Demo+Image" />
+
+    <section class="w-full bg-white pt-10 pb-12 px-margin-mobile">
+      <div class="max-w-lg mx-auto text-center">
+        <h3 class="text-[32px] font-black text-zinc-900 uppercase leading-tight mb-2 tracking-tighter">LUÔN LUÔN ĐI ĐẦU
+          VỀ <br> CHẤT LƯỢNG</h3>
+        <img alt="Chính sách bán hàng" class="w-full h-auto rounded-xl shadow-md" src="src/chinh_sach.png" />
+      </div>
+    </section>
+
+    <!-- Customer Feedback Section -->
+    <section class="bg-white px-margin-mobile py-10 border-t border-zinc-200">
+      <div class="max-w-lg mx-auto">
+        <h2 class="text-[26px] font-black text-center text-zinc-900 mb-6 uppercase tracking-tight">PHẢN HỒI CỦA KHÁCH
+          HÀNG</h2>
+
+        <!-- Stats Row -->
+        <div
+          class="flex items-center justify-between border-b border-zinc-100 pb-3 mb-6 text-sm font-bold text-zinc-600">
+          <span>9783 Bình luận</span>
+          <div class="flex items-center gap-2">
+            <span>Sắp xếp theo</span>
+            <div class="bg-zinc-100 px-3 py-1.5 rounded-md flex items-center gap-1 cursor-pointer">
+              <span>Hàng đầu</span>
+              <span class="material-symbols-outlined text-sm">unfold_more</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Comment List -->
+        <div class="space-y-8">
+          <!-- Comment 1 -->
+          <div class="flex gap-3">
+            <div class="w-12 h-12 rounded-full overflow-hidden flex-shrink-0 border border-zinc-200">
+              <img src="src/Screenshot_20260511_212040_TikTok.jpg" class="w-full h-full object-cover" />
+            </div>
+            <div class="flex-1">
+              <div class="bg-zinc-100 p-4 rounded-2xl rounded-tl-none shadow-sm relative">
+                <div class="flex justify-between items-start mb-1">
+                  <span class="font-bold text-[#385898]">Nguyễn Mạnh</span>
+                  <span class="text-xs italic text-zinc-400">28 phút trước</span>
+                </div>
+                <p class="text-[15px] text-zinc-800 leading-relaxed">Sản phẩm đúng như shop mô tả. Đóng gói cẩn thận.
+                  chất vải đẹp mát rất hợp mặc mùa hè này. sẽ ủng hộ shop lâu dài</p>
+              </div>
+              <!-- Reply 1 -->
+              <div class="flex gap-3 mt-4 ml-6">
+                <div
+                  class="w-10 h-10 rounded-full overflow-hidden flex-shrink-0 border border-zinc-200 bg-[#F5F1E6] flex items-center justify-center">
+                  <img src="src/Screenshot_20260511_212010_TikTok.jpg" class="w-8 h-8 object-contain" />
+                </div>
+                <div class="flex-1 bg-zinc-100 p-4 rounded-2xl rounded-tl-none shadow-sm">
+                  <div class="flex justify-between items-start mb-1">
+                    <span class="font-bold text-[#385898]">COOLAB BASICS </span>
+                    <span class="text-xs italic text-zinc-400">15 phút trước</span>
+                  </div>
+                  <p class="text-[14px] text-zinc-800 leading-relaxed"><span class="text-[#385898] font-bold">Nguyễn
+                      Mạnh</span> Shop cảm ơn anh đã ủng hộ ạ!</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Comment 2 -->
+          <div class="flex gap-3">
+            <div class="w-12 h-12 rounded-full overflow-hidden flex-shrink-0 border border-zinc-200">
+              <img src="src/Screenshot_20260511_212333_TikTok.jpg" class="w-full h-full object-cover" />
+            </div>
+            <div class="flex-1">
+              <div class="bg-zinc-100 p-4 rounded-2xl rounded-tl-none shadow-sm">
+                <div class="flex justify-between items-start mb-1">
+                  <span class="font-bold text-[#385898]">Trần Đức</span>
+                  <span class="text-xs italic text-zinc-400">45 phút trước</span>
+                </div>
+                <p class="text-[15px] text-zinc-800 leading-relaxed">Lấy e combo 3 cái nha shop e ở số 45 nguyễn thái
+                  học lãnh quận 1 tphcm sdt của e 0563052678</p>
+              </div>
+              <!-- Reply 2 -->
+              <div class="flex gap-3 mt-4 ml-6">
+                <div
+                  class="w-10 h-10 rounded-full overflow-hidden flex-shrink-0 border border-zinc-200 bg-[#F5F1E6] flex items-center justify-center">
+                  <img src="src/Screenshot_20260511_212010_TikTok.jpg" class="w-8 h-8 object-contain" />
+                </div>
+                <div class="flex-1 bg-zinc-100 p-4 rounded-2xl rounded-tl-none shadow-sm">
+                  <div class="flex justify-between items-start mb-1">
+                    <span class="font-bold text-[#385898]">COOLAB BASICS </span>
+                    <span class="text-xs italic text-zinc-400">30 phút trước</span>
+                  </div>
+                  <p class="text-[14px] text-zinc-800 leading-relaxed"><span class="text-[#385898] font-bold">Trần
+                      Đức</span> Vâng e xin phép inb để chốt đơn của mình nhé</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Comment 3 -->
+          <div class="flex gap-3">
+            <div class="w-12 h-12 rounded-full overflow-hidden flex-shrink-0 border border-zinc-200">
+              <img src="src/Screenshot_20260511_212402_TikTok.jpg" class="w-full h-full object-cover" />
+            </div>
+            <div class="flex-1">
+              <div class="bg-zinc-100 p-4 rounded-2xl rounded-tl-none shadow-sm">
+                <div class="flex justify-between items-start mb-1">
+                  <span class="font-bold text-[#385898]">Mạnh Cường</span>
+                  <span class="text-xs italic text-zinc-400">56 phút trước</span>
+                </div>
+                <p class="text-[15px] text-zinc-800 leading-relaxed">Sản phẩm chất lượng, chất khá mát đánh giá 5 sao
+                  nhé a e cứ mạnh dạn đặt hàng nhé</p>
+              </div>
+              <!-- Reply 3 -->
+              <div class="flex gap-3 mt-4 ml-6">
+                <div
+                  class="w-10 h-10 rounded-full overflow-hidden flex-shrink-0 border border-zinc-200 bg-[#F5F1E6] flex items-center justify-center">
+                  <img src="src/Screenshot_20260511_212010_TikTok.jpg" class="w-8 h-8 object-contain" />
+                </div>
+                <div class="flex-1 bg-zinc-100 p-4 rounded-2xl rounded-tl-none shadow-sm">
+                  <div class="flex justify-between items-start mb-1">
+                    <span class="font-bold text-[#385898]">COOLAB BASICS</span>
+                    <span class="text-xs italic text-zinc-400">31 phút trước</span>
+                  </div>
+                  <p class="text-[14px] text-zinc-800 leading-relaxed"><span class="text-[#385898] font-bold">Mạnh
+                      Cường</span> Shop cảm ơn anh nhé !</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Comment 4 -->
+          <div class="flex gap-3">
+            <div class="w-12 h-12 rounded-full overflow-hidden flex-shrink-0 border border-zinc-200">
+              <img src="src/Screenshot_20260511_212402_TikTok.jpg" class="w-full h-full object-cover" />
+            </div>
+            <div class="flex-1">
+              <div class="bg-zinc-100 p-4 rounded-2xl rounded-tl-none shadow-sm">
+                <div class="flex justify-between items-start mb-1">
+                  <span class="font-bold text-[#385898]">Vũ Cao</span>
+                  <span class="text-xs italic text-zinc-400">1 giờ trước</span>
+                </div>
+                <p class="text-[15px] text-zinc-800 leading-relaxed">Quần siêu mát. Giao hàng nhanh mặc dù vào ngày nghỉ
+                  lễ, đánh giá chất lượng 5 sao luôn nhé</p>
+              </div>
+              <!-- Reply 4 -->
+              <div class="flex gap-3 mt-4 ml-6">
+                <div
+                  class="w-10 h-10 rounded-full overflow-hidden flex-shrink-0 border border-zinc-200 bg-[#F5F1E6] flex items-center justify-center">
+                  <img src="src/Screenshot_20260511_212010_TikTok.jpg" class="w-8 h-8 object-contain" />
+                </div>
+                <div class="flex-1 bg-zinc-100 p-4 rounded-2xl rounded-tl-none shadow-sm">
+                  <div class="flex justify-between items-start mb-1">
+                    <span class="font-bold text-[#385898]">COOLAB BASICS</span>
+                    <span class="text-xs italic text-zinc-400">50 phút trước</span>
+                  </div>
+                  <p class="text-[14px] text-zinc-800 leading-relaxed"><span class="text-[#385898] font-bold">Mạnh
+                      Cường</span> Shop cảm ơn anh nhé !</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>Ai đó đang nhập bình luận...</div>
+        </div>
       </div>
     </section>
   </main>
+
+  <!-- Footer Section -->
+  <footer class="bg-zinc-900 text-white pt-12 pb-24 px-margin-mobile relative overflow-hidden">
+    <!-- Subtle Background Pattern (Simulated) -->
+    <div class="absolute inset-0 opacity-10 pointer-events-none">
+      <div class="w-full h-full bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
+    </div>
+
+    <div class="max-w-lg mx-auto relative z-10">
+      <!-- Logo & Title -->
+      <div class="flex items-center gap-4 mb-10">
+        <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center p-2 shadow-lg">
+          <img src="src/Screenshot_20260511_212010_TikTok.jpg" class="w-full h-full object-contain" alt="Logo">
+        </div>
+        <div class="flex-1">
+          <h2 class="font-bold text-lg leading-tight uppercase tracking-wider">COOLAB BASICS - KÊNH MUA SẮM THỜI TRANG
+            TRỰC TUYẾN TẠI VIỆT NAM</h2>
+        </div>
+      </div>
+
+      <!-- About Us -->
+      <div class="mb-10">
+        <h3 class="text-xl font-black uppercase mb-6 tracking-widest border-l-4 border-orange-500 pl-3">VỀ CHÚNG TÔI
+        </h3>
+        <ul class="space-y-5 text-zinc-300">
+          <li class="flex items-start gap-4">
+            <span class="material-symbols-outlined text-orange-400">home</span>
+            <span class="text-[15px]">Địa chỉ: Tầng 2 - Aeon Mall Hà Đông - Dương Nội, Hà Đông, Hà Nội</span>
+          </li>
+          <li class="flex items-center gap-4">
+            <span class="material-symbols-outlined text-orange-400">call</span>
+            <span class="text-[15px] font-bold">Hotline: 0986.689.886</span>
+          </li>
+          <li class="flex items-center gap-4">
+            <span class="material-symbols-outlined text-orange-400">mail</span>
+            <span class="text-[15px]">Email: mensbasic247@gmail.com</span>
+          </li>
+          <li class="flex items-center gap-4">
+            <span class="material-symbols-outlined text-orange-400">language</span>
+            <span class="text-[15px]">Website: menstore.com</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Trust Badges -->
+      <div class="bg-white rounded-lg p-4 inline-flex items-center gap-4 mb-12 shadow-inner">
+        <img src="src/visa.png" class="h-10" alt="Visa">
+      </div>
+
+      <!-- Copyright Row -->
+      <div class="flex items-center gap-4 text-zinc-500 text-sm">
+        <div class="flex-1 h-px bg-zinc-800"></div>
+        <span class="uppercase tracking-widest whitespace-nowrap">Copyright @ 2023</span>
+        <div class="flex-1 h-px bg-zinc-800"></div>
+      </div>
+    </div>
+  </footer>
 
   <!-- Sticky Bottom CTA (Mobile) -->
   <div id="sticky-cta"
@@ -977,9 +1270,18 @@
           CÁI</span></span>
     </div>
     <button
-      class="scroll-to-order bg-gradient-to-r from-orange-500 to-red-600 text-white font-black px-6 py-2.5 rounded-full shadow-md animate-pulse-fast">
+      class="scroll-to-order bg-gradient-to-r from-orange-500 to-red-600 text-white font-black px-6 py-2.5 rounded-full shadow-md animate-pulse-standard">
       ĐẶT HÀNG
     </button>
+  </div>
+
+  <!-- Lightbox for Image Zoom -->
+  <div id="lightbox" class="fixed inset-0 bg-black/90 z-50 hidden flex items-center justify-center p-4 cursor-zoom-out">
+    <button id="close-lightbox" class="absolute top-4 right-4 text-white hover:text-orange-500 transition-colors">
+      <span class="material-symbols-outlined text-4xl">close</span>
+    </button>
+    <img id="lightbox-img" src="" alt="Enlarged Image"
+      class="max-w-full max-h-full object-contain rounded-sm shadow-2xl scale-95 transition-transform duration-300">
   </div>
 
   <!-- JavaScript Logic -->
@@ -991,7 +1293,7 @@
       }
 
       // 0.1 Time on Site Tracking
-      const timeMilestones = [15, 30, 60]; // seconds
+      const timeMilestones = [15, 30, 60, 90, 120, 180]; // seconds
       timeMilestones.forEach(seconds => {
         setTimeout(() => {
           if (typeof fbq === 'function') {
@@ -1003,10 +1305,10 @@
       // 0.2 Scroll Depth Tracking
       const scrollMilestones = [25, 50, 75, 90];
       const scrollTracked = new Set();
-      
+
       window.addEventListener('scroll', () => {
         if (scrollTracked.size === scrollMilestones.length) return; // Đã track hết
-        
+
         const scrollPosition = window.scrollY + window.innerHeight;
         const totalHeight = document.body.scrollHeight;
         const scrollPercentage = (scrollPosition / totalHeight) * 100;
@@ -1027,7 +1329,7 @@
           e.preventDefault();
           // Fire AddToCart event when clicking CTA
           if (typeof fbq === 'function') fbq('track', 'AddToCart');
-          
+
           const form = document.getElementById('order-form');
           if (form) {
             form.scrollIntoView({ behavior: 'smooth' });
@@ -1072,22 +1374,30 @@
 
       // 3. Hero Carousel (Auto-play & Swipe)
       const slides = document.querySelectorAll('.slide');
-      const dots = document.querySelectorAll('.dot');
+      const heroThumbs = document.querySelectorAll('.hero-thumbnail-btn');
       let currentSlide = 0;
       let slideInterval;
 
       function goToSlide(n) {
         if (slides.length === 0) return;
-        slides[currentSlide].classList.remove('active');
-        slides[currentSlide].classList.add('hidden');
-        if (dots.length > 0) dots[currentSlide].classList.replace('bg-white', 'bg-white/40');
+        slides[currentSlide].classList.replace('active', 'hidden');
+        if (heroThumbs.length > 0) {
+          heroThumbs[currentSlide].classList.replace('border-orange-500', 'border-transparent');
+          heroThumbs[currentSlide].classList.replace('opacity-100', 'opacity-50');
+        }
 
         currentSlide = (n + slides.length) % slides.length;
 
-        slides[currentSlide].classList.remove('hidden');
-        slides[currentSlide].classList.add('active');
-        if (dots.length > 0) dots[currentSlide].classList.replace('bg-white/40', 'bg-white');
+        slides[currentSlide].classList.replace('hidden', 'active');
+        if (heroThumbs.length > 0) {
+          heroThumbs[currentSlide].classList.replace('border-transparent', 'border-orange-500');
+          heroThumbs[currentSlide].classList.replace('opacity-50', 'opacity-100');
+        }
       }
+
+      heroThumbs.forEach((thumb, i) => {
+        thumb.addEventListener('click', () => { goToSlide(i); resetInterval(); });
+      });
 
       function nextSlide() { goToSlide(currentSlide + 1); }
       function prevSlide() { goToSlide(currentSlide - 1); }
@@ -1101,17 +1411,60 @@
       }
       resetInterval();
 
-      // Swipe logic for carousel
-      let touchStartX = 0;
-      let touchEndX = 0;
-      const carousel = document.getElementById('hero-carousel');
+      // 3.5 Product Gallery Logic
+      const gallSlides = document.querySelectorAll('.gallery-view-item');
+      const gallThumbs = document.querySelectorAll('.gallery-thumbnail-btn');
+      const thumbInner = document.getElementById('thumb-inner');
+      let currentGallSlide = 0;
+
+      function goToGallSlide(n) {
+        if (gallSlides.length === 0) return;
+        gallSlides[currentGallSlide].classList.replace('opacity-100', 'opacity-0');
+        gallSlides[currentGallSlide].classList.replace('z-10', 'z-0');
+        gallThumbs[currentGallSlide].classList.replace('border-orange-500', 'border-transparent');
+        gallThumbs[currentGallSlide].classList.replace('opacity-100', 'opacity-50');
+
+        currentGallSlide = (n + gallSlides.length) % gallSlides.length;
+
+        gallSlides[currentGallSlide].classList.replace('opacity-0', 'opacity-100');
+        gallSlides[currentGallSlide].classList.replace('z-0', 'z-10');
+        gallThumbs[currentGallSlide].classList.replace('border-transparent', 'border-orange-500');
+        gallThumbs[currentGallSlide].classList.replace('opacity-50', 'opacity-100');
+
+        // Center thumbnail if it's not visible
+        const thumbWidth = gallThumbs[0].offsetWidth + 8; // width + gap
+        if (thumbInner) {
+          thumbInner.style.transform = `translateX(-${Math.max(0, Math.min((gallSlides.length - 4) * thumbWidth, (currentGallSlide - 1) * thumbWidth))}px)`;
+        }
+      }
+
+      document.getElementById('gallery-next-btn')?.addEventListener('click', () => goToGallSlide(currentGallSlide + 1));
+      document.getElementById('gallery-prev-btn')?.addEventListener('click', () => goToGallSlide(currentGallSlide - 1));
+
+      gallThumbs.forEach((thumb, i) => {
+        thumb.addEventListener('click', () => goToGallSlide(i));
+      });
+
+      // Thumbnail navigation buttons
+      let thumbScrollPos = 0;
+      document.getElementById('thumb-next')?.addEventListener('click', () => {
+        const thumbWidth = gallThumbs[0].offsetWidth + 8;
+        thumbScrollPos = Math.min((gallSlides.length - 3) * thumbWidth, thumbScrollPos + thumbWidth);
+        if (thumbInner) thumbInner.style.transform = `translateX(-${thumbScrollPos}px)`;
+      });
+      document.getElementById('thumb-prev')?.addEventListener('click', () => {
+        const thumbWidth = gallThumbs[0].offsetWidth + 8;
+        thumbScrollPos = Math.max(0, thumbScrollPos - thumbWidth);
+        if (thumbInner) thumbInner.style.transform = `translateX(-${thumbScrollPos}px)`;
+      });
+
+      // Swipe logic for gallery
       if (carousel) {
         carousel.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
         carousel.addEventListener('touchend', e => {
           touchEndX = e.changedTouches[0].screenX;
-          if (touchStartX - touchEndX > 50) nextSlide();
-          if (touchEndX - touchStartX > 50) prevSlide();
-          resetInterval();
+          if (touchStartX - touchEndX > 50) goToGallSlide(currentGallSlide + 1);
+          if (touchEndX - touchStartX > 50) goToGallSlide(currentGallSlide - 1);
         }, { passive: true });
       }
 
@@ -1201,7 +1554,7 @@
                 let value = 119000;
                 if (comboValue.includes('235.000')) value = 235000;
                 else if (comboValue.includes('89.000')) value = 89000;
-                
+
                 fbq('track', 'Purchase', { value: value, currency: 'VND' });
               }
               formEl.reset();
@@ -1219,6 +1572,49 @@
           }
         });
       }
+      // 6. Lightbox Zoom Logic
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightbox-img');
+      const closeLightbox = document.getElementById('close-lightbox');
+
+      function openLightbox(src) {
+        if (!lightbox || !lightboxImg) return;
+        lightboxImg.src = src;
+        lightbox.classList.remove('hidden');
+        setTimeout(() => {
+          lightboxImg.classList.replace('scale-95', 'scale-100');
+        }, 10);
+        document.body.style.overflow = 'hidden';
+      }
+
+      function hideLightbox() {
+        if (!lightbox || !lightboxImg) return;
+        lightboxImg.classList.replace('scale-100', 'scale-95');
+        setTimeout(() => {
+          lightbox.classList.add('hidden');
+          document.body.style.overflow = '';
+        }, 200);
+      }
+
+      // Apply zoom to all product-related images
+      document.querySelectorAll('.gallery-view-item img, .slide img, .px-margin-mobile img').forEach(img => {
+        img.classList.add('cursor-zoom-in');
+        img.addEventListener('click', () => {
+          // Chỉ zoom nếu không phải là thumbnail
+          if (!img.closest('.gallery-thumbnail-btn') && !img.closest('.hero-thumbnail-btn')) {
+            openLightbox(img.src);
+          }
+        });
+      });
+
+      lightbox?.addEventListener('click', (e) => {
+        if (e.target === lightbox || e.target === lightboxImg) hideLightbox();
+      });
+
+      closeLightbox?.addEventListener('click', (e) => {
+        e.stopPropagation();
+        hideLightbox();
+      });
     });
   </script>
 </body>
